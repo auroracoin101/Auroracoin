@@ -1,3 +1,9 @@
+## This is the stable branch
+
+Use this branch for running auroracoin in production environments. If you want the development branch,
+switch to [master](https://github.com/aurarad/Auroracoin/tree/master).
+
+
 # AuroraCoin AUR
 
 http://auroracoin.is
