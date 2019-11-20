@@ -1,6 +1,6 @@
 # Warning! This is the main development branch.
 
-Do not use this branch for production environments. This branch (master) is for development purposes. Users looking for the current release branch, checkout [stable](https://github.com/aurarad/Auroracoin/tree/stable).
+Do not use this branch for production environments. This branch (`master`) is for development purposes. Users looking for the current release branch, checkout [stable](https://github.com/aurarad/Auroracoin/tree/stable).
 
 
 # AuroraCoin AUR
