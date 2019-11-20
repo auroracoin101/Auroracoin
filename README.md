@@ -35,6 +35,13 @@ https://bitcointalk.org/index.php?topic=1044432.0
 Auroracoin is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
+## Developers
+
+Developers are encouraged to create tools for Auroracoin to support the adoption of Auroracoin. Such software, e.g. for
+payments, will help Icelanders start using the currency in their daily lives.
+
+Interested in helping out? Please email auroracoin@auroracoin.is, and let us know how you can help.
+
 ## Development Process
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
@@ -63,11 +70,3 @@ Changes should be tested by somebody other than the developer who wrote the
 code. This is especially important for large or high-risk changes. It is useful
 to add a test plan to the pull request description if testing the changes is
 not straightforward.
-
-
-## Developers
-
-Developers are encouraged to create tools for Auroracoin to support the adoption of Auroracoin. Such software, e.g. for
-payments, will help Icelanders start using the currency in their daily lives.
-
-Interested in helping out? Please email auroracoin@auroracoin.is, and let us know how you can help.
