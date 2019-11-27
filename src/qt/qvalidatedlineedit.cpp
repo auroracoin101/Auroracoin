@@ -1,28 +1,30 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2009-2019 The Bitcoin Core developers
+// Copyright (c) 2014-2019 The DigiByte Core developers
+// Copyright (c) 2014-2019 The Auroracoin Developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "qvalidatedlineedit.h"
+#include <qt/qvalidatedlineedit.h>
 
-#include "bitcoinaddressvalidator.h"
-#include "guiconstants.h"
+#include <qt/auroracoinaddressvalidator.h>
+#include <qt/guiconstants.h>
 
 QValidatedLineEdit::QValidatedLineEdit(QWidget *parent) :
     QLineEdit(parent),
     valid(true),
     checkValidator(0)
 {
-    connect(this, SIGNAL(textChanged(QString)), this, SLOT(markValid()));
+    connect(this, &QValidatedLineEdit::textChanged, this, &QValidatedLineEdit::markValid);
 }
 
-void QValidatedLineEdit::setValid(bool valid)
+void QValidatedLineEdit::setValid(bool _valid)
 {
-    if(valid == this->valid)
+    if(_valid == this->valid)
     {
         return;
     }
 
-    if(valid)
+    if(_valid)
     {
         setStyleSheet("");
     }
@@ -30,7 +32,7 @@ void QValidatedLineEdit::setValid(bool valid)
     {
         setStyleSheet(STYLE_INVALID);
     }
-    this->valid = valid;
+    this->valid = _valid;
 }
 
 void QValidatedLineEdit::focusInEvent(QFocusEvent *evt)
@@ -99,9 +101,25 @@ void QValidatedLineEdit::checkValidity()
     }
     else
         setValid(false);
+
+    Q_EMIT validationDidChange(this);
 }
 
 void QValidatedLineEdit::setCheckValidator(const QValidator *v)
 {
     checkValidator = v;
+}
+
+bool QValidatedLineEdit::isValid()
+{
+    // use checkValidator in case the QValidatedLineEdit is disabled
+    if (checkValidator)
+    {
+        QString address = text();
+        int pos = 0;
+        if (checkValidator->validate(address, pos) == QValidator::Acceptable)
+            return true;
+    }
+
+    return valid;
 }

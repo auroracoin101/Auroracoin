@@ -1,19 +1,37 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2009-2019 The Bitcoin Core developers
+// Copyright (c) 2014-2019 The DigiByte Core developers
+// Copyright (c) 2014-2019 The Auroracoin Developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef OPTIONSDIALOG_H
-#define OPTIONSDIALOG_H
+#ifndef AURORACOIN_QT_OPTIONSDIALOG_H
+#define AURORACOIN_QT_OPTIONSDIALOG_H
 
 #include <QDialog>
+#include <QValidator>
 
-class MonitoredDataMapper;
 class OptionsModel;
 class QValidatedLineEdit;
+
+QT_BEGIN_NAMESPACE
+class QDataWidgetMapper;
+QT_END_NAMESPACE
 
 namespace Ui {
 class OptionsDialog;
 }
+
+/** Proxy address widget validator, checks for a valid proxy address.
+ */
+class ProxyAddressValidator : public QValidator
+{
+    Q_OBJECT
+
+public:
+    explicit ProxyAddressValidator(QObject *parent);
+
+    State validate(QString &input, int &pos) const;
+};
 
 /** Preferences dialog. */
 class OptionsDialog : public QDialog
@@ -21,39 +39,42 @@ class OptionsDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit OptionsDialog(QWidget *parent);
+    explicit OptionsDialog(QWidget *parent, bool enableWallet);
     ~OptionsDialog();
+
+    enum Tab {
+        TAB_MAIN,
+        TAB_NETWORK,
+    };
 
     void setModel(OptionsModel *model);
     void setMapper();
+    void setCurrentTab(OptionsDialog::Tab tab);
 
-protected:
-    bool eventFilter(QObject *object, QEvent *event);
-
-private slots:
-    /* enable OK button */
-    void enableOkButton();
-    /* disable OK button */
-    void disableOkButton();
+private Q_SLOTS:
     /* set OK button state (enabled / disabled) */
     void setOkButtonState(bool fState);
     void on_resetButton_clicked();
+    void on_openAuroracoinConfButton_clicked();
     void on_okButton_clicked();
     void on_cancelButton_clicked();
 
+    void on_hideTrayIcon_stateChanged(int fState);
+
+    void togglePruneWarning(bool enabled);
     void showRestartWarning(bool fPersistent = false);
     void clearStatusLabel();
-    void updateDisplayUnit();
-    void doProxyIpChecks(QValidatedLineEdit *pUiProxyIp, int nProxyPort);
+    void updateProxyValidationState();
+    /* query the networks, for which the default proxy is used */
+    void updateDefaultProxyNets();
 
-signals:
+Q_SIGNALS:
     void proxyIpChecks(QValidatedLineEdit *pUiProxyIp, int nProxyPort);
 
 private:
     Ui::OptionsDialog *ui;
     OptionsModel *model;
-    MonitoredDataMapper *mapper;
-    bool fProxyIpValid;
+    QDataWidgetMapper *mapper;
 };
 
-#endif // OPTIONSDIALOG_H
+#endif // AURORACOIN_QT_OPTIONSDIALOG_H

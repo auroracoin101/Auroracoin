@@ -1,15 +1,14 @@
-// Copyright (c) 2014 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2014-2018 The DigiByte Core developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef WINSHUTDOWNMONITOR_H
-#define WINSHUTDOWNMONITOR_H
+#ifndef AURORACOIN_QT_WINSHUTDOWNMONITOR_H
+#define AURORACOIN_QT_WINSHUTDOWNMONITOR_H
 
 #ifdef WIN32
 #include <QByteArray>
 #include <QString>
 
-#if QT_VERSION >= 0x050000
 #include <windef.h> // for HWND
 
 #include <QAbstractNativeEventFilter>
@@ -24,6 +23,5 @@ public:
     static void registerShutdownBlockReason(const QString& strReason, const HWND& mainWinId);
 };
 #endif
-#endif
 
-#endif // WINSHUTDOWNMONITOR_H
+#endif // AURORACOIN_QT_WINSHUTDOWNMONITOR_H

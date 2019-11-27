@@ -1,0 +1,8 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="en_GB">locale/auroracoin_en_GB.qm</file>
+        <file alias="en">locale/auroracoin_en.qm</file>
+        <file alias="is">locale/auroracoin_is.qm</file>
+        <file alias="nl">locale/auroracoin_nl.qm</file>
+    </qresource>
+</RCC>
