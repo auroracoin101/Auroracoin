@@ -1,12 +1,15 @@
-// Copyright (c) 2011-2013 The Bitcoin Core developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2009-2019 The Bitcoin Core developers
+// Copyright (c) 2014-2019 The DigiByte Core developers
+// Copyright (c) 2015-2019 The Auroracoin developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "util.h"
+#include <utilstrencodings.h>
+#include <test/test_auroracoin.h>
 
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_SUITE(base64_tests)
+BOOST_FIXTURE_TEST_SUITE(base64_tests, BasicTestingSetup)
 
 BOOST_AUTO_TEST_CASE(base64_testvectors)
 {
@@ -15,9 +18,9 @@ BOOST_AUTO_TEST_CASE(base64_testvectors)
     for (unsigned int i=0; i<sizeof(vstrIn)/sizeof(vstrIn[0]); i++)
     {
         std::string strEnc = EncodeBase64(vstrIn[i]);
-        BOOST_CHECK(strEnc == vstrOut[i]);
+        BOOST_CHECK_EQUAL(strEnc, vstrOut[i]);
         std::string strDec = DecodeBase64(strEnc);
-        BOOST_CHECK(strDec == vstrIn[i]);
+        BOOST_CHECK_EQUAL(strDec, vstrIn[i]);
     }
 }
 

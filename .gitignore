@@ -4,43 +4,64 @@
 src/auroracoin
 src/auroracoind
 src/auroracoin-cli
+src/auroracoin-tx
 src/test/test_auroracoin
+src/test/test_auroracoin_fuzzy
 src/qt/test/test_auroracoin-qt
 
+# autoreconf
 Makefile.in
 aclocal.m4
 autom4te.cache/
+build-aux/config.guess
+build-aux/config.sub
+build-aux/depcomp
+build-aux/install-sh
+build-aux/ltmain.sh
+build-aux/m4/libtool.m4
+build-aux/m4/lt~obsolete.m4
+build-aux/m4/ltoptions.m4
+build-aux/m4/ltsugar.m4
+build-aux/m4/ltversion.m4
+build-aux/missing
+build-aux/compile
+build-aux/test-driver
 config.log
 config.status
 configure
-src/auroracoin-config.h
-src/auroracoin-config.h.in
-src/bitcoin-config.h
-src/bitcoin-config.h.in
-src/build-aux/
-src/stamp-h1
-misc/share/qt/Info.plist
+libtool
+src/config/auroracoin-config.h
+src/config/auroracoin-config.h.in
+src/config/stamp-h1
+share/setup.nsi
+share/qt/Info.plist
+
+src/univalue/gen
 
 src/qt/*.moc
 src/qt/moc_*.cpp
-src/qt5/moc*.cpp
 src/qt/forms/ui_*.h
-src/qt/qrc_*.cpp.n
 
 src/qt/test/moc*.cpp
 
+src/qt/auroracoin-qt.config
+src/qt/auroracoin-qt.creator
+src/qt/auroracoin-qt.creator.user
+src/qt/auroracoin-qt.files
+src/qt/auroracoin-qt.includes
+
 .deps
 .dirstamp
+.libs
 .*.swp
 *.*~*
 *.bak
 *.rej
 *.orig
+*.pyc
 *.o
 *.o-*
-*.Po
 *.patch
-.auroracoin
 *.a
 *.pb.cc
 *.pb.h
@@ -52,15 +73,16 @@ src/qt/test/moc*.cpp
 *.json.h
 *.raw.h
 
-# Python files
-*.pyc
-*__pycache__/*.pyc
+#libtool object files
+*.lo
+*.la
 
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
 auroracoin-qt
 Auroracoin-Qt.app
+background.tiff*
 
 # Unit-tests
 Makefile.test
@@ -69,15 +91,13 @@ auroracoin-qt_test
 # Resources cpp
 qrc_*.cpp
 
-# Qt creator
-*.pro.user
-
 # Mac specific
 .DS_Store
 build
 
 #lcov
 *.gcno
+*.gcda
 /*.info
 test_auroracoin.coverage/
 total.coverage/
@@ -87,8 +107,12 @@ coverage_percent.txt
 linux-coverage-build
 linux-build
 win32-build
-misc/qa/pull-tester/run-auroracoind-for-test.sh
-misc/qa/pull-tester/build-tests.sh
-misc/qa/pull-tester/run-bitcoind-for-test.sh
+test/config.ini
+test/cache/*
 
 !src/leveldb*/Makefile
+
+/doc/doxygen/
+
+libauroracoinconsensus.pc
+contrib/devtools/split-debug.sh
