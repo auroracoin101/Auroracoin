@@ -296,6 +296,8 @@ digibyte.org (see below for digibyte.org update instructions).
 
   - digibytecore.org blog post
 
+  - bitcoincore.org RPC documentation update
+
   - Update title of #digibyte on Freenode IRC
 
   - Optionally twitter, reddit /r/DigiByte, ... but this will usually sort out itself
