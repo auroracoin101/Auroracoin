@@ -7,7 +7,7 @@ clone_depth: 5
 environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
   CLCACHE_SERVER: 1
-  PACKAGES: berkeleydb boost-filesystem boost-signals2 boost-test libevent openssl rapidcheck zeromq
+  PACKAGES: boost-filesystem boost-signals2 boost-test libevent openssl zeromq berkeleydb secp256k1 leveldb
   PYTHONIOENCODING: utf-8
 cache:
 - C:\tools\vcpkg\installed -> .appveyor.yml
@@ -17,7 +17,8 @@ install:
 # Disable zmq test for now since python zmq library on Windows would cause Access violation sometimes.
 # - cmd: pip install zmq
 - cmd: echo set(VCPKG_BUILD_TYPE release) >> C:\tools\vcpkg\triplets\%PLATFORM%-windows-static.cmake
-- cmd: vcpkg remove --outdated --recurse
+- cmd: C:\Tools\vcpkg\bootstrap-vcpkg.bat
+- cmd: vcpkg remove --recurse --outdated
 - cmd: vcpkg install --triplet %PLATFORM%-windows-static %PACKAGES% > NUL
 init:
 - cmd: set PATH=C:\Python36-x64;%PATH%
@@ -29,6 +30,7 @@ before_build:
            ${content} = (Get-Content ${files}[${i}]);
            ${content} = ${content}.Replace("</RuntimeLibrary>", "</RuntimeLibrary><DebugInformationFormat>None</DebugInformationFormat>");
            ${content} = ${content}.Replace("<WholeProgramOptimization>true", "<WholeProgramOptimization>false");
+           ${content} = ${content}.Replace("NDEBUG;", "");
            Set-Content ${files}[${i}] ${content};
        }
 - ps:  Start-Process clcache-server
