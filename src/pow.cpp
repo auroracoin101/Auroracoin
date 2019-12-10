@@ -226,7 +226,7 @@ unsigned int GetNextWorkRequiredMULTI(const CBlockIndex* pindexLast, const Conse
 	// Limit adjustment step
 	// Use medians to prevent time-warp attacks
 	int64_t nActualTimespan = pindexLast-> GetMedianTimePast() - pindexFirst->GetMedianTimePast();
-	nActualTimespan = params.nAveragingTargetTimespan + (nActualTimespan - params.nAveragingTargetTimespan)/4;
+	nActualTimespan = params.nAveragingTargetTimespan + (nActualTimespan - params.nAveragingTargetTimespanV4)/4;
 
 	//LogPrintf("nActualTimespan = %d before bounds\n", nActualTimespan);
 
