@@ -163,6 +163,8 @@ public:
         pchMessageStart[3] = 0x6c;
         nDefaultPort = 12340;
         nPruneAfterHeight = 100000;
+        m_assumed_blockchain_size = 4;  /* AUR: 4Gb Dec 2019 */
+        m_assumed_chain_state_size = 1; /* AUR: 1Gb Dec 2019 */
 
         genesis = CreateGenesisBlock(1390598806, 538548, 0x1e0fffff, 1, 1*COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
@@ -352,6 +354,8 @@ public:
         pchMessageStart[3] = 0xdd;
         nDefaultPort = 12026;
         nPruneAfterHeight = 1000;
+        m_assumed_blockchain_size = 1;  /* AUR: We don't have a testnet */
+        m_assumed_chain_state_size = 1; /* AUR: We don't have a testnet */
 
         genesis = CreateGenesisBlock(1516939474, 2411473, 0x1e0ffff0, 1, 8000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
@@ -479,6 +483,8 @@ public:
         pchMessageStart[3] = 0xda;
         nDefaultPort = 18444;
         nPruneAfterHeight = 1000;
+        m_assumed_blockchain_size = 1;  /* AUR: We don't have a Regtestnet */
+        m_assumed_chain_state_size = 1; /* AUR: We don't have a Regtestnet */
 
         UpdateVersionBitsParametersFromArgs(args);
 
