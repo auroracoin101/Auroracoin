@@ -2,6 +2,7 @@
 #include <qt/test/util.h>
 
 #include <interfaces/node.h>
+#include <base58.h>
 #include <qt/auroracoinamountfield.h>
 #include <qt/callback.h>
 #include <qt/optionsmodel.h>
