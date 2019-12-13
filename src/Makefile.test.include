@@ -166,7 +166,7 @@ nodist_test_test_auroracoin_SOURCES = $(GENERATED_TEST_FILES)
 
 $(AURORACOIN_TESTS): $(GENERATED_TEST_FILES)
 
-CLEAN_AURORACOIN_TEST = test/*.gcda test/*.gcno test/.deps/*.Po test/.deps/*.Plo $(GENERATED_TEST_FILES) $(AURORACOIN_TESTS:.cpp=.cpp.log)
+CLEAN_BITCOIN_TEST = test/*.gcda test/*.gcno test/.deps/*.Po test/.deps/*.Plo $(GENERATED_TEST_FILES) $(AURORACOIN_TESTS:=.log)
 
 CLEANFILES += $(CLEAN_AURORACOIN_TEST)
 
