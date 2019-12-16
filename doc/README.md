@@ -73,6 +73,7 @@ The DigiByte repo's [root README](/README.md) contains relevant information on t
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
+- [auroracoin.conf Configuration File](auroracoin-conf.md)
 - [Files](files.md)
 - [Fuzz-testing](fuzzing.md)
 - [Reduce Traffic](reduce-traffic.md)
