@@ -18,6 +18,14 @@
 #include <string>
 #include <vector>
 
+// TODO: Includes below inported from Bitpay code, are they really needed?
+#include "chainparams.h"
+#include "key.h"
+#include "pubkey.h"
+#include "script/script.h"
+#include "script/standard.h"
+#include "support/allocators/zeroafterfree.h"
+
 /**
  * Encode a byte sequence as a base58-encoded string.
  * pbegin and pend cannot be nullptr, unless both are.
