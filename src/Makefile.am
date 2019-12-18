@@ -96,6 +96,7 @@ endif
 # auroracoin core #
 AURORACOIN_CORE_H = \
   addrdb.h \
+  addressindex.h \
   addrman.h \
   base58.h \
   bech32.h \
