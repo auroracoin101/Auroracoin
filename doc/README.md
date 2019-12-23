@@ -1,34 +1,30 @@
+Auroracoin
+==========
 
 Setup
 ---------------------
-DigiByte Core is the original DigiByte client and it builds the backbone of the network. However, it downloads and stores the entire history of DigiByte transactions (which is currently several GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
-DigiByte Core
-=============
+Auroracoin is the official Auroracoin client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Auroracoin transactions, which requires a few hundred gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-Setup
----------------------
-DigiByte Core is the original DigiByte client and it builds the backbone of the network. It downloads and, by default, stores the entire history of DigiByte transactions (which is currently more than 100 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
-
-To download DigiByte Core, visit [digibytecore.org](https://digibytecore.org/en/releases/).
+To download Auroracoin, visit [Auroracoin on github](https://github.com/aurarad/Auroracoin/releases).
 
 Running
 ---------------------
-The following are some helpful notes on how to run DigiByte Core on your native platform.
+The following are some helpful notes on how to run Auroracoin on your native platform.
 
 ### Unix
 
 Unpack the files into a directory and run:
 
-- `bin/digibyte-qt` (GUI) or
-- `bin/digibyted` (headless)
+- `bin/auroracoin-qt` (GUI) or
+- `bin/auroracoind` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run digibyte-qt.exe.
+Unpack the files into a directory, and then run auroracoin-qt.exe.
 
 ### macOS
 
-Drag DigiByte Core to your applications folder, and then run DigiByte Core.
+Drag Auroracoin to your applications folder, and then run Auroracoin.
 
 ### Need Help?
 
