@@ -1,6 +1,6 @@
-# Support for Output Descriptors in DigiByte Core
+# Support for Output Descriptors in Auroracoin
 
-Since DigiByte Core v0.17, there is support for Output Descriptors in the
+Since Bitcoin Core v0.17, there is support for Output Descriptors in the
 `scantxoutset` RPC call. This is a simple language which can be used to
 describe collections of output scripts.
 
@@ -52,19 +52,25 @@ Descriptors consist of several types of expressions. The top level expression is
 - `raw(HEX)` (top level only): the script whose hex encoding is HEX.
 
 `KEY` expressions:
-- Hex encoded public keys (66 characters starting with `02` or `03`, or 130 characters starting with `04`).
-  - Inside `wpkh` and `wsh`, only compressed public keys are permitted.
-- [WIF](https://en.digibyte.it/wiki/Wallet_import_format) encoded private keys may be specified instead of the corresponding public key, with the same meaning.
--`xpub` encoded extended public key or `xprv` encoded private key (as defined in [BIP 32](https://github.com/digibyte/bips/blob/master/bip-0032.mediawiki)).
-  - Followed by zero or more `/NUM` unhardened and `/NUM'` hardened BIP32 derivation steps.
-  - Optionally followed by a single `/*` or `/*'` final step to denote all (direct) unhardened or hardened children.
-  - The usage of hardened derivation steps requires providing the private key.
-  - Instead of a `'`, the suffix `h` can be used to denote hardened derivation.
+- Optionally, key origin information, consisting of:
+  - An open bracket `[`
+  - Exactly 8 hex characters for the fingerprint of the key where the derivation starts (see BIP32 for details)
+  - Followed by zero or more `/NUM` or `/NUM'` path elements to indicate unhardened or hardened derivation steps between the fingerprint and the key or xpub/xprv root that follows
+  - A closing bracket `]`
+- Followed by the actual key, which is either:
+  - Hex encoded public keys (66 characters starting with `02` or `03`, or 130 characters starting with `04`).
+    - Inside `wpkh` and `wsh`, only compressed public keys are permitted.
+  - [WIF](https://en.bitcoin.it/wiki/Wallet_import_format) encoded private keys may be specified instead of the corresponding public key, with the same meaning.
+  -`xpub` encoded extended public key or `xprv` encoded private key (as defined in [BIP 32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)).
+    - Followed by zero or more `/NUM` unhardened and `/NUM'` hardened BIP32 derivation steps.
+    - Optionally followed by a single `/*` or `/*'` final step to denote all (direct) unhardened or hardened children.
+    - The usage of hardened derivation steps requires providing the private key.
+- Anywhere a `'` suffix is permitted to denote hardened derivation, the suffix `h` can be used instead.
 
 `ADDR` expressions are any type of supported address:
 - P2PKH addresses (base58, of the form `1...`). Note that P2PKH addresses in descriptors cannot be used for P2PK outputs (use the `pk` function instead).
-- P2SH addresses (base58, of the form `3...`, defined in [BIP 13](https://github.com/digibyte/bips/blob/master/bip-0013.mediawiki)).
-- Segwit addresses (bech32, of the form `bc1...`, defined in [BIP 173](https://github.com/digibyte/bips/blob/master/bip-0173.mediawiki)).
+- P2SH addresses (base58, of the form `3...`, defined in [BIP 13](https://github.com/bitcoin/bips/blob/master/bip-0013.mediawiki)).
+- Segwit addresses (bech32, of the form `bc1...`, defined in [BIP 173](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)).
 
 ## Explanation
 
@@ -86,7 +92,7 @@ not contain "p2" for brevity.
 ### Multisig
 
 Several pieces of software use multi-signature (multisig) scripts based
-on DigiByte's OP_CHECKMULTISIG opcode. To support these, we introduce the
+on bitcoin's OP_CHECKMULTISIG opcode. To support these, we introduce the
 `multi(k,key_1,key_2,...,key_n)` function. It represents a *k-of-n*
 multisig policy, where any *k* out of the *n* provided public keys must
 sign.
@@ -115,6 +121,33 @@ child keys in a configurable range (by default `0-1000`, inclusive).
 Whenever a public key is described using a hardened derivation step, the
 script cannot be computed without access to the corresponding private
 key.
+
+### Key origin identification
+
+In order to describe scripts whose signing keys reside on another device,
+it may be necessary to identify the master key and derivation path an
+xpub was derived with.
+
+For example, when following BIP44, it would be useful to describe a
+change chain directly as `xpub.../44'/0'/0'/1/*` where `xpub...`
+corresponds with the master key `m`. Unfortunately, since there are
+hardened derivation steps that follow the xpub, this descriptor does not
+let you compute scripts without access to the corresponding private keys.
+Instead, it should be written as `xpub.../1/*`, where xpub corresponds to
+`m/44'/0'/0'`.
+
+When interacting with a hardware device, it may be necessary to include
+the entire path from the master down. BIP174 standardizes this by
+providing the master key *fingerprint* (first 32 bit of the Hash160 of
+the master pubkey), plus all derivation steps. To support constructing
+these, we permit providing this key origin information inside the
+descriptor language, even though it does not affect the actual
+scriptPubKeys it refers to.
+
+Every public key can be prefixed by an 8-character hexadecimal
+fingerprint plus optional derivation steps (hardened and unhardened)
+surrounded by brackets, identifying the master and derivation path the key or xpub
+that follows was derived with.
 
 ### Including private keys
 
