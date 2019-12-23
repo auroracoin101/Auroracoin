@@ -169,6 +169,8 @@ static UniValue generatetoaddress(const JSONRPCRequest& request)
             "\nExamples:\n"
             "\nGenerate 11 blocks to myaddress\n"
             + HelpExampleCli("generatetoaddress", "11 \"myaddress\"")
+            + "If you are running the auroracoin wallet, you can get a new address to send the newly generated auroracoin to with:\n"
+            + HelpExampleCli("getnewaddress", "")
         );
 
     int nGenerate = request.params[0].get_int();
