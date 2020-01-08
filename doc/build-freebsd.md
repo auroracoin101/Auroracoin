@@ -29,7 +29,7 @@ git clone https://github.com/digibyte/digibyte
 
 ## Building DigiByte Core
 
-**Important**: Use `gmake` (the non-GNU `make` will exit with an error).
+**Important**: Use `gmake` (the non-GNU `make` will exit with an error):
 
 ```
 ./autogen.sh
