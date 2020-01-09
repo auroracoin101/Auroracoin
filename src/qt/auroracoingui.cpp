@@ -211,6 +211,10 @@ AuroracoinGUI::AuroracoinGUI(interfaces::Node& node, const PlatformStyle *_platf
         connect(progressBar, &GUIUtil::ClickableProgressBar::clicked, this, &AuroracoinGUI::showModalOverlay);
     }
 #endif
+
+#ifdef Q_OS_MAC
+    m_app_nap_inhibitor = new CAppNapInhibitor;
+#endif
 }
 
 AuroracoinGUI::~AuroracoinGUI()
@@ -223,6 +227,7 @@ AuroracoinGUI::~AuroracoinGUI()
     if(trayIcon) // Hide tray icon, as deleting will let it linger until quit (on Ubuntu)
         trayIcon->hide();
 #ifdef Q_OS_MAC
+    delete m_app_nap_inhibitor;
     delete appMenuBar;
     MacDockIconHandler::cleanup();
 #endif
@@ -798,6 +803,11 @@ void AuroracoinGUI::openOptionsDialogWithTab(OptionsDialog::Tab tab)
 
 void AuroracoinGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool header)
 {
+// Disabling macOS App Nap on initial sync, disk and reindex operations.
+#ifdef Q_OS_MAC
+    (m_node.isInitialBlockDownload() || m_node.getReindex() || m_node.getImporting()) ? m_app_nap_inhibitor->disableAppNap() : m_app_nap_inhibitor->enableAppNap();
+#endif
+
     if (modalOverlay)
     {
         if (header)
