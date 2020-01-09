@@ -24,9 +24,7 @@ class AmountSpinBox: public QAbstractSpinBox
 
 public:
     explicit AmountSpinBox(QWidget *parent):
-        QAbstractSpinBox(parent),
-        currentUnit(AuroracoinUnits::AUR),
-        singleStep(100000) // satoshis
+        QAbstractSpinBox(parent)
     {
         setAlignment(Qt::AlignRight);
 
@@ -45,10 +43,19 @@ public:
 
     void fixup(QString &input) const
     {
-        bool valid = false;
-        CAmount val = parse(input, &valid);
-        if(valid)
-        {
+        bool valid;
+        CAmount val;
+
+        if (input.isEmpty() && !m_allow_empty) {
+            valid = true;
+            val = m_min_amount;
+        } else {
+            valid = false;
+            val = parse(input, &valid);
+        }
+
+        if (valid) {
+            val = qBound(m_min_amount, val, m_max_amount);
             input = AuroracoinUnits::format(currentUnit, val, false, AuroracoinUnits::separatorAlways);
             lineEdit()->setText(input);
         }
@@ -65,12 +72,27 @@ public:
         Q_EMIT valueChanged();
     }
 
+    void SetAllowEmpty(bool allow)
+    {
+        m_allow_empty = allow;
+    }
+
+    void SetMinValue(const CAmount& value)
+    {
+        m_min_amount = value;
+    }
+
+    void SetMaxValue(const CAmount& value)
+    {
+        m_max_amount = value;
+    }
+
     void stepBy(int steps)
     {
         bool valid = false;
         CAmount val = value(&valid);
         val = val + steps * singleStep;
-        val = qMin(qMax(val, CAmount(0)), AuroracoinUnits::maxMoney());
+        val = qBound(m_min_amount, val, m_max_amount);
         setValue(val);
     }
 
@@ -126,9 +148,12 @@ public:
     }
 
 private:
-    int currentUnit;
-    CAmount singleStep;
+    int currentUnit{AuroracoinUnits::AUR};
+    CAmount singleStep{CAmount(100000)}; // satoshis
     mutable QSize cachedMinimumSizeHint;
+    bool m_allow_empty{true};
+    CAmount m_min_amount{CAmount(0)};
+    CAmount m_max_amount{AuroracoinUnits::maxMoney()};
 
     /**
      * Parse a string into a number of base monetary units and
@@ -175,11 +200,10 @@ protected:
         StepEnabled rv = 0;
         bool valid = false;
         CAmount val = value(&valid);
-        if(valid)
-        {
-            if(val > 0)
+        if (valid) {
+            if (val > m_min_amount)
                 rv |= StepDownEnabled;
-            if(val < AuroracoinUnits::maxMoney())
+            if (val < m_max_amount)
                 rv |= StepUpEnabled;
         }
         return rv;
@@ -274,6 +298,21 @@ CAmount AuroracoinAmountField::value(bool *valid_out) const
 void AuroracoinAmountField::setValue(const CAmount& value)
 {
     amount->setValue(value);
+}
+
+void AuroracoinAmountField::SetAllowEmpty(bool allow)
+{
+    amount->SetAllowEmpty(allow);
+}
+
+void AuroracoinAmountField::SetMinValue(const CAmount& value)
+{
+    amount->SetMinValue(value);
+}
+
+void AuroracoinAmountField::SetMaxValue(const CAmount& value)
+{
+    amount->SetMaxValue(value);
 }
 
 void AuroracoinAmountField::setReadOnly(bool fReadOnly)
