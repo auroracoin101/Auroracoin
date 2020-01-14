@@ -270,13 +270,11 @@ bool SignPSBTInput(const SigningProvider& provider, PartiallySignedTransaction& 
 
     if (input.non_witness_utxo) {
         // If we're taking our information from a non-witness UTXO, verify that it matches the prevout.
-        if (input.non_witness_utxo->GetHash() != tx.vin[index].prevout.hash) return false;
-        // If both witness and non-witness UTXO are provided, verify that they match. This check shouldn't
-        // matter, as the PSBT deserializer enforces only one of both is provided, and the only way both
-        // can be present is when they're added simultaneously by FillPSBT (in which case they always match).
-        // Still, check in order to not rely on callers to enforce this.
-        if (!input.witness_utxo.IsNull() && input.non_witness_utxo->vout[tx.vin[index].prevout.n] != input.witness_utxo) return false;
-        utxo = input.non_witness_utxo->vout[tx.vin[index].prevout.n];
+        COutPoint prevout = tx.vin[index].prevout;
+        if (input.non_witness_utxo->GetHash() != prevout.hash) {
+            return false;
+        }
+        utxo = input.non_witness_utxo->vout[prevout.n];
     } else if (!input.witness_utxo.IsNull()) {
         utxo = input.witness_utxo;
         // When we're taking our information from a witness UTXO, we can't verify it is actually data from
@@ -295,25 +293,11 @@ bool SignPSBTInput(const SigningProvider& provider, PartiallySignedTransaction& 
     if (require_witness_sig && !sigdata.witness) return false;
     input.FromSignatureData(sigdata);
 
-    if (sigdata.witness) {
-        assert(!utxo.IsNull());
-        input.witness_utxo = utxo;
-    }
-
-    // If both UTXO types are present, drop the unnecessary one.
-    if (input.non_witness_utxo && !input.witness_utxo.IsNull()) {
-        if (sigdata.witness) {
-            input.non_witness_utxo = nullptr;
-        } else {
-            input.witness_utxo.SetNull();
-        }
-    }
-
     // If we have a witness signature, use the smaller witness UTXO.
-    //if (sigdata.witness) {
-    //    input.witness_utxo = utxo;
-    //    input.non_witness_utxo = nullptr;
-    //}
+    if (sigdata.witness) {
+        input.witness_utxo = utxo;
+        input.non_witness_utxo = nullptr;
+    }
 
     return sig_complete;
 }
