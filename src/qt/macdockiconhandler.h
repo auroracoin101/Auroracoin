@@ -1,11 +1,11 @@
 // Copyright (c) 2011-2015 The DigiByte Core developers
+// Copyright (c) 2011-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef AURORACOIN_QT_MACDOCKICONHANDLER_H
 #define AURORACOIN_QT_MACDOCKICONHANDLER_H
 
-#include <QMainWindow>
 #include <QObject>
 
 QT_BEGIN_NAMESPACE
@@ -13,7 +13,7 @@ class QMenu;
 class QWidget;
 QT_END_NAMESPACE
 
-/** Macintosh-specific dock icon handler.
+/** macOS-specific Dock icon handler.
  */
 class MacDockIconHandler : public QObject
 {
@@ -23,10 +23,8 @@ public:
     ~MacDockIconHandler();
 
     QMenu *dockMenu();
-    void setMainWindow(QMainWindow *window);
     static MacDockIconHandler *instance();
     static void cleanup();
-    void handleDockIconClickEvent();
 
 Q_SIGNALS:
     void dockIconClicked();
@@ -36,7 +34,6 @@ private:
 
     QWidget *m_dummyWidget;
     QMenu *m_dockMenu;
-    QMainWindow *mainWindow;
 };
 
 #endif // AURORACOIN_QT_MACDOCKICONHANDLER_H
