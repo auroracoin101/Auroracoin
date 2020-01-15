@@ -10,12 +10,12 @@
 #include <script/interpreter.h>
 #include <consensus/validation.h>
 
-#include "../util.h" //just for logs
+#include "../util/system.h" //just for logs
 
 // TODO remove the following dependencies
 #include <chain.h>
 #include <coins.h>
-#include <utilmoneystr.h>
+#include <util/moneystr.h>
 
 bool IsFinalTx(const CTransaction &tx, int nBlockHeight, int64_t nBlockTime)
 {

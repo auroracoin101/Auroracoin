@@ -16,7 +16,7 @@
 #include <qt/rpcconsole.h>
 #include <test/test_auroracoin.h>
 #include <univalue.h>
-#include <util.h>
+#include <util/system.h>
 
 #include <QDir>
 #include <QtGlobal>

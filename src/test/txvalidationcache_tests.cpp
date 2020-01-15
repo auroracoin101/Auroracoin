@@ -14,7 +14,7 @@
 #include <script/standard.h>
 #include <script/sign.h>
 #include <test/test_auroracoin.h>
-#include <utiltime.h>
+#include <util/time.h>
 #include <core_io.h>
 #include <keystore.h>
 #include <policy/policy.h>

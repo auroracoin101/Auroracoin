@@ -8,8 +8,8 @@
 /**
  * Money parsing/formatting utilities.
  */
-#ifndef AURORACOIN_UTILMONEYSTR_H
-#define AURORACOIN_UTILMONEYSTR_H
+#ifndef AURORACOIN_UTIL_MONEYSTR_H
+#define AURORACOIN_UTIL_MONEYSTR_H
 
 #include <stdint.h>
 #include <string>
@@ -23,4 +23,4 @@ std::string FormatMoney(const CAmount& n);
 bool ParseMoney(const std::string& str, CAmount& nRet);
 bool ParseMoney(const char* pszIn, CAmount& nRet);
 
-#endif // AURORACOIN_UTILMONEYSTR_H
+#endif // AURORACOIN_UTIL_MONEYSTR_H

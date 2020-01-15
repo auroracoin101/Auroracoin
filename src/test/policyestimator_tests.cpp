@@ -8,7 +8,7 @@
 #include <policy/fees.h>
 #include <txmempool.h>
 #include <uint256.h>
-#include <util.h>
+#include <util/system.h>
 
 #include <test/test_auroracoin.h>
 

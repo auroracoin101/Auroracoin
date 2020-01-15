@@ -9,7 +9,7 @@
 #include <key.h>
 #include <key_io.h>
 #include <script/script.h>
-#include <utilstrencodings.h>
+#include <util/strencodings.h>
 #include <test/test_auroracoin.h>
 
 #include <boost/test/unit_test.hpp>

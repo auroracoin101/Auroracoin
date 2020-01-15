@@ -8,8 +8,8 @@
 /**
  * Utilities for converting data from/to strings.
  */
-#ifndef AURORACOIN_UTILSTRENCODINGS_H
-#define AURORACOIN_UTILSTRENCODINGS_H
+#ifndef AURORACOIN_UTIL_STRENCODINGS_H
+#define AURORACOIN_UTIL_STRENCODINGS_H
 
 #include <stdint.h>
 #include <string>
@@ -248,4 +248,4 @@ constexpr unsigned char ToUpper(unsigned char c)
  */
 std::string Capitalize(std::string str);
 
-#endif // AURORACOIN_UTILSTRENCODINGS_H
+#endif // AURORACOIN_UTIL_STRENCODINGS_H

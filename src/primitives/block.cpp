@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <primitives/block.h>
-#include <utilstrencodings.h>
+#include <util/strencodings.h>
 #include <crypto/common.h>
 #include <crypto/hashgroestl.h>
 #include <crypto/hashqubit.h>
@@ -13,10 +13,10 @@
 #include <crypto/scrypt.h>
 #include <consensus/consensus.h>
 #include <chainparams.h>
-#include <util.h>
+#include <util/system.h>
 #include <hash.h>
 #include <tinyformat.h>
-#include <utilstrencodings.h>
+#include <util/strencodings.h>
 #include <crypto/common.h>
 #include <arith_uint256.h>
 

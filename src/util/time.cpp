@@ -9,7 +9,7 @@
 #include <config/auroracoin-config.h>
 #endif
 
-#include <utiltime.h>
+#include <util/time.h>
 
 #include <atomic>
 #include <boost/date_time/posix_time/posix_time.hpp>

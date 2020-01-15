@@ -8,8 +8,8 @@
  * Server/client environment: argument handling, config file parsing,
  * thread wrappers, startup time
  */
-#ifndef AURORACOIN_UTIL_H
-#define AURORACOIN_UTIL_H
+#ifndef AURORACOIN_UTIL_SYSTEM_H
+#define AURORACOIN_UTIL_SYSTEM_H
 
 #if defined(HAVE_CONFIG_H)
 #include <config/auroracoin-config.h>
@@ -20,8 +20,8 @@
 #include <logging.h>
 #include <sync.h>
 #include <tinyformat.h>
-#include <utilmemory.h>
-#include <utiltime.h>
+#include <util/memory.h>
+#include <util/time.h>
 
 #include <atomic>
 #include <exception>
@@ -382,4 +382,4 @@ private:
 
 } // namespace util
 
-#endif // AURORACOIN_UTIL_H
+#endif // AURORACOIN_UTIL_SYSTEM_H
