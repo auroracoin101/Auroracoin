@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef AURORACOIN_UTILMEMORY_H
-#define AURORACOIN_UTILMEMORY_H
+#ifndef AURORACOIN_UTIL_MEMORY_H
+#define AURORACOIN_UTIL_MEMORY_H
 
 #include <memory>
 #include <utility>

@@ -24,7 +24,7 @@
 #include <clientversion.h>
 #include <init.h>
 #include <interfaces/node.h>
-#include <util.h>
+#include <util/system.h>
 
 #include <stdio.h>
 

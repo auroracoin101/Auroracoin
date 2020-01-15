@@ -8,7 +8,7 @@
 
 #include <base58.h>
 #include <test/test_auroracoin.h>
-#include <utilstrencodings.h>
+#include <util/strencodings.h>
 
 #include <univalue.h>
 

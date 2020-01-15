@@ -10,7 +10,7 @@
 #include <primitives/transaction.h>
 #include <serialize.h>
 #include <uint256.h>
-#include <util.h>
+#include <util/system.h>
 
 namespace Consensus { struct Params; }
 

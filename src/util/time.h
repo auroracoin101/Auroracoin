@@ -5,8 +5,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef AURORACOIN_UTILTIME_H
-#define AURORACOIN_UTILTIME_H
+#ifndef AURORACOIN_UTIL_TIME_H
+#define AURORACOIN_UTIL_TIME_H
 
 #include <stdint.h>
 #include <string>
@@ -37,4 +37,4 @@ std::string FormatISO8601DateTime(int64_t nTime);
 std::string FormatISO8601Date(int64_t nTime);
 std::string FormatISO8601Time(int64_t nTime);
 
-#endif // AURORACOIN_UTILTIME_H
+#endif // AURORACOIN_UTIL_TIME_H

@@ -8,7 +8,7 @@
 #include <script/standard.h>
 #include <uint256.h>
 #include <undo.h>
-#include <utilstrencodings.h>
+#include <util/strencodings.h>
 #include <test/test_auroracoin.h>
 #include <validation.h>
 #include <consensus/validation.h>

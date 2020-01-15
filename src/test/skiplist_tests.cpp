@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <chain.h>
-#include <util.h>
+#include <util/system.h>
 #include <test/test_auroracoin.h>
 
 #include <vector>
