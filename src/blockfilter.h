@@ -6,14 +6,15 @@
 #ifndef AURORACOIN_BLOCKFILTER_H
 #define AURORACOIN_BLOCKFILTER_H
 
-#include <set>
 #include <stdint.h>
+#include <unordered_set>
 #include <vector>
 
 #include <primitives/block.h>
 #include <serialize.h>
 #include <uint256.h>
 #include <undo.h>
+#include <util/bytevectorhash.h>
 
 /**
  * This implements a Golomb-coded set as defined in BIP 158. It is a
@@ -23,7 +24,7 @@ class GCSFilter
 {
 public:
     typedef std::vector<unsigned char> Element;
-    typedef std::set<Element> ElementSet;
+    typedef std::unordered_set<Element, ByteVectorHash> ElementSet;
 
 private:
     uint64_t m_siphash_k0;
