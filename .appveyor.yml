@@ -8,7 +8,8 @@ environment:
   APPVEYOR_SAVE_CACHE_ON_ERROR: true
   CLCACHE_SERVER: 1
   PACKAGES: boost-filesystem boost-signals2 boost-test libevent openssl zeromq berkeleydb secp256k1 leveldb
-  PYTHONIOENCODING: utf-8
+  PATH: 'C:\Python37-x64;C:\Python37-x64\Scripts;%PATH%'
+  PYTHONUTF8: 1
 cache:
 - C:\tools\vcpkg\installed -> .appveyor.yml
 - C:\Users\appveyor\clcache -> .appveyor.yml, build_msvc\**, **\Makefile.am, **\*.vcxproj.in
@@ -16,12 +17,7 @@ install:
 - cmd: pip install --quiet git+https://github.com/frerich/clcache.git@v4.2.0
 # Disable zmq test for now since python zmq library on Windows would cause Access violation sometimes.
 # - cmd: pip install zmq
-- cmd: echo set(VCPKG_BUILD_TYPE release) >> C:\tools\vcpkg\triplets\%PLATFORM%-windows-static.cmake
-- cmd: C:\Tools\vcpkg\bootstrap-vcpkg.bat
-- cmd: vcpkg remove --recurse --outdated
 - cmd: vcpkg install --triplet %PLATFORM%-windows-static %PACKAGES% > NUL
-init:
-- cmd: set PATH=C:\Python36-x64;%PATH%
 before_build:
 - ps:  clcache -M 536870912
 - cmd: python build_msvc\msvc-autogen.py
@@ -58,5 +54,5 @@ test_script:
 - cmd: src\bench_auroracoin.exe -evals=1 -scaling=0 > NUL
 - ps:  python test\util\auroracoin-util-test.py
 - cmd: python test\util\rpcauth-test.py
-- cmd: python test\functional\test_runner.py --ci --force --quiet --combinedlogslen=4000
+- cmd: python test\functional\test_runner.py --ci --force --quiet --combinedlogslen=4000 --failfast
 deploy: off
