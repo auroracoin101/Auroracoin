@@ -2,8 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <hash.h> // Siphash.
-//#include <crypto/siphash.h>
+#include <crypto/siphash.h>
 #include <random.h>
 #include <util/bytevectorhash.h>
 

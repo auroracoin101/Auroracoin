@@ -13,6 +13,7 @@
 #include <amount.h>
 #include <bloom.h>
 #include <compat.h>
+#include <crypto/siphash.h>
 #include <hash.h>
 #include <limitedmap.h>
 #include <netaddress.h>
