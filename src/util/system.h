@@ -15,6 +15,7 @@
 #include <config/auroracoin-config.h>
 #endif
 
+#include <attributes.h>
 #include <compat.h>
 #include <fs.h>
 #include <logging.h>
@@ -163,7 +164,7 @@ public:
      */
     void SelectConfigNetwork(const std::string& network);
 
-    bool ParseParameters(int argc, const char* const argv[], std::string& error);
+    NODISCARD bool ParseParameters(int argc, const char* const argv[], std::string& error);
     bool ReadConfigFiles(std::string& error, bool ignore_invalid_keys = false);
 
     /**
