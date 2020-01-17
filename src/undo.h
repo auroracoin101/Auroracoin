@@ -13,6 +13,7 @@
 #include <consensus/consensus.h>
 #include <primitives/transaction.h>
 #include <serialize.h>
+#include <version.h>
 
 /** Undo information for a CTxIn
  *
