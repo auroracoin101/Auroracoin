@@ -1,9 +1,10 @@
-// Copyright (c) 2012-2018 The DigiByte Core developers
+// Copyright (c) 2012-2018 The Bitcoin Core developers
 // Copyright (c) 2014-2019 The Auroracoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <bench/bench.h>
+#include <interfaces/chain.h>
 #include <wallet/wallet.h>
 #include <wallet/coinselection.h>
 
@@ -34,7 +35,8 @@ static void addCoin(const CAmount& nValue, const CWallet& wallet, std::vector<Ou
 // (https://github.com/bitcoin/bitcoin/issues/7883#issuecomment-224807484)
 static void CoinSelection(benchmark::State& state)
 {
-    const CWallet wallet(WalletLocation(), WalletDatabase::CreateDummy());
+    auto chain = interfaces::MakeChain();
+    const CWallet wallet(*chain, WalletLocation(), WalletDatabase::CreateDummy());
     LOCK(wallet.cs_wallet);
 
     // Add coins.
@@ -58,7 +60,8 @@ static void CoinSelection(benchmark::State& state)
 }
 
 typedef std::set<CInputCoin> CoinSet;
-static const CWallet testWallet(WalletLocation(), WalletDatabase::CreateDummy());
+static auto testChain = interfaces::MakeChain();
+static const CWallet testWallet(*testChain, WalletLocation(), WalletDatabase::CreateDummy());
 std::vector<std::unique_ptr<CWalletTx>> wtxn;
 
 // Copied from src/wallet/test/coinselector_tests.cpp
