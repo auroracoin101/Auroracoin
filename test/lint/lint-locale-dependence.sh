@@ -2,9 +2,8 @@
 
 export LC_ALL=C
 KNOWN_VIOLATIONS=(
-    "src/digibyte-tx.cpp.*stoul"
-    "src/digibyte-tx.cpp.*trim_right"
-    "src/digibyte-tx.cpp:.*atoi"
+    "src/auroracoin-tx.cpp.*stoul"
+    "src/auroracoin-tx.cpp.*trim_right"
     "src/dbwrapper.cpp.*stoul"
     "src/dbwrapper.cpp:.*vsnprintf"
     "src/httprpc.cpp.*trim"
