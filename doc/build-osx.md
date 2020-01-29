@@ -78,30 +78,30 @@ Mining is also possible in disable-wallet mode using the `getblocktemplate` RPC 
 Running
 -------
 
-DigiByte Core is now available at `./src/digibyted`
+Auroracoin is now available at `./src/auroracoind`
 
-Before running, it's recommended that you create an RPC configuration file:
+Before running, you may create an empty configuration file:
 
-    echo -e "rpcuser=digibyterpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/DigiByte/digibyte.conf"
+    touch "/Users/${USER}/Library/Application Support/Auroracoin/auroracoin.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/DigiByte/digibyte.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/Auroracoin/auroracoin.conf"
 
 The first time you run auroracoind, it will start downloading the blockchain. This process could take many hours, or even days on slower than average systems.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/DigiByte/debug.log
+    tail -f $HOME/Library/Application\ Support/Auroracoin/debug.log
 
 Other commands:
 -------
 
-    ./src/digibyted -daemon # Starts the digibyte daemon.
-    ./src/digibyte-cli --help # Outputs a list of command-line options.
-    ./src/digibyte-cli help # Outputs a list of RPC commands when the daemon is running.
+    ./src/auroracoind -daemon # Starts the auroracoin daemon.
+    ./src/auroracoin-cli --help # Outputs a list of command-line options.
+    ./src/auroracoin-cli help # Outputs a list of RPC commands when the daemon is running.
 
 Notes
 -----
 
 * Tested on OS X 10.10 Yosemite through macOS 10.13 High Sierra on 64-bit Intel processors only.
 
-* Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/digibyte/digibyte/issues/7714)
+* Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/bitcoin/bitcoin/issues/7714)
