@@ -349,6 +349,10 @@ qt_auroracoin_qt_LDADD += $(LIBAURORACOIN_CLI) $(LIBAURORACOIN_COMMON) $(LIBAURO
   $(MINIUPNPC_LIBS) $(LIBSECP256K1) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 if ENABLE_BIP70
 qt_auroracoin_qt_LDADD += $(SSL_LIBS)
+else
+if TARGET_WINDOWS
+qt_auroracoin_qt_LDADD += $(SSL_LIBS)
+endif
 endif
 qt_auroracoin_qt_LDADD += $(CRYPTO_LIBS)
 qt_auroracoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
