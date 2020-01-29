@@ -11,13 +11,13 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>digibyte.icns</string>
+  <string>auroracoin.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ @COPYRIGHT_HOLDERS_FINAL@</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@.@CLIENT_VERSION_BUILD@, Copyright © 2014-@COPYRIGHT_YEAR@ @COPYRIGHT_HOLDERS_FINAL@</string>
 
   <key>CFBundleShortVersionString</key>
   <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>DigiByte-Qt</string>
+  <string>Auroracoin-Qt</string>
   
   <key>CFBundleName</key>
-  <string>DigiByte-Qt</string>
+  <string>Auroracoin-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>io.digibyte.DigiByte-Qt</string>
+  <string>io.auroracoin.Auroracoin-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,7 +46,7 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.digibyte.DigiBytePayment</string>
+      <string>io.auroracoin.AuroracoinPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
         <string>digibyte</string>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>io.digibyte.paymentrequest</string>
+      <string>io.auroracoin.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>DigiByte payment request</string>
+      <string>Auroracoin payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -68,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-digibyte-payment-request</string>
+        <string>application/x-auroracoin-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>digibytepaymentrequest</string>
+          <string>auroracoinpaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>io.digibyte.paymentrequest</string>
+        <string>io.auroracoin.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>
