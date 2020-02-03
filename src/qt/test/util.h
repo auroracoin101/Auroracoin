@@ -1,6 +1,8 @@
 #ifndef AURORACOIN_QT_TEST_UTIL_H
 #define AURORACOIN_QT_TEST_UTIL_H
 
+#include <QString>
+
 /**
  * Press "Ok" button in message box dialog.
  *
