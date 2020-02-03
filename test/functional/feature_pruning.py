@@ -250,7 +250,7 @@ class PruneTest(DigiByteTestFramework):
                 return index
 
         def prune(index, expected_ret=None):
-            ret = node.pruneblockchain(height(index))
+            ret = node.pruneblockchain(height=height(index))
             # Check the return value. When use_timestamp is True, just check
             # that the return value is less than or equal to the expected
             # value, because when more than one block is generated per second,

@@ -226,7 +226,7 @@ UniValue help(const JSONRPCRequest& jsonRequest)
 UniValue stop(const JSONRPCRequest& jsonRequest)
 {
     // Accept the deprecated and ignored 'detach' boolean argument
-    if (jsonRequest.fHelp || jsonRequest.params.size() > 1)
+    if (jsonRequest.fHelp || jsonRequest.params.size() > 0)
         throw std::runtime_error(
             "stop\n"
             "\nStop Auroracoin server.");
