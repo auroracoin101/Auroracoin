@@ -151,6 +151,8 @@ std::string RPCHelpMan::ToString() const
     if (is_optional) ret += " )";
     ret += "\n";
 
+    ret += m_description;
+
     return ret;
 }
 
@@ -186,6 +188,8 @@ std::string RPCArg::ToStringObj() const
 
 std::string RPCArg::ToString() const
 {
+    if (!m_oneline_description.empty()) return m_oneline_description;
+
     switch (m_type) {
     case Type::STR_HEX:
     case Type::STR: {
