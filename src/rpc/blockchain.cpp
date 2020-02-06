@@ -553,8 +553,12 @@ UniValue getblockhashes(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 3)
         throw std::runtime_error(
-            "getblockhashes timestamp\n"
-            "\nReturns array of hashes of blocks within the timestamp range provided.\n"
+           RPCHelpMan{"getblockhashes",
+                "\nReturns array of hashes of blocks within the timestamp range provided.\n",
+                {
+                    {"timestamp", RPCArg::Type::NUM, false},
+                }}
+                .ToString() +
             "\nArguments:\n"
             "1. high         (numeric, required) The newer block timestamp\n"
             "2. low          (numeric, required) The older block timestamp\n"
@@ -1221,8 +1225,9 @@ static UniValue getspentinfo(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 1 || !request.params[0].isObject())
         throw std::runtime_error(
-            "getspentinfo\n"
-            "\nReturns the txid and index where an output is spent.\n"
+            RPCHelpMan{"getspentinfo",
+                "\nReturns the txid and index where an output is spent.\n", {}}
+                .ToString() +
             "\nResult\n"
             "{\n"
             "  \"txid\"  (string) The transaction id\n"

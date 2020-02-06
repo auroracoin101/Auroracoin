@@ -94,8 +94,9 @@ UniValue getaddressmempool(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
-            "getaddressmempool\n"
-            "\nReturns all mempool deltas for an address (requires addressindex to be enabled).\n");
+            RPCHelpMan{"getaddressmempool",
+                "\nReturns all mempool deltas for an address (requires addressindex to be enabled)..", {}}
+                .ToString());
 
     std::vector<std::pair<uint160, int>> addresses;
 
@@ -140,8 +141,9 @@ UniValue getaddressutxos(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
-            "getaddressutxos\n"
-            "\nReturns all unspent outputs for an address (requires addressindex to be enabled).\n"
+            RPCHelpMan{"getaddressutxos",
+                "\nReturns all unspent outputs for an address (requires addressindex to be enabled).", {}}
+                .ToString() +
             "\nResult\n"
             "[\n"
             "  {\n"
@@ -195,8 +197,9 @@ UniValue getaddressdeltas(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 1 || !request.params[0].isObject())
         throw std::runtime_error(
-            "getaddressdeltas\n"
-            "\nReturns all changes for an address (requires addressindex to be enabled).\n"
+            RPCHelpMan{"getaddressdeltas",
+                "\nReturns all changes for an address (requires addressindex to be enabled).", {}}
+                .ToString() +
             "\nResult\n"
             "[\n"
             "  {\n"
@@ -267,8 +270,9 @@ UniValue getaddressbalance(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
-            "getaddressbalance\n"
-            "\nReturns the balance for an address (requires addressindex to be enabled).\n"
+            RPCHelpMan{"getaddressbalance",
+                "\nReturns the balance for an address (requires addressindex to be enabled).", {}}
+                .ToString() +
             "\nResult\n"
             "{\n"
             "  \"balance\"  (string) The current balance\n"
@@ -311,8 +315,9 @@ UniValue getaddresstxids(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 1)
         throw std::runtime_error(
-            "getaddresstxids\n"
-            "\nReturns the txids for an address (requires addressindex to be enabled).\n"
+            RPCHelpMan{"getaddresstxids",
+                "\nReturns the txids for an address (requires addressindex to be enabled).\n", {}}
+                .ToString() +
             "\nResult\n"
             "[\n"
             "  \"transactionid\"  (string) The transaction id\n"
@@ -392,8 +397,9 @@ UniValue getinfo(const JSONRPCRequest& request)
 {
     if (request.fHelp || request.params.size() != 0)
         throw std::runtime_error(
-            "getinfo\n"
-            "Returns an object containing various state info.\n"
+            RPCHelpMan{"getinfo",
+                "\nReturns an object containing various state info.\n", {}}
+                .ToString() +
             "\nResult:\n"
             "{\n"
             "  \"version\": xxxxx,           (numeric) the server version\n"
