@@ -10,8 +10,6 @@
 #include <script/standard.h>
 #include <univalue.h>
 
-#include <boost/variant/static_visitor.hpp>
-
 #include <string>
 #include <vector>
 
