@@ -562,6 +562,9 @@ int main(int argc, char *argv[])
 #endif
     SetupEnvironment();
 
+    // Connect auroracoind signal handlers
+    noui_connect();
+
     std::unique_ptr<interfaces::Node> node = interfaces::MakeNode();
 
     // Do not refer to data directory yet, this can be overridden by Intro::pickDataDirectory
