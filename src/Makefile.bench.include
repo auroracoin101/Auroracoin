@@ -19,6 +19,7 @@ bench_bench_auroracoin_SOURCES = \
   bench/block_assemble.cpp \
   bench/checkblock.cpp \
   bench/checkqueue.cpp \
+  bench/duplicate_inputs.cpp \
   bench/examples.cpp \
   bench/rollingbloom.cpp \
   bench/crypto_hash.cpp \
