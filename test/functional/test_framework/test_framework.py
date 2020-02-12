@@ -52,30 +52,30 @@ class SkipTest(Exception):
         self.message = message
 
 
-class DigiByteTestMetaClass(type):
-    """Metaclass for DigiByteTestFramework.
+class AuroracoinTestMetaClass(type):
+    """Metaclass for AuroracoinTestFramework.
 
-    Ensures that any attempt to register a subclass of `DigiByteTestFramework`
+    Ensures that any attempt to register a subclass of `AuroracoinTestFramework`
     adheres to a standard whereby the subclass overrides `set_test_params` and
     `run_test` but DOES NOT override either `__init__` or `main`. If any of
     those standards are violated, a ``TypeError`` is raised."""
 
     def __new__(cls, clsname, bases, dct):
-        if not clsname == 'DigiByteTestFramework':
+        if not clsname == 'AuroracoinTestFramework':
             if not ('run_test' in dct and 'set_test_params' in dct):
-                raise TypeError("DigiByteTestFramework subclasses must override "
+                raise TypeError("AuroracoinTestFramework subclasses must override "
                                 "'run_test' and 'set_test_params'")
             if '__init__' in dct or 'main' in dct:
-                raise TypeError("DigiByteTestFramework subclasses may not override "
+                raise TypeError("AuroracoinTestFramework subclasses may not override "
                                 "'__init__' or 'main'")
 
         return super().__new__(cls, clsname, bases, dct)
 
 
-class DigiByteTestFramework(metaclass=DigiByteTestMetaClass):
-    """Base class for a digibyte test script.
+class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
+    """Base class for a auroracoin test script.
 
-    Individual digibyte test scripts should subclass this class and override the set_test_params() and run_test() methods.
+    Individual auroracoin test scripts should subclass this class and override the set_test_params() and run_test() methods.
 
     Individual tests can also override the following methods to customize the test setup:
 
@@ -328,16 +328,16 @@ class DigiByteTestFramework(metaclass=DigiByteTestMetaClass):
             for node in self.nodes:
                 coverage.write_all_rpc_commands(self.options.coveragedir, node.rpc)
 
-    def stop_node(self, i, expected_stderr=''):
-        """Stop a digibyted test node"""
-        self.nodes[i].stop_node(expected_stderr)
+    def stop_node(self, i, expected_stderr='', wait=0):
+        """Stop an auroracoind test node"""
+        self.nodes[i].stop_node(expected_stderr, wait=wait)
         self.nodes[i].wait_until_stopped()
 
-    def stop_nodes(self):
-        """Stop multiple digibyted test nodes"""
+    def stop_nodes(self, wait=0):
+        """Stop multiple auroracoind test nodes"""
         for node in self.nodes:
             # Issue RPC to stop nodes
-            node.stop_node()
+            node.stop_node(wait=wait)
 
         for node in self.nodes:
             # Wait for nodes to stop
