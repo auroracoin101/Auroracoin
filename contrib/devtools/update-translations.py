@@ -125,8 +125,8 @@ def escape_cdata(text):
     return text
 
 def contains_digibyte_addr(text, errors):
-    if text != None and ADDRESS_REGEXP.search(text) != None:
-        errors.append('Translation "%s" contains a digibyte address. This will be removed.' % (text))
+    if text is not None and ADDRESS_REGEXP.search(text) is not None:
+        errors.append('Translation "%s" contains an auroracoin address. This will be removed.' % (text))
         return True
     return False
 
