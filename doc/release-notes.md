@@ -389,6 +389,13 @@ platform.
 Notable changes
 ===============
 
+Mining
+------
+
+- Calls to `getblocktemplate` will fail if the segwit rule is not specified.
+  Calling `getblocktemplate` without segwit specified is almost certainly
+  a misconfiguration since doing so results in lower rewards for the miner.
+
 Command line option changes
 ---------------------------
 
@@ -416,6 +423,8 @@ Example item for a notable change.
 =======
 RPC changes
 ------------
+
+- See the [Mining](#mining) section for changes to `getblocktemplate`.
 
 ### Low-level changes
 
