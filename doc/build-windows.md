@@ -1,12 +1,12 @@
 WINDOWS BUILD NOTES
 ====================
 
-Below are some notes on how to build DigiByte Core for Windows.
+Below are some notes on how to build Auroracoin for Windows.
 
-The options known to work for building DigiByte Core on Windows are:
+The options known to work for building Auroracoin on Windows are:
 
 * On Linux, using the [Mingw-w64](https://mingw-w64.org/doku.php) cross compiler tool chain. Ubuntu Bionic 18.04 is required
-and is the platform used to build the DigiByte Core Windows release binaries.
+and is the platform used to build the Auroracoin Windows release binaries.
 * On Windows, using [Windows
 Subsystem for Linux (WSL)](https://msdn.microsoft.com/commandline/wsl/about) and the Mingw-w64 cross compiler tool chain.
 
@@ -65,7 +65,11 @@ A host toolchain (`build-essential`) is necessary because some dependency
 packages (such as `protobuf`) need to build host utilities that are used in the
 build process.
 
-See also: [dependencies.md](dependencies.md).
+See [dependencies.md](dependencies.md) for a complete overview.
+
+If you want to build the windows installer with `make deploy` you need [NSIS](https://nsis.sourceforge.io/Main_Page):
+
+    sudo apt install nsis
 
 ## Building for 64-bit Windows
 
@@ -79,13 +83,13 @@ Ubuntu Bionic 18.04 <sup>[1](#footnote1)</sup>:
 
 Once the toolchain is installed the build steps are common:
 
-Note that for WSL the DigiByte Core source path MUST be somewhere in the default mount file system, for
-example /usr/src/digibyte, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
+Note that for WSL the Auroracoin source path MUST be somewhere in the default mount file system, for
+example /usr/src/auroracoin, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
 This means you cannot use a directory that is located directly on the host Windows file system to perform the build.
 
 Acquire the source in the usual way:
 
-    git clone https://github.com/digibyte/digibyte.git
+    git clone https://github.com/aurarad/Auroracoin.git
 
 Once the source code is ready the build steps are below:
 
@@ -107,13 +111,13 @@ For Ubuntu Bionic 18.04 and Windows Subsystem for Linux <sup>[1](#footnote1)</su
 
     sudo update-alternatives --config i686-w64-mingw32-g++  # Set the default mingw32 g++ compiler option to posix.
 
-Note that for WSL the DigiByte Core source path MUST be somewhere in the default mount file system, for
-example /usr/src/digibyte, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
+Note that for WSL the Auroracoin source path MUST be somewhere in the default mount file system, for
+example /usr/src/auroracoin, AND not under /mnt/d/. If this is not the case the dependency autoconf scripts will fail.
 This means you cannot use a directory that located directly on the host Windows file system to perform the build.
 
 Acquire the source in the usual way:
 
-    git clone https://github.com/digibyte/digibyte.git
+    git clone https://github.com/aurarad/Auroracoin.git
 
 Then build using:
 
@@ -135,9 +139,13 @@ Installation
 After building using the Windows subsystem it can be useful to copy the compiled
 executables to a directory on the Windows drive in the same directory structure
 as they appear in the release `.zip` archive. This can be done in the following
-way. This will install to `c:\workspace\digibyte`, for example:
+way. This will install to `c:\workspace\auroracoin`, for example:
 
-    make install DESTDIR=/mnt/c/workspace/digibyte
+    make install DESTDIR=/mnt/c/workspace/auroracoin
+
+You can also create an installer using:
+
+    make deploy
 
 Footnotes
 ---------
@@ -146,5 +154,5 @@ Footnotes
 compiler options to allow a choice between either posix or win32 threads. The default option is win32 threads which is the more
 efficient since it will result in binary code that links directly with the Windows kernel32.lib. Unfortunately, the headers
 required to support win32 threads conflict with some of the classes in the C++11 standard library, in particular std::mutex.
-It's not possible to build the DigiByte Core code using the win32 version of the Mingw-w64 cross compilers (at least not without
-modifying headers in the DigiByte Core source code).
+It's not possible to build the Auroracoin code using the win32 version of the Mingw-w64 cross compilers (at least not without
+modifying headers in the Auroracoin source code).
