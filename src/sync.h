@@ -22,7 +22,7 @@
 ////////////////////////////////////////////////
 
 /*
-CCriticalSection mutex;
+RecursiveMutex mutex;
     std::recursive_mutex mutex;
 
 LOCK(mutex);
