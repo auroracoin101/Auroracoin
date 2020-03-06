@@ -403,16 +403,18 @@ void AuroracoinGUI::createMenuBar()
 
     QMenu* window_menu = appMenuBar->addMenu(tr("&Window"));
 
-    QAction* minimize_action = window_menu->addAction(tr("Minimize"), [] {
+    QAction* minimize_action = window_menu->addAction(tr("Minimize"));
+    minimize_action->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_M));
+    connect(minimize_action, &QAction::triggered, [] {
         qApp->focusWindow()->showMinimized();
-    }, QKeySequence(Qt::CTRL + Qt::Key_M));
-
+    });
     connect(qApp, &QApplication::focusWindowChanged, [minimize_action] (QWindow* window) {
         minimize_action->setEnabled(window != nullptr && (window->flags() & Qt::Dialog) != Qt::Dialog && window->windowState() != Qt::WindowMinimized);
     });
 
 #ifdef Q_OS_MAC
-    QAction* zoom_action = window_menu->addAction(tr("Zoom"), [] {
+    QAction* zoom_action = window_menu->addAction(tr("Zoom"));
+    connect(zoom_action, &QAction::triggered, [] {
         QWindow* window = qApp->focusWindow();
         if (window->windowState() != Qt::WindowMaximized) {
             window->showMaximized();
@@ -425,7 +427,8 @@ void AuroracoinGUI::createMenuBar()
         zoom_action->setEnabled(window != nullptr);
     });
 #else
-    QAction* restore_action = window_menu->addAction(tr("Restore"), [] {
+    QAction* restore_action = window_menu->addAction(tr("Restore"));
+    connect(restore_action, &QAction::triggered, [] {
         qApp->focusWindow()->showNormal();
     });
 
@@ -436,7 +439,8 @@ void AuroracoinGUI::createMenuBar()
 
     if (walletFrame) {
         window_menu->addSeparator();
-        window_menu->addAction(tr("Main Window"), [this] {
+        QAction* main_window_action = window_menu->addAction(tr("Main Window"));
+        connect(main_window_action, &QAction::triggered, [this] {
             GUIUtil::bringToFront(this);
         });
 
@@ -447,7 +451,8 @@ void AuroracoinGUI::createMenuBar()
 
     window_menu->addSeparator();
     for (RPCConsole::TabTypes tab_type : rpcConsole->tabs()) {
-        window_menu->addAction(rpcConsole->tabTitle(tab_type), [this, tab_type] {
+        QAction* tab_action = window_menu->addAction(rpcConsole->tabTitle(tab_type));
+        connect(tab_action, &QAction::triggered, [this, tab_type] {
             rpcConsole->setTabFocus(tab_type);
             showDebugWindow();
         });
