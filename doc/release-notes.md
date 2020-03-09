@@ -280,18 +280,15 @@ wallets that were created with older versions are not affected by this.
 
 Compatibility
 ==============
-DigiByte Core is extensively tested on multiple operating systems using
-the Linux kernel, macOS 10.8+, and Windows Vista and later. Windows XP is not supported.
-=======
-DigiByte Core is extensively tested on multiple operating systems using
-=======
-DigiByte Core is extensively tested on multiple operating systems using
-the Linux kernel, macOS 10.10+, and Windows 7 and newer (Windows XP is not supported).
 
-DigiByte Core should also work on most other Unix-like systems but is not
+Auroracoin is supported and extensively tested on operating systems using
+the Linux kernel, macOS 10.10+, and Windows 7 and newer.  It is not recommended
+to use Bitcoin Core on unsupported systems.
+
+Auroracoin should also work on most other Unix-like systems but is not
 frequently tested on them.
 
-=======
+====
 Wallet changes
 ---------------
 
