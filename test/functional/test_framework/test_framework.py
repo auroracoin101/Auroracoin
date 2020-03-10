@@ -96,7 +96,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
         self.nodes = []
         self.network_thread = None
         self.mocktime = 0
-        self.rpc_timewait = 60  # Wait for up to 60 seconds for the RPC server to respond
+        self.rpc_timeout = 60  # Wait for up to 60 seconds for the RPC server to respond
         self.supports_cli = False
         self.bind_to_localhost_only = True
         self.set_test_params()
@@ -303,7 +303,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
                 i,
                 get_datadir_path(self.options.tmpdir, i),
                 rpchost=rpchost,
-                timewait=self.rpc_timewait,
+                timewait=self.rpc_timeout,
                 auroracoind=binary[i],
                 auroracoin_cli=self.options.auroracoincli,
                 mocktime=self.mocktime,
@@ -447,7 +447,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
                 args = [self.options.digibyted, "-datadir=" + datadir, '-disablewallet']
                 if i > 0:
                     args.append("-connect=127.0.0.1:" + str(p2p_port(0)))
-                self.nodes.append(TestNode(i, get_datadir_path(self.options.cachedir, i), extra_conf=["bind=127.0.0.1"], extra_args=[], rpchost=None, timewait=self.rpc_timewait, digibyted=self.options.digibyted, digibyte_cli=self.options.digibytecli, mocktime=self.mocktime, coverage_dir=None))
+                self.nodes.append(TestNode(i, get_datadir_path(self.options.cachedir, i), extra_conf=["bind=127.0.0.1"], extra_args=[], rpchost=None, timewait=self.rpc_timeout, digibyted=self.options.digibyted, digibyte_cli=self.options.digibytecli, mocktime=self.mocktime, coverage_dir=None))
                 self.nodes[i].args = args
                 self.start_node(i)
 
