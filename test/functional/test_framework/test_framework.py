@@ -441,13 +441,24 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
                 if os.path.isdir(get_datadir_path(self.options.cachedir, i)):
                     shutil.rmtree(get_datadir_path(self.options.cachedir, i))
 
-            # Create cache directories, run digibyteds:
+            # Create cache directories, run auroracoinds:
             for i in range(MAX_NODES):
                 datadir = initialize_datadir(self.options.cachedir, i)
-                args = [self.options.digibyted, "-datadir=" + datadir, '-disablewallet']
+                args = [self.options.auroracoind, "-datadir=" + datadir, '-disablewallet']
                 if i > 0:
                     args.append("-connect=127.0.0.1:" + str(p2p_port(0)))
-                self.nodes.append(TestNode(i, get_datadir_path(self.options.cachedir, i), extra_conf=["bind=127.0.0.1"], extra_args=[], rpchost=None, timewait=self.rpc_timeout, digibyted=self.options.digibyted, digibyte_cli=self.options.digibytecli, mocktime=self.mocktime, coverage_dir=None))
+                self.nodes.append(TestNode(
+                    i,
+                    get_datadir_path(self.options.cachedir, i),
+                    extra_conf=["bind=127.0.0.1"],
+                    extra_args=[],
+                    rpchost=None,
+                    timewait=self.rpc_timeout,
+                    auroracoind=self.options.auroracoind,
+                    auroracoin_cli=self.options.auroracoincli,
+                    mocktime=self.mocktime,
+                    coverage_dir=None,
+                ))
                 self.nodes[i].args = args
                 self.start_node(i)
 
