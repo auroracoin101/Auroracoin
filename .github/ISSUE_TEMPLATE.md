@@ -1,4 +1,4 @@
-<!-- This issue tracker is only for technical issues related to Auroracoin Core.
+<!-- This issue tracker is only for technical issues related to Auroracoin.
 
 General auroracoin questions and/or support requests are best directed to the Auroracoin StackExchange at https://auroracoin.stackexchange.com.
 
@@ -13,9 +13,11 @@ If the node is "stuck" during sync or giving "block checksum mismatch" errors, p
 
 <!--- How reliably can you reproduce the issue, what are the steps to do so? -->
 
-<!-- What version of Auroracoin Core are you using, where did you get it (website, self-compiled, etc)? -->
+<!-- What version of Auroracoin are you using, where did you get it (website, self-compiled, etc)? -->
 
 <!-- What type of machine are you observing the error on (OS/CPU and disk type)? -->
+
+<!-- For the GUI-related issue on Linux provide names and versions of a distro, a desktop environment and a graphical shell (if relevant). -->
 
 <!-- Any extra information that might be useful in the debugging process. -->
 <!--- This is normally the contents of a `debug.log` or `config.log` file. Raw text or a link to a pastebin type site are preferred. -->
