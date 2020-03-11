@@ -420,6 +420,9 @@ public:
         consensus.nTargetSpacing = 60; // 60 seconds
         consensus.nInterval = consensus.nTargetTimespan / consensus.nTargetSpacing;
         consensus.nDiffChangeTarget = 67; // DigiShield Hard Fork Block BIP34Height 67,200
+        consensus.BIP34Height = 500; // BIP34 activated on regtest (Used in functional tests for Bitcoin)
+        consensus.BIP65Height = 1351; // BIP65 activated on regtest (Used in functional tests for Bitcoin)
+        consensus.BIP66Height = 1251; // BIP66 activated on regtest (Used in functional tests for Bitcoin)
 
         // Old 1% monthly DGB Reward before 15 secon block change
         consensus.patchBlockRewardDuration = 10; //10080; - No longer used
