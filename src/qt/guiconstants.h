@@ -52,5 +52,6 @@ static const int MAX_URI_LENGTH = 255;
 #define QAPP_ORG_DOMAIN "auroracoin.is"
 #define QAPP_APP_NAME_DEFAULT "Auroracoin-Qt"
 #define QAPP_APP_NAME_TESTNET "Auroracoin-Qt-testnet"
+#define QAPP_APP_NAME_REGTEST "Auroracoin-Qt-regtest"
 
 #endif // AURORACOIN_QT_GUICONSTANTS_H
