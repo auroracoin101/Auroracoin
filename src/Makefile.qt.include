@@ -40,6 +40,7 @@ QT_MOC_CPP = \
   qt/moc_bantablemodel.cpp \
   qt/moc_auroracoinaddressvalidator.cpp \
   qt/moc_auroracoinamountfield.cpp \
+  qt/moc_auroracoin.cpp \
   qt/moc_auroracoingui.cpp \
   qt/moc_auroracoinunits.cpp \
   qt/moc_clientmodel.cpp \
@@ -86,7 +87,6 @@ AURORACOIN_MM = \
   qt/macos_appnap.mm
 
 QT_MOC = \
-  qt/auroracoin.moc \
   qt/auroracoinamountfield.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
@@ -114,6 +114,7 @@ AURORACOIN_QT_H = \
   qt/bantablemodel.h \
   qt/auroracoinaddressvalidator.h \
   qt/auroracoinamountfield.h \
+  qt/auroracoin.h \
   qt/auroracoingui.h \
   qt/auroracoinunits.h \
   qt/clientmodel.h \
