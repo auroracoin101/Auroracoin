@@ -7,6 +7,7 @@ bin_PROGRAMS += qt/test/test_auroracoin-qt
 TESTS += qt/test/test_auroracoin-qt
 
 TEST_QT_MOC_CPP = \
+  qt/test/moc_apptests.cpp \
   qt/test/moc_compattests.cpp \
   qt/test/moc_rpcnestedtests.cpp \
   qt/test/moc_uritests.cpp
@@ -23,6 +24,7 @@ endif # ENABLE_WALLET
 
 TEST_QT_H = \
   qt/test/addressbooktests.h \
+  qt/test/apptests.h \
   qt/test/compattests.h \
   qt/test/rpcnestedtests.h \
   qt/test/uritests.h \
@@ -41,6 +43,7 @@ qt_test_test_auroracoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(AURORACOIN_INCLUDES) $(AU
   $(QT_INCLUDES) $(QT_TEST_INCLUDES) $(PROTOBUF_CFLAGS)
 
 qt_test_test_auroracoin_qt_SOURCES = \
+  qt/test/apptests.cpp \
   qt/test/compattests.cpp \
   qt/test/rpcnestedtests.cpp \
   qt/test/test_main.cpp \
