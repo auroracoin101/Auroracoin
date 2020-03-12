@@ -587,6 +587,8 @@ struct LocalServiceInfo {
 
 extern CCriticalSection cs_mapLocalHost;
 extern std::map<CNetAddr, LocalServiceInfo> mapLocalHost GUARDED_BY(cs_mapLocalHost);
+
+extern const std::string NET_MESSAGE_COMMAND_OTHER;
 typedef std::map<std::string, uint64_t> mapMsgCmdSize; //command, total bytes
 
 class CNodeStats
@@ -734,8 +736,8 @@ public:
     const uint64_t nKeyedNetGroup;
     std::atomic_bool fPauseRecv;
     std::atomic_bool fPauseSend;
-protected:
 
+protected:
     mapMsgCmdSize mapSendBytesPerMsgCmd;
     mapMsgCmdSize mapRecvBytesPerMsgCmd GUARDED_BY(cs_vRecv);
 
