@@ -73,11 +73,6 @@ Q_DECLARE_METATYPE(bool*)
 Q_DECLARE_METATYPE(CAmount)
 Q_DECLARE_METATYPE(uint256)
 
-/** Translate string to current locale using Qt. */
-const std::function<std::string(const char*)> G_TRANSLATION_FUN = [](const char* psz) {
-    return QCoreApplication::translate("auroracoin-core", psz).toStdString();
-};
-
 static QString GetLangTerritory()
 {
     QSettings settings;
@@ -265,6 +260,11 @@ void AuroracoinApplication::createSplashScreen(const NetworkStyle *networkStyle)
     connect(this, &AuroracoinApplication::requestedShutdown, splash, &QWidget::close);
 }
 
+bool AuroracoinApplication::baseInitialize()
+{
+    return m_node.baseInitialize();
+}
+
 void AuroracoinApplication::startThread()
 {
     if(coreThread)
@@ -374,7 +374,7 @@ void AuroracoinApplication::initializeResult(bool success)
 #ifdef ENABLE_BIP70
         PaymentServer::LoadRootCAs();
 #endif
-        paymentServer->setOptionsModel(optionsModel);
+        if (paymentServer) paymentServer->setOptionsModel(optionsModel);
 #endif
 
         clientModel = new ClientModel(m_node, optionsModel);
@@ -402,16 +402,19 @@ void AuroracoinApplication::initializeResult(bool success)
             window->showMinimized();
         }
         Q_EMIT splashFinished();
+        Q_EMIT windowShown(window);
 
 #ifdef ENABLE_WALLET
         // Now that initialization/startup is done, process any command-line
         // auroracoin: URIs or payment requests:
-        connect(paymentServer, &PaymentServer::receivedPaymentRequest, window, &AuroracoinGUI::handlePaymentRequest);
-        connect(window, &AuroracoinGUI::receivedURI, paymentServer, &PaymentServer::handleURIOrFile);
-        connect(paymentServer, &PaymentServer::message, [this](const QString& title, const QString& message, unsigned int style) {
-            window->message(title, message, style);
-        });
-        QTimer::singleShot(100, paymentServer, &PaymentServer::uiReady);
+        if (paymentServer) {
+            connect(paymentServer, &PaymentServer::receivedPaymentRequest, window, &AuroracoinGUI::handlePaymentRequest);
+            connect(window, &AuroracoinGUI::receivedURI, paymentServer, &PaymentServer::handleURIOrFile);
+            connect(paymentServer, &PaymentServer::message, [this](const QString& title, const QString& message, unsigned int style) {
+                window->message(title, message, style);
+            });
+            QTimer::singleShot(100, paymentServer, &PaymentServer::uiReady);
+        }
 #endif
         pollShutdownTimer->start(200);
     } else {
@@ -454,7 +457,7 @@ static void SetupUIArgs()
 }
 
 #ifndef AURORACOIN_QT_TEST
-int main(int argc, char *argv[])
+int GuiMain(int argc, char* argv[])
 {
 #ifdef WIN32
     util::WinCmdLineArgs winArgs;
@@ -612,7 +615,7 @@ int main(int argc, char *argv[])
         // Perform base initialization before spinning up initialization/shutdown thread
         // This is acceptable because this function only contains steps that are quick to execute,
         // so the GUI thread won't be held up.
-        if (node->baseInitialize()) {
+        if (app.baseInitialize()) {
             app.requestInitialize();
 #if defined(Q_OS_WIN)
             WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("%1 didn't yet exit safely...").arg(QObject::tr(PACKAGE_NAME)), (HWND)app.getMainWinId());
