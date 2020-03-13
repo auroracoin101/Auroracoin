@@ -1,4 +1,4 @@
-// Copyright (c) 2011-2018 The DigiByte Core developers
+// Copyright (c) 2011-2019 The Bitcoin Core developers
 // Copyright (c) 2014-2019 The Auroracoin Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -338,7 +338,7 @@ void AuroracoinApplication::addWallet(WalletModel* walletModel)
     window->addWallet(walletModel);
 
     if (m_wallet_models.empty()) {
-        window->setCurrentWallet(walletModel->getWalletName());
+        window->setCurrentWallet(walletModel);
     }
 
 #ifdef ENABLE_BIP70
