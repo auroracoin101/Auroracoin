@@ -37,6 +37,7 @@
 #include <util/system.h>
 
 #include <iostream>
+#include <memory>
 
 #include <QAction>
 #include <QApplication>
@@ -45,6 +46,7 @@
 #include <QDesktopWidget>
 #include <QDragEnterEvent>
 #include <QListWidget>
+#include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QMimeData>
@@ -54,6 +56,7 @@
 #include <QStackedWidget>
 #include <QStatusBar>
 #include <QStyle>
+#include <QSystemTrayIcon>
 #include <QTimer>
 #include <QToolBar>
 #include <QUrlQuery>
@@ -73,6 +76,7 @@ const std::string AuroracoinGUI::DEFAULT_UIPLATFORM =
 AuroracoinGUI::AuroracoinGUI(interfaces::Node& node, const PlatformStyle *_platformStyle, const NetworkStyle *networkStyle, QWidget *parent) :
     QMainWindow(parent),
     m_node(node),
+    trayIconMenu{new QMenu()},
     platformStyle(_platformStyle)
 {
 
@@ -663,16 +667,13 @@ void AuroracoinGUI::createTrayIconMenu()
     if (!trayIcon)
         return;
 
-    trayIconMenu = new QMenu(this);
-    trayIcon->setContextMenu(trayIconMenu);
-
+    trayIcon->setContextMenu(trayIconMenu.get());
     connect(trayIcon, &QSystemTrayIcon::activated, this, &AuroracoinGUI::trayIconActivated);
 #else
     // Note: On macOS, the Dock icon is used to provide the tray's functionality.
     MacDockIconHandler *dockIconHandler = MacDockIconHandler::instance();
     connect(dockIconHandler, &MacDockIconHandler::dockIconClicked, this, &AuroracoinGUI::macosDockIconActivated);
 
-    trayIconMenu = new QMenu(this);
     trayIconMenu->setAsDockMenu();
 #endif
 
