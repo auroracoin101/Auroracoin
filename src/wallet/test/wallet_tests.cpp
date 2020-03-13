@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2019 The Bitcoin Core developers
+// Copyright (c) 2012-2019 The Bitcoin Core developers
 // Copyright (c) 2014-2019 The DigiByte Core developers
 // Copyright (c) 2015-2019 The Auroracoin developers
 // Distributed under the MIT software license, see the accompanying
@@ -49,7 +49,7 @@ BOOST_FIXTURE_TEST_CASE(scan_for_wallet_transactions, TestChain100Setup)
 
     auto locked_chain = chain->lock();
 
-    // Verify ScanForWalletTransactions accomodates a null start block.
+    // Verify ScanForWalletTransactions accommodates a null start block.
     {
         CWallet wallet(*chain, WalletLocation(), WalletDatabase::CreateDummy());
         AddKey(wallet, coinbaseKey);
