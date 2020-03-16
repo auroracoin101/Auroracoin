@@ -213,7 +213,7 @@ AuroracoinApplication::~AuroracoinApplication()
     if(coreThread)
     {
         qDebug() << __func__ << ": Stopping thread";
-        Q_EMIT stopThread();
+        coreThread->quit();
         coreThread->wait();
         qDebug() << __func__ << ": Stopped thread";
     }
@@ -280,8 +280,7 @@ void AuroracoinApplication::startThread()
     connect(this, &AuroracoinApplication::requestedInitialize, executor, &AuroracoinCore::initialize);
     connect(this, &AuroracoinApplication::requestedShutdown, executor, &AuroracoinCore::shutdown);
     /*  make sure executor object is deleted in its own thread */
-    connect(this, &AuroracoinApplication::stopThread, executor, &QObject::deleteLater);
-    connect(this, &AuroracoinApplication::stopThread, coreThread, &QThread::quit);
+    connect(coreThread, &QThread::finished, executor, &QObject::deleteLater);
 
     coreThread->start();
 }
