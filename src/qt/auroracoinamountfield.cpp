@@ -197,7 +197,7 @@ protected:
         if (text().isEmpty()) // Allow step-up with empty field
             return StepUpEnabled;
 
-        StepEnabled rv = 0;
+        StepEnabled rv = StepNone;
         bool valid = false;
         CAmount val = value(&valid);
         if (valid) {
@@ -217,7 +217,7 @@ Q_SIGNALS:
 
 AuroracoinAmountField::AuroracoinAmountField(QWidget *parent) :
     QWidget(parent),
-    amount(0)
+    amount(nullptr)
 {
     amount = new AmountSpinBox(this);
     amount->setLocale(QLocale::c());
