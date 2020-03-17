@@ -77,7 +77,7 @@ public:
         if (idx >= 0 && idx < cachedBanlist.size())
             return &cachedBanlist[idx];
 
-        return 0;
+        return nullptr;
     }
 };
 

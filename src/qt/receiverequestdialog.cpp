@@ -28,7 +28,7 @@
 #endif
 
 QRImageWidget::QRImageWidget(QWidget *parent):
-    QLabel(parent), contextMenu(0)
+    QLabel(parent), contextMenu(nullptr)
 {
     contextMenu = new QMenu(this);
     QAction *saveImageAction = new QAction(tr("&Save Image..."), this);
@@ -90,7 +90,7 @@ void QRImageWidget::contextMenuEvent(QContextMenuEvent *event)
 ReceiveRequestDialog::ReceiveRequestDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ReceiveRequestDialog),
-    model(0)
+    model(nullptr)
 {
     ui->setupUi(this);
 
