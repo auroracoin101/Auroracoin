@@ -179,18 +179,18 @@ void AuroracoinCore::shutdown()
 
 AuroracoinApplication::AuroracoinApplication(interfaces::Node& node, int &argc, char **argv):
     QApplication(argc, argv),
-    coreThread(0),
+    coreThread(nullptr),
     m_node(node),
-    optionsModel(0),
-    clientModel(0),
-    window(0),
-    pollShutdownTimer(0),
+    optionsModel(nullptr),
+    clientModel(nullptr),
+    window(nullptr),
+    pollShutdownTimer(nullptr),
 #ifdef ENABLE_WALLET
-    paymentServer(0),
+    paymentServer(nullptr),
     m_wallet_models(),
 #endif
     returnValue(0),
-    platformStyle(0)
+    platformStyle(nullptr)
 {
     setQuitOnLastWindowClosed(false);
 }
@@ -219,15 +219,15 @@ AuroracoinApplication::~AuroracoinApplication()
     }
 
     delete window;
-    window = 0;
+    window = nullptr;
 #ifdef ENABLE_WALLET
     delete paymentServer;
-    paymentServer = 0;
+    paymentServer = nullptr;
 #endif
     delete optionsModel;
-    optionsModel = 0;
+    optionsModel = nullptr;
     delete platformStyle;
-    platformStyle = 0;
+    platformStyle = nullptr;
 }
 
 #ifdef ENABLE_WALLET
@@ -312,7 +312,7 @@ void AuroracoinApplication::requestShutdown()
     qDebug() << __func__ << ": Requesting shutdown";
     startThread();
     window->hide();
-    window->setClientModel(0);
+    window->setClientModel(nullptr);
     pollShutdownTimer->stop();
 
 #ifdef ENABLE_WALLET
@@ -323,7 +323,7 @@ void AuroracoinApplication::requestShutdown()
     m_wallet_models.clear();
 #endif
     delete clientModel;
-    clientModel = 0;
+    clientModel = nullptr;
 
     m_node.startShutdown();
 
