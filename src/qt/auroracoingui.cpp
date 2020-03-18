@@ -1255,25 +1255,21 @@ void AuroracoinGUI::detectShutdown()
 
 void AuroracoinGUI::showProgress(const QString &title, int nProgress)
 {
-    if (nProgress == 0)
-    {
-        progressDialog = new QProgressDialog(title, "", 0, 100);
+    if (nProgress == 0) {
+        progressDialog = new QProgressDialog(title, QString(), 0, 100);
+        GUIUtil::PolishProgressDialog(progressDialog);
         progressDialog->setWindowModality(Qt::ApplicationModal);
         progressDialog->setMinimumDuration(0);
-        progressDialog->setCancelButton(nullptr);
         progressDialog->setAutoClose(false);
         progressDialog->setValue(0);
-    }
-    else if (nProgress == 100)
-    {
-        if (progressDialog)
-        {
+    } else if (nProgress == 100) {
+        if (progressDialog) {
             progressDialog->close();
             progressDialog->deleteLater();
         }
-    }
-    else if (progressDialog)
+    } else if (progressDialog) {
         progressDialog->setValue(nProgress);
+    }
 }
 
 void AuroracoinGUI::setTrayIconVisible(bool fHideTrayIcon)
