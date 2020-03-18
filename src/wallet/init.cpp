@@ -237,8 +237,12 @@ void FlushWallets()
 
 void StopWallets()
 {
-    for (const std::shared_ptr<CWallet>& pwallet : GetWallets()) {
-        pwallet->Flush(true);
+    auto wallets = GetWallets();
+    while (!wallets.empty()) {
+        auto wallet = wallets.back();
+        wallets.pop_back();
+        RemoveWallet(wallet);
+        UnloadWallet(std::move(wallet));
     }
 }
 
