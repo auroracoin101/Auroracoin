@@ -578,10 +578,9 @@ void AuroracoinGUI::setClientModel(ClientModel *_clientModel)
 }
 
 #ifdef ENABLE_WALLET
-bool AuroracoinGUI::addWallet(WalletModel *walletModel)
+void AuroracoinGUI::addWallet(WalletModel* walletModel)
 {
-    if(!walletFrame)
-        return false;
+    if (!walletFrame) return;
     const QString display_name = walletModel->getDisplayName();
     setWalletActionsEnabled(true);
     m_wallet_selector->addItem(display_name, QVariant::fromValue(walletModel));
@@ -590,12 +589,12 @@ bool AuroracoinGUI::addWallet(WalletModel *walletModel)
         m_wallet_selector_action->setVisible(true);
     }
     rpcConsole->addWallet(walletModel);
-    return walletFrame->addWallet(walletModel);
+    walletFrame->addWallet(walletModel);
 }
 
-bool AuroracoinGUI::removeWallet(WalletModel* walletModel)
+void AuroracoinGUI::removeWallet(WalletModel* walletModel)
 {
-    if (!walletFrame) return false;
+    if (!walletFrame) return;
     int index = m_wallet_selector->findData(QVariant::fromValue(walletModel));
     m_wallet_selector->removeItem(index);
     if (m_wallet_selector->count() == 0) {
@@ -605,20 +604,19 @@ bool AuroracoinGUI::removeWallet(WalletModel* walletModel)
         m_wallet_selector_action->setVisible(false);
     }
     rpcConsole->removeWallet(walletModel);
-    return walletFrame->removeWallet(walletModel);
+    walletFrame->removeWallet(walletModel);
 }
 
-bool AuroracoinGUI::setCurrentWallet(WalletModel* wallet_model)
+void AuroracoinGUI::setCurrentWallet(WalletModel* wallet_model)
 {
-    if(!walletFrame)
-        return false;
-    return walletFrame->setCurrentWallet(wallet_model);
+    if (!walletFrame) return;
+    walletFrame->setCurrentWallet(wallet_model);
 }
 
-bool AuroracoinGUI::setCurrentWalletBySelectorIndex(int index)
+void AuroracoinGUI::setCurrentWalletBySelectorIndex(int index)
 {
     WalletModel* wallet_model = m_wallet_selector->itemData(index).value<WalletModel*>();
-    return setCurrentWallet(wallet_model);
+    setCurrentWallet(wallet_model);
 }
 
 void AuroracoinGUI::removeAllWallets()
