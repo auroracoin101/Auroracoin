@@ -89,20 +89,12 @@ AuroracoinGUI::AuroracoinGUI(interfaces::Node& node, const PlatformStyle *_platf
         move(QApplication::desktop()->availableGeometry().center() - frameGeometry().center());
     }
 
-    QString windowTitle = tr(PACKAGE_NAME) + " - ";
 #ifdef ENABLE_WALLET
     enableWallet = WalletModel::isWalletEnabled();
 #endif // ENABLE_WALLET
-    if(enableWallet)
-    {
-        windowTitle += tr("Wallet");
-    } else {
-        windowTitle += tr("Node");
-    }
-    windowTitle += " " + m_network_style->getTitleAddText();
     QApplication::setWindowIcon(m_network_style->getTrayAndWindowIcon());
     setWindowIcon(m_network_style->getTrayAndWindowIcon());
-    setWindowTitle(windowTitle);
+    updateWindowTitle();
 
     rpcConsole = new RPCConsole(node, _platformStyle, nullptr);
     helpMessageDialog = new HelpMessageDialog(node, this, false);
@@ -606,12 +598,14 @@ void AuroracoinGUI::removeWallet(WalletModel* walletModel)
     }
     rpcConsole->removeWallet(walletModel);
     walletFrame->removeWallet(walletModel);
+    updateWindowTitle();
 }
 
 void AuroracoinGUI::setCurrentWallet(WalletModel* wallet_model)
 {
     if (!walletFrame) return;
     walletFrame->setCurrentWallet(wallet_model);
+    updateWindowTitle();
 }
 
 void AuroracoinGUI::setCurrentWalletBySelectorIndex(int index)
@@ -1223,6 +1217,21 @@ void AuroracoinGUI::updateProxyIcon()
     } else {
         labelProxyIcon->hide();
     }
+}
+
+void AuroracoinGUI::updateWindowTitle()
+{
+    QString window_title = tr(PACKAGE_NAME) + " - ";
+#ifdef ENABLE_WALLET
+    if (walletFrame) {
+        WalletModel* const wallet_model = walletFrame->currentWalletModel();
+        if (wallet_model && !wallet_model->getWalletName().isEmpty()) {
+            window_title += wallet_model->getDisplayName() + " - ";
+        }
+    }
+#endif
+    window_title += m_network_style->getTitleAddText();
+    setWindowTitle(window_title);
 }
 
 void AuroracoinGUI::showNormalIfMinimized(bool fToggleHidden)
