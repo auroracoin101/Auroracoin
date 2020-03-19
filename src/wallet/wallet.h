@@ -98,7 +98,6 @@ static const bool DEFAULT_DISABLE_DANDELION = true;
 //! Pre-calculated constants for input size estimation in *virtual size*
 static constexpr size_t DUMMY_NESTED_P2WPKH_INPUT_SIZE = 91;
 
-class CBlockIndex;
 class CCoinControl;
 class COutput;
 class CReserveKey;
@@ -726,10 +725,8 @@ private:
      * Note that this is *not* how far we've processed, we may need some rescan
      * to have seen all transactions in the chain, but is only used to track
      * live BlockConnected callbacks.
-     *
-     * Protected by cs_main (see BlockUntilSyncedToCurrentChain)
      */
-    const CBlockIndex* m_last_block_processed = nullptr;
+    uint256 m_last_block_processed;
 
 public:
     /*
