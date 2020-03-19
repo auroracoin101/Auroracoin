@@ -77,7 +77,8 @@ AuroracoinGUI::AuroracoinGUI(interfaces::Node& node, const PlatformStyle *_platf
     QMainWindow(parent),
     m_node(node),
     trayIconMenu{new QMenu()},
-    platformStyle(_platformStyle)
+    platformStyle(_platformStyle),
+    m_network_style(networkStyle)
 {
 
     this->setStyleSheet(GUIUtil::loadStyleSheet());
@@ -98,9 +99,9 @@ AuroracoinGUI::AuroracoinGUI(interfaces::Node& node, const PlatformStyle *_platf
     } else {
         windowTitle += tr("Node");
     }
-    windowTitle += " " + networkStyle->getTitleAddText();
-    QApplication::setWindowIcon(networkStyle->getTrayAndWindowIcon());
-    setWindowIcon(networkStyle->getTrayAndWindowIcon());
+    windowTitle += " " + m_network_style->getTitleAddText();
+    QApplication::setWindowIcon(m_network_style->getTrayAndWindowIcon());
+    setWindowIcon(m_network_style->getTrayAndWindowIcon());
     setWindowTitle(windowTitle);
 
     rpcConsole = new RPCConsole(node, _platformStyle, nullptr);
@@ -136,7 +137,7 @@ AuroracoinGUI::AuroracoinGUI(interfaces::Node& node, const PlatformStyle *_platf
 
     // Create system tray icon and notification
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
-        createTrayIcon(networkStyle);
+        createTrayIcon();
     }
 
     notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
@@ -646,14 +647,14 @@ void AuroracoinGUI::setWalletActionsEnabled(bool enabled)
     openAction->setEnabled(enabled);
 }
 
-void AuroracoinGUI::createTrayIcon(const NetworkStyle *networkStyle)
+void AuroracoinGUI::createTrayIcon()
 {
     assert(QSystemTrayIcon::isSystemTrayAvailable());
 
 #ifndef Q_OS_MAC
     if (QSystemTrayIcon::isSystemTrayAvailable()) {
-        trayIcon = new QSystemTrayIcon(networkStyle->getTrayAndWindowIcon(), this);
-        QString toolTip = tr("%1 client").arg(tr(PACKAGE_NAME)) + " " + networkStyle->getTitleAddText();
+        trayIcon = new QSystemTrayIcon(m_network_style->getTrayAndWindowIcon(), this);
+        QString toolTip = tr("%1 client").arg(tr(PACKAGE_NAME)) + " " + m_network_style->getTitleAddText();
         trayIcon->setToolTip(toolTip);
     }
 #endif
