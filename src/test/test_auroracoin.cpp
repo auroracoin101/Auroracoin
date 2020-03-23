@@ -5,6 +5,7 @@
 
 #include <test/test_auroracoin.h>
 
+#include <banman.h>
 #include <chainparams.h>
 #include <consensus/consensus.h>
 #include <consensus/params.h>
