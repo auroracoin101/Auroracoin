@@ -7,7 +7,6 @@
 
 #include <crypto/sha256.h>
 #include <key.h>
-#include <random.h>
 #include <util/system.h>
 #include <util/strencodings.h>
 #include <validation.h>
@@ -68,7 +67,6 @@ int main(int argc, char** argv)
     const fs::path bench_datadir{SetDataDir()};
 
     SHA256AutoDetect();
-    RandomInit();
     ECC_Start();
     SetupEnvironment();
 

@@ -36,7 +36,6 @@ BasicTestingSetup::BasicTestingSetup(const std::string& chainName)
     : m_path_root(fs::temp_directory_path() / "test_auroracoin" / strprintf("%lu_%i", (unsigned long)GetTime(), (int)(InsecureRandRange(1 << 30))))
 {
     SHA256AutoDetect();
-    RandomInit();
     ECC_Start();
     SetupEnvironment();
     SetupNetworking();
