@@ -104,7 +104,7 @@ void ReceiveCoinsDialog::setModel(WalletModel *_model)
         }
 
         // eventually disable the main receive button if private key operations are disabled
-        ui->receiveButton->setEnabled(!model->privateKeysDisabled());
+        ui->receiveButton->setEnabled(model->canGetAddresses());
     }
 }
 
