@@ -1,4 +1,5 @@
 // Copyright (c) 2010 Satoshi Nakamoto
+// Copyright (c) 2009-2019 The Bitcoin Core developers
 // Copyright (c) 2009-2018 The DigiByte Core developers
 // Copyright (c) 2014-2019 The Auroracoin developers
 // Distributed under the MIT software license, see the accompanying
@@ -52,7 +53,7 @@ struct RPCCommandExecution
     explicit RPCCommandExecution(const std::string& method)
     {
         LOCK(g_rpc_server_info.mutex);
-        it = g_rpc_server_info.active_commands.insert(g_rpc_server_info.active_commands.cend(), {method, GetTimeMicros()});
+        it = g_rpc_server_info.active_commands.insert(g_rpc_server_info.active_commands.end(), {method, GetTimeMicros()});
     }
     ~RPCCommandExecution()
     {
