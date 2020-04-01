@@ -43,6 +43,7 @@ LIBAURORACOINCONSENSUS=libauroracoinconsensus.la
 endif
 if ENABLE_WALLET
 LIBAURORACOIN_WALLET=libauroracoin_wallet.a
+LIBAURORACOIN_WALLET_TOOL=libauroracoin_wallet_tool.a
 endif
 
 LIBAURORACOIN_CRYPTO= $(LIBAURORACOIN_CRYPTO_BASE)
@@ -72,6 +73,7 @@ EXTRA_LIBRARIES += \
   $(LIBAURORACOIN_SERVER) \
   $(LIBAURORACOIN_CLI) \
   $(LIBAURORACOIN_WALLET) \
+  $(LIBAURORACOIN_WALLET_TOOL) \
   $(LIBAURORACOIN_ZMQ)
 
 lib_LTLIBRARIES = $(LIBAURORACOINCONSENSUS)
@@ -90,6 +92,11 @@ if BUILD_AURORACOIN_CLI
 endif
 if BUILD_AURORACOIN_TX
   bin_PROGRAMS += auroracoin-tx
+endif
+if ENABLE_WALLET
+if BUILD_AURORACOIN_WALLET
+  bin_PROGRAMS += auroracoin-wallet
+endif
 endif
 
 .PHONY: FORCE check-symbols check-security
@@ -209,6 +216,7 @@ AURORACOIN_CORE_H = \
   wallet/rpcwallet.h \
   wallet/wallet.h \
   wallet/walletdb.h \
+  wallet/wallettool.h \
   wallet/walletutil.h \
   wallet/coinselection.h \
   warnings.h \
@@ -310,6 +318,12 @@ libauroracoin_wallet_a_SOURCES = \
   wallet/walletdb.cpp \
   wallet/walletutil.cpp \
   wallet/coinselection.cpp \
+  $(AURORACOIN_CORE_H)
+
+libauroracoin_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(AURORACOIN_INCLUDES)
+libauroracoin_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libauroracoin_wallet_tool_a_SOURCES = \
+  wallet/wallettool.cpp \
   $(AURORACOIN_CORE_H)
 
 # crypto primitives library
@@ -561,6 +575,32 @@ auroracoin_tx_LDADD = \
   $(LIBSECP256K1)
 
 auroracoin_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+#
+
+# auroracoin-wallet binary #
+auroracoin_wallet_SOURCES = auroracoin-wallet.cpp
+auroracoin_wallet_CPPFLAGS = $(AM_CPPFLAGS) $(AURORACOIN_INCLUDES)
+auroracoin_wallet_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+auroracoin_wallet_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+
+if TARGET_WINDOWS
+auroracoin_wallet_SOURCES += auroracoin-wallet-res.rc
+endif
+
+auroracoin_wallet_LDADD = \
+  $(LIBAURORACOIN_WALLET_TOOL) \
+  $(LIBAURORACOIN_WALLET) \
+  $(LIBAURORACOIN_SERVER) \
+  $(LIBAURORACOIN_COMMON) \
+  $(LIBAURORACOIN_CONSENSUS) \
+  $(LIBAURORACOIN_UTIL) \
+  $(LIBAURORACOIN_CRYPTO) \
+  $(LIBLEVELDB) \
+  $(LIBLEVELDB_SSE42) \
+  $(LIBMEMENV) \
+  $(LIBSECP256K1)
+
+auroracoin_wallet_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS)
 #
 
 # auroracoinconsensus library #

@@ -19,6 +19,7 @@ AURORACOIN_DAEMON_NAME=auroracoind
 AURORACOIN_GUI_NAME=auroracoin-qt
 AURORACOIN_CLI_NAME=auroracoin-cli
 AURORACOIN_TX_NAME=auroracoin-tx
+AURORACOIN_WALLET_TOOL_NAME=auroracoin-wallet
 
 dnl Unless the user specified ARFLAGS, force it to be cr
 AC_ARG_VAR(ARFLAGS, [Flags for the archiver, defaults to <cr> if not set])
@@ -421,7 +422,7 @@ CPPFLAGS="$CPPFLAGS -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS"
 
 AC_ARG_WITH([utils],
   [AS_HELP_STRING([--with-utils],
-  [build auroracoin-cli auroracoin-tx (default=yes)])],
+  [build auroracoin-cli auroracoin-tx auroracoin-wallet (default=yes)])],
   [build_auroracoin_utils=$withval],
   [build_auroracoin_utils=yes])
 
@@ -436,6 +437,12 @@ AC_ARG_ENABLE([util-tx],
   [build auroracoin-tx])],
   [build_auroracoin_tx=$enableval],
   [build_auroracoin_tx=$build_auroracoin_utils])
+
+AC_ARG_ENABLE([util-wallet],
+  [AS_HELP_STRING([--enable-util-wallet],
+  [build auroracoin-wallet])],
+  [build_auroracoin_wallet=$enableval],
+  [build_auroracoin_wallet=$build_auroracoin_utils])
 
 AC_ARG_WITH([libs],
   [AS_HELP_STRING([--with-libs],
@@ -906,7 +913,7 @@ AURORACOIN_QT_INIT
 dnl sets $auroracoin_enable_qt, $auroracoin_enable_qt_test, $auroracoin_enable_qt_dbus
 AURORACOIN_QT_CONFIGURE([$use_pkgconfig])
 
-if test x$build_auroracoin_cli$build_auroracoin_tx$build_auroracoind$auroracoin_enable_qt$use_tests$use_bench = xnononononono; then
+if test x$build_auroracoin_wallet$build_auroracoin_cli$build_auroracoin_tx$build_auroracoind$auroracoin_enable_qt$use_tests$use_bench = xnonononononono; then
     use_boost=no
 else
     use_boost=yes
@@ -1188,7 +1195,7 @@ dnl univalue check
 
 need_bundled_univalue=yes
 
-if test x$build_auroracoin_cli$build_auroracoin_tx$build_auroracoind$auroracoin_enable_qt$use_tests$use_bench = xnononononono; then
+if test x$build_auroracoin_wallet$build_auroracoin_cli$build_auroracoin_tx$build_auroracoind$auroracoin_enable_qt$use_tests$use_bench = xnonononononono; then
   need_bundled_univalue=no
 else
 
@@ -1248,6 +1255,10 @@ AC_MSG_RESULT($build_auroracoin_cli)
 AC_MSG_CHECKING([whether to build auroracoin-tx])
 AM_CONDITIONAL([BUILD_AURORACOIN_TX], [test x$build_auroracoin_tx = xyes])
 AC_MSG_RESULT($build_auroracoin_tx)
+
+AC_MSG_CHECKING([whether to build auroracoin-wallet])
+AM_CONDITIONAL([BUILD_AURORACOIN_WALLET], [test x$build_auroracoin_wallet = xyes])
+AC_MSG_RESULT($build_auroracoin_wallet)
 
 AC_MSG_CHECKING([whether to build libraries])
 AM_CONDITIONAL([BUILD_AURORACOIN_LIBS], [test x$build_auroracoin_libs = xyes])
@@ -1390,7 +1401,7 @@ else
   AC_MSG_RESULT([no])
 fi
 
-if test x$build_auroracoin_cli$build_auroracoin_tx$build_auroracoin_libs$build_auroracoind$auroracoin_enable_qt$use_bench$use_tests = xnonononononono; then
+if test x$build_auroracoin_wallet$build_auroracoin_cli$build_auroracoin_tx$build_auroracoin_libs$build_auroracoind$auroracoin_enable_qt$use_bench$use_tests = xnononononononono; then
   AC_MSG_ERROR([No targets! Please specify at least one of: --with-utils --with-libs --with-daemon --with-gui --enable-bench or --enable-tests])
 fi
 
@@ -1437,6 +1448,7 @@ AC_SUBST(AURORACOIN_DAEMON_NAME)
 AC_SUBST(AURORACOIN_GUI_NAME)
 AC_SUBST(AURORACOIN_CLI_NAME)
 AC_SUBST(AURORACOIN_TX_NAME)
+AC_SUBST(AURORACOIN_WALLET_TOOL_NAME)
 
 AC_SUBST(RELDFLAGS)
 AC_SUBST(DEBUG_CPPFLAGS)
