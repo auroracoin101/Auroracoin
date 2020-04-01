@@ -142,6 +142,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
 
         config = configparser.ConfigParser()
         config.read_file(open(self.options.configfile))
+        self.config = config
         self.options.digibyted = os.getenv("DIGIBYTED", default=config["environment"]["BUILDDIR"] + '/src/digibyted' + config["environment"]["EXEEXT"])
         self.options.digibytecli = os.getenv("DIGIBYTECLI", default=config["environment"]["BUILDDIR"] + '/src/digibyte-cli' + config["environment"]["EXEEXT"])
 
