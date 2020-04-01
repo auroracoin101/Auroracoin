@@ -5,6 +5,7 @@ src/auroracoin
 src/auroracoind
 src/auroracoin-cli
 src/auroracoin-tx
+src/auroracoin-wallet
 src/test/test_auroracoin
 src/test/test_auroracoin_fuzzy
 src/qt/test/test_auroracoin-qt
