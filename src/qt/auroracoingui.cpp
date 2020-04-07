@@ -339,6 +339,10 @@ void AuroracoinGUI::createActions()
     openAction = new QAction(platformStyle->TextColorIcon(":/icons/" + theme + "/open"), tr("Open &URI..."), this);
     openAction->setStatusTip(tr("Open an Auroracoin URI or payment request"));
 
+    m_open_wallet_action = new QAction(tr("Open Wallet"), this);
+    m_open_wallet_action->setMenu(new QMenu(this));
+    m_open_wallet_action->setStatusTip(tr("Open a wallet"));
+
     showHelpMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/" + theme + "/info"), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
     showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible auroracoin command-line options").arg(tr(PACKAGE_NAME)));
@@ -366,6 +370,16 @@ void AuroracoinGUI::createActions()
         connect(usedSendingAddressesAction, &QAction::triggered, walletFrame, &WalletFrame::usedSendingAddresses);
         connect(usedReceivingAddressesAction, &QAction::triggered, walletFrame, &WalletFrame::usedReceivingAddresses);
         connect(openAction, &QAction::triggered, this, &AuroracoinGUI::openClicked);
+        connect(m_open_wallet_action->menu(), &QMenu::aboutToShow, [this] {
+            m_open_wallet_action->menu()->clear();
+            for (std::string path : m_wallet_controller->getWalletsAvailableToOpen()) {
+                QString name = path.empty() ? QString("["+tr("default wallet")+"]") : QString::fromStdString(path);
+                QAction* action = m_open_wallet_action->menu()->addAction(name);
+                connect(action, &QAction::triggered, [this, path] {
+                    setCurrentWallet(m_wallet_controller->openWallet(path));
+                });
+            }
+        });
     }
 #endif // ENABLE_WALLET
 
@@ -387,6 +401,8 @@ void AuroracoinGUI::createMenuBar()
     QMenu *file = appMenuBar->addMenu(tr("&File"));
     if(walletFrame)
     {
+        file->addAction(m_open_wallet_action);
+        file->addSeparator();
         file->addAction(openAction);
         file->addAction(backupWalletAction);
         file->addAction(signMessageAction);
