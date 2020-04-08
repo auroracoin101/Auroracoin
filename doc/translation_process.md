@@ -84,6 +84,20 @@ git ls-files src/qt/locale/*ts|xargs -n1 basename |
   sed 's/\(auroracoin_\(.*\)\).ts/    <None Include="..\\..\\src\\qt\\locale\\\1.ts">\n      <DeploymentContent>true<\/DeploymentContent>\n    <\/None>/'
 ```
 
+Auroracoin doesn't use Transifex. To update existing language files to include new strings do the following:
+
+```
+make translate
+```
+
+This updates auroracoin_en.ts with the new strings, which will be used as a source reference. Next use this file
+with each language file to update (replace <lang> with the language code):
+
+```
+cd src/qt/locale/
+lconvert -locations relative -no-obsolete -i auroracoin_<lang>.ts auroracoin_en.ts -o auroracoin_<lang>.ts
+```
+
 **Do not directly download translations** one by one from the Transifex website, as we do a few post-processing steps before committing the translations.
 
 ### Handling Plurals (in source files)
