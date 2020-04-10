@@ -153,7 +153,9 @@ CKey DecodeSecret(const std::string& str)
             }
         }
     }
-    memory_cleanse(data.data(), data.size());
+    if (!data.empty()) {
+        memory_cleanse(data.data(), data.size());
+    }
     return key;
 }
 
