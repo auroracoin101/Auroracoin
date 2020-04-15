@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2009-2019 The Bitcoin Core developers
+# Copyright (c) 2015-2019 The Bitcoin Core developers
 # Copyright (c) 2014-2019 The DigiByte Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -44,8 +44,12 @@ from io import BytesIO
 
 MAX_BLOCK_SIGOPS = 20000
 
+# Genesis block time (regtest)
+TIME_GENESIS_BLOCK = 1296688602
+
 # From BIP141
 WITNESS_COMMITMENT_HEADER = b"\xaa\x21\xa9\xed"
+
 
 def create_block(hashprev, coinbase, ntime=None, *, version=1):
     """Create a block (with regtest difficulty)."""
