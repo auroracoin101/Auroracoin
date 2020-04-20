@@ -76,7 +76,6 @@
 const int64_t nStartupTime = GetTime();
 
 const char * const AURORACOIN_CONF_FILENAME = "auroracoin.conf";
-const char * const AURORACOIN_PID_FILENAME = "auroracoin.pid";
 
 ArgsManager gArgs;
 
@@ -969,13 +968,6 @@ std::string ArgsManager::GetChainName() const
         return CBaseChainParams::TESTNET;
     return CBaseChainParams::MAIN;
 }
-
-#ifndef WIN32
-fs::path GetPidFile()
-{
-    return AbsPathForConfigVal(fs::path(gArgs.GetArg("-pid", AURORACOIN_PID_FILENAME)));
-}
-#endif
 
 bool RenameOver(fs::path src, fs::path dest)
 {
