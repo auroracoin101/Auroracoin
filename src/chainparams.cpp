@@ -146,10 +146,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_RESERVEALGO].nStartTime = 1542672000; // 20 Nov, 2018
         consensus.vDeployments[Consensus::DEPLOYMENT_RESERVEALGO].nTimeout = 1574208000;   // 20 Nov, 2019
 
-        // The best chain should have at least this much work.
+        // The best chain should have at least this much work. // TODO:  AUR: update this at some time.
         consensus.nMinimumChainWork = uint256S("0x00");
 
-        // By default assume that the signatures in ancestors of this block are valid.
+        // By default assume that the signatures in ancestors of this block are valid. // TODO:  AUR: update this at some time.
         consensus.defaultAssumeValid = uint256S("0x6495a84f8f83981a435a6cbf9e6dd4bf0f38618c8325213ca6ef6add40c0ddd8"); // Block 6,000,000
 
         /**
@@ -229,6 +229,7 @@ public:
          }
         };
 
+// TODO: AUR: Update values below at some time.
         chainTxData = ChainTxData{
             // Data as of block 6495a84f8f83981a435a6cbf9e6dd4bf0f38618c8325213ca6ef6add40c0ddd8 (height 6,000,000).
             1516390150, // * UNIX timestamp of last checkpoint block
