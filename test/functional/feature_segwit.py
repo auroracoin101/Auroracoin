@@ -44,26 +44,22 @@ class SegWitTest(DigiByteTestFramework):
         self.setup_clean_chain = True
         self.num_nodes = 3
         # This test tests SegWit both pre and post-activation, so use the normal BIP9 activation.
-        # TODO: remove -txindex. Currently required for getrawtransaction call.
         self.extra_args = [
             [
                 "-rpcserialversion=0",
                 "-vbparams=segwit:0:999999999999",
                 "-addresstype=legacy",
-                "-txindex"
             ],
             [
                 "-blockversion=4",
                 "-rpcserialversion=1",
                 "-vbparams=segwit:0:999999999999",
                 "-addresstype=legacy",
-                "-txindex"
             ],
             [
                 "-blockversion=536870915",
                 "-vbparams=segwit:0:999999999999",
                 "-addresstype=legacy",
-                "-txindex"
             ],
         ]
 
@@ -158,10 +154,10 @@ class SegWitTest(DigiByteTestFramework):
 
         self.log.info("Verify previous witness txs skipped for mining can now be mined")
         assert_equal(len(self.nodes[2].getrawmempool()), 4)
-        block = self.nodes[2].generate(1)  # block 432 (first block with new rules; 432 = 144 * 3)
+        blockhash = self.nodes[2].generate(1)[0]  # block 432 (first block with new rules; 432 = 144 * 3)
         sync_blocks(self.nodes)
         assert_equal(len(self.nodes[2].getrawmempool()), 0)
-        segwit_tx_list = self.nodes[2].getblock(block[0])["tx"]
+        segwit_tx_list = self.nodes[2].getblock(blockhash)["tx"]
         assert_equal(len(segwit_tx_list), 5)
 
         self.log.info("Verify default node can't accept txs with missing witness")
@@ -175,15 +171,16 @@ class SegWitTest(DigiByteTestFramework):
         self.fail_accept(self.nodes[0], "mandatory-script-verify-flag", p2sh_ids[NODE_0][WIT_V1][0], False, witness_script(True, self.pubkey[0]))
 
         self.log.info("Verify block and transaction serialization rpcs return differing serializations depending on rpc serialization flag")
-        assert(self.nodes[2].getblock(block[0], False) != self.nodes[0].getblock(block[0], False))
-        assert(self.nodes[1].getblock(block[0], False) == self.nodes[2].getblock(block[0], False))
-        for i in range(len(segwit_tx_list)):
-            tx = FromHex(CTransaction(), self.nodes[2].gettransaction(segwit_tx_list[i])["hex"])
-            assert(self.nodes[2].getrawtransaction(segwit_tx_list[i]) != self.nodes[0].getrawtransaction(segwit_tx_list[i]))
-            assert(self.nodes[1].getrawtransaction(segwit_tx_list[i], 0) == self.nodes[2].getrawtransaction(segwit_tx_list[i]))
-            assert(self.nodes[0].getrawtransaction(segwit_tx_list[i]) != self.nodes[2].gettransaction(segwit_tx_list[i])["hex"])
-            assert(self.nodes[1].getrawtransaction(segwit_tx_list[i]) == self.nodes[2].gettransaction(segwit_tx_list[i])["hex"])
-            assert(self.nodes[0].getrawtransaction(segwit_tx_list[i]) == bytes_to_hex_str(tx.serialize_without_witness()))
+        assert(self.nodes[2].getblock(blockhash, False) != self.nodes[0].getblock(blockhash, False))
+        assert(self.nodes[1].getblock(blockhash, False) == self.nodes[2].getblock(blockhash, False))
+
+        for tx_id in segwit_tx_list:
+            tx = FromHex(CTransaction(), self.nodes[2].gettransaction(tx_id)["hex"])
+            assert(self.nodes[2].getrawtransaction(tx_id, False, blockhash) != self.nodes[0].getrawtransaction(tx_id, False, blockhash))
+            assert(self.nodes[1].getrawtransaction(tx_id, False, blockhash) == self.nodes[2].getrawtransaction(tx_id, False, blockhash))
+            assert(self.nodes[0].getrawtransaction(tx_id, False, blockhash) != self.nodes[2].gettransaction(tx_id)["hex"])
+            assert(self.nodes[1].getrawtransaction(tx_id, False, blockhash) == self.nodes[2].gettransaction(tx_id)["hex"])
+            assert(self.nodes[0].getrawtransaction(tx_id, False, blockhash) == bytes_to_hex_str(tx.serialize_without_witness()))
 
         self.log.info("Verify witness txs without witness data are invalid after the fork")
         self.fail_accept(self.nodes[2], 'non-mandatory-script-verify-flag (Witness program hash mismatch) (code 64)', wit_ids[NODE_2][WIT_V0][2], sign=False)
@@ -539,7 +536,7 @@ class SegWitTest(DigiByteTestFramework):
         tx.rehash()
         signresults = self.nodes[0].signrawtransactionwithwallet(bytes_to_hex_str(tx.serialize_without_witness()))['hex']
         txid = self.nodes[0].sendrawtransaction(signresults, True)
-        self.nodes[0].generate(1)
+        txs_mined[txid] = self.nodes[0].generate(1)[0]
         sync_blocks(self.nodes)
         watchcount = 0
         spendcount = 0
@@ -582,7 +579,7 @@ class SegWitTest(DigiByteTestFramework):
         tx = CTransaction()
         for i in txids:
             txtmp = CTransaction()
-            txraw = self.nodes[0].getrawtransaction(i)
+            txraw = self.nodes[0].getrawtransaction(i, 0, txs_mined[i])
             f = BytesIO(hex_str_to_bytes(txraw))
             txtmp.deserialize(f)
             for j in range(len(txtmp.vout)):
