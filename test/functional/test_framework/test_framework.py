@@ -30,10 +30,10 @@ from .util import (
     get_datadir_path,
     initialize_datadir,
     p2p_port,
-    set_node_times,
     sync_blocks,
     sync_mempools,
 )
+
 
 class TestStatus(Enum):
     PASSED = 1
@@ -95,7 +95,6 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
         self.setup_clean_chain = False
         self.nodes = []
         self.network_thread = None
-        self.mocktime = 0
         self.rpc_timeout = 60  # Wait for up to 60 seconds for the RPC server to respond
         self.supports_cli = False
         self.bind_to_localhost_only = True
@@ -318,7 +317,6 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
                 timewait=self.rpc_timeout,
                 auroracoind=binary[i],
                 auroracoin_cli=self.options.auroracoincli,
-                mocktime=self.mocktime,
                 coverage_dir=self.options.coveragedir,
                 cwd=self.options.tmpdir,
                 extra_conf=extra_confs[i],
@@ -470,7 +468,6 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
                     timewait=self.rpc_timeout,
                     auroracoind=self.options.auroracoind,
                     auroracoin_cli=self.options.auroracoincli,
-                    mocktime=self.mocktime,
                     coverage_dir=None,
                     cwd=self.options.tmpdir,
                 ))
@@ -481,32 +478,18 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
             for node in self.nodes:
                 node.wait_for_rpc_connection()
 
-            # For backward compatibility of the python scripts with previous
-            # versions of the cache, set mocktime to Jan 1,
-            # 2014 + (201 * 10 * 60)"""
-            self.mocktime = 1388534400 + (201 * 10 * 60)
-
             # Create a 200-block-long chain; each of the 4 first nodes
             # gets 25 mature blocks and 25 immature.
-            # Note: To preserve compatibility with older versions of
-            # initialize_chain, only 4 nodes will generate coins.
-            #
-            # blocks are created with timestamps 10 minutes apart
-            # starting from 2010 minutes in the past
-            block_time = self.mocktime - (201 * 10 * 60)
             for i in range(2):
                 for peer in range(4):
                     for j in range(25):
-                        set_node_times(self.nodes, block_time)
                         self.nodes[peer].generatetoaddress(1, self.nodes[peer].get_deterministic_priv_key().address)
-                        block_time += 10 * 60
                     # Must sync before next peer starts generating blocks
                     sync_blocks(self.nodes)
 
             # Shut them down, and clean up cache directories:
             self.stop_nodes()
             self.nodes = []
-            self.mocktime = 0
 
             def cache_path(n, *paths):
                 return os.path.join(get_datadir_path(self.options.cachedir, n), "regtest", *paths)
