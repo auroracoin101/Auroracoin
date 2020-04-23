@@ -401,6 +401,8 @@ void AuroracoinGUI::createActions()
                     connect(activity, &OpenWalletActivity::opened, this, &AuroracoinGUI::setCurrentWallet);
                     connect(activity, &OpenWalletActivity::finished, activity, &QObject::deleteLater);
                     connect(activity, &OpenWalletActivity::finished, dialog, &QObject::deleteLater);
+                    bool invoked = QMetaObject::invokeMethod(activity, "open");
+                    assert(invoked);
                 });
             }
         });
