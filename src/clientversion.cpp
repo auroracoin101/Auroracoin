@@ -68,6 +68,7 @@ const std::string CLIENT_NAME("Árni Magnússon");
 #endif
 
 const std::string CLIENT_BUILD(BUILD_DESC CLIENT_VERSION_SUFFIX);
+const std::string BITCOIN_VERSION(DO_STRINGIZE(BITCOIN_VER));
 
 static std::string FormatVersion(int nVersion)
 {
@@ -80,6 +81,11 @@ static std::string FormatVersion(int nVersion)
 std::string FormatFullVersion()
 {
     return CLIENT_BUILD;
+}
+
+std::string BitcoinVersion()
+{
+    return BITCOIN_VERSION;
 }
 
 /**
