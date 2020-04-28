@@ -262,31 +262,29 @@ or `digibyted`/`digibyte-qt` (on Linux).
 
 If your node has a txindex, the txindex db will be migrated the first time you run 0.17.0 or newer, which may take up to a few hours. Your node will not be functional until this migration completes.
 
-The first time you run version 0.15.0 or newer, your chainstate database will be converted to a
-new format, which will take anywhere from a few minutes to half an hour,
-depending on the speed of your machine.
+The first time you run version 0.15.0 or newer, your chainstate database
+will be converted to a new format, which will take anywhere from a few minutes
+to half an hour, depending on the speed of your machine.
 
 Note that the block database format also changed in version 0.8.0 and there is no
 automatic upgrade code from before version 0.8 to version 0.15.0 or higher. Upgrading
 directly from 0.7.x and earlier without re-downloading the blockchain is not supported.
 However, as usual, old wallet versions are still supported.
 
-Downgrading warning
--------------------
-
-Wallets created in 0.16 and later are not compatible with versions prior to 0.16
-and will not work if you try to use newly created wallets in older versions. Existing
-wallets that were created with older versions are not affected by this.
-
 Compatibility
 ==============
 
 Auroracoin is supported and extensively tested on operating systems using
-the Linux kernel, macOS 10.10+, and Windows 7 and newer.  It is not recommended
-to use Bitcoin Core on unsupported systems.
+the Linux kernel, macOS 10.10+, and Windows 7 and newer. It is not recommended
+to use Auroracoin on unsupported systems.
 
 Auroracoin should also work on most other Unix-like systems but is not
-frequently tested on them.
+as frequently tested on them.
+
+From 0.17.0 onwards, macOS <10.10 is no longer supported. 0.17.0 is
+built using Qt 5.9.x, which doesn't support versions of macOS older than
+10.10. Additionally, Auroracoin does not yet change appearance when
+macOS "dark mode" is activated.
 
 ====
 Wallet changes
@@ -373,11 +371,6 @@ GUI changes
 - A "Use available balance" option has been added to the send coins dialog, to add the remaining available wallet balance to a transaction output.
 - A toggle for unblinding the password fields on the password dialog has been added.
 =======
-
-From 0.17.0 onwards, macOS <10.10 is no longer supported.  0.17.0 is
-built using Qt 5.9.x, which doesn't support versions of macOS older than
-10.10.  Additionally, Bitcoin Core does not yet change appearance when
-macOS "dark mode" is activated.
 
 In addition to previously-supported CPU platforms, this release's
 pre-compiled distribution also provides binaries for the RISC-V
@@ -685,6 +678,9 @@ New RPCs
   moment, it returns an array of the currently active commands and how
   long they've been running.
 
+- `deriveaddresses` returns one or more addresses corresponding to an
+  [output descriptor](/doc/descriptors.md).
+
 Updated RPCs
 ------------
 
@@ -716,6 +712,23 @@ in the Low-level Changes section below.
 - The `unloadwallet` RPC is now synchronous, meaning it will not return
   until the wallet is fully unloaded.
 
+- The `importmulti` RPC now supports importing of addresses from descriptors. A
+  "desc" parameter can be provided instead of the "scriptPubKey" in a request, as
+  well as an optional range for ranged descriptors to specify the start and end
+  of the range to import. More information about descriptors can be found
+  [here](https://github.com/aurarad/Auroracoin/blob/master/doc/descriptors.md).
+
+- The `listunspent` RPC has been modified so that it also returns `witnessScript`,
+  the witness script in the case of a P2WSH or P2SH-P2WSH output.
+
+- The RPC `createwallet` now has an optional `blank` argument that can be used
+  to create a blank wallet. Blank wallets do not have any keys or HD seed.
+  They cannot be opened in software older than 0.18. Once a blank wallet has a
+  HD seed set (by using `sethdseed`) or private keys, scripts, addresses, and
+  other watch only things have been imported, the wallet is no longer blank and
+  can be opened in 0.17.x. Encrypting a blank wallet will also set a HD seed
+  for it.
+
 REST changes
 ------------
 
@@ -746,7 +759,7 @@ Graphical User Interface (GUI)
   sdk version)
 
 Tools
-----
+-----
 
 - A new `auroracoin-wallet` tool is now distributed alongside Auroracoin's
   other executables.  Without needing to use any RPCs, this tool
@@ -754,6 +767,14 @@ Tools
   information about an existing wallet, such as whether the wallet is
   encrypted, whether it uses an HD seed, how many transactions it
   contains, and how many address book entries it has.
+
+Dependencies
+------------
+
+- The minimum required version of QT (when building the GUI) has been increased
+  from 5.2 to 5.5.1 (the [depends
+  system](https://github.com/aurarad/Auroracoin/blob/master/depends/README.md)
+  provides 5.9.7)
 
 Low-level changes
 =================
@@ -770,6 +791,19 @@ RPC
 
 - A new `submitheader` RPC allows submitting block headers independently
   from their block.  This is likely only useful for testing.
+
+- The `signrawtransactionwithkey` and `signrawtransactionwithwallet` RPCs have been
+  modified so that they also optionally accept a `witnessScript`, the witness script in the
+  case of a P2WSH or P2SH-P2WSH output. This is compatible with the change to `listunspent`.
+
+- Descriptors with key origin information imported through `importmulti` will
+  have their key origin information stored in the wallet for use with creating
+  PSBTs.
+
+- If `bip32derivs` of both `walletprocesspsbt` and `walletcreatefundedpsbt` is
+  set to true but the key metadata for a public key has not been updated yet,
+  then that key will have a derivation path as if it were just an independent
+  key (i.e. no derivation path and its master fingerprint is itself)
 
 Configuration
 -------------
@@ -794,6 +828,13 @@ Network
   multiple IP addresses.  If you manually ban a peer, such as by using
   the `setban` RPC, all connections from that peer will still be
   rejected.
+
+Wallet
+-------
+
+- The key metadata will need to be upgraded the first time that the HD seed is
+  available.  For unencrypted wallets this will occur on wallet loading.  For
+  encrypted wallets this will occur the first time the wallet is unlocked.
 
 Security
 --------
