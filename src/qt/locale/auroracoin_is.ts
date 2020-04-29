@@ -2047,7 +2047,7 @@ Address: %4
     <name>PaymentServer</name>
     <message>
         <location filename="../paymentserver.cpp" line="+228"/>
-        <location line="+338"/>
+        <location line="+346"/>
         <location line="+42"/>
         <location line="+110"/>
         <location line="+14"/>
@@ -2056,7 +2056,7 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-521"/>
+        <location line="-529"/>
         <source>Cannot start auroracoin: click-to-pay handler</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2074,14 +2074,14 @@ Address: %4
         <location line="-61"/>
         <location line="+9"/>
         <location line="+16"/>
+        <location line="+16"/>
         <location line="+5"/>
-        <location line="+12"/>
         <location line="+7"/>
         <source>URI handling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-49"/>
+        <location line="-53"/>
         <source>&apos;auroracoin://&apos; is not a valid URI. Use &apos;auroracoin:&apos; instead.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2096,12 +2096,13 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+16"/>
+        <location line="+36"/>
         <source>Cannot process payment request because BIP70 support was not compiled in.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="-32"/>
         <source>Invalid payment address %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2116,22 +2117,23 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+57"/>
         <source>URI can not be parsed! This can be caused by an invalid Auroracoin address or malformed URI parameters.</source>
         <translation>URI virkar ekki! Þetta getur verið út af ógildu Auroracoin reikningsnúmeri eða vitlausum URI föstum.</translation>
     </message>
     <message>
-        <location line="-62"/>
+        <location line="-58"/>
+        <location line="+9"/>
         <source>Payment request file handling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+77"/>
+        <location line="+64"/>
         <source>Payment request file can not be read or processed! This can be caused by an invalid payment request file.</source>
         <translation>Það kom upp vill tengd greiðslubeiðninni! Hugsanlega tengist þetta ógildri skrá fyrir greiðslubeiðnir</translation>
     </message>
     <message>
-        <location line="+160"/>
+        <location line="+168"/>
         <source>Unverified payment requests to custom payment scripts are unsupported.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2182,12 +2184,12 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-82"/>
+        <location line="-90"/>
         <source>Payment request can not be parsed or processed!</source>
         <translation>Ekki er hægt að ganga frá greiðslu!</translation>
     </message>
     <message>
-        <location line="+115"/>
+        <location line="+123"/>
         <source>Bad response from server %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2362,7 +2364,7 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../auroracoin.cpp" line="+581"/>
+        <location filename="../auroracoin.cpp" line="+578"/>
         <source>%1 didn&apos;t yet exit safely...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4658,7 +4660,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+30"/>
         <source>default wallet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5896,12 +5898,22 @@ Ef skráin er ekki til, skaltu búa hana til með owner-readable-only file permi
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+5"/>
         <source>&amp;Command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-3"/>
+        <source>Close Wallet...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Close wallet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Show the %1 help message to get a list with possible auroracoin command-line options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5921,12 +5933,12 @@ Ef skráin er ekki til, skaltu búa hana til með owner-readable-only file permi
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+36"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+14"/>
         <source>&amp;Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5971,7 +5983,7 @@ Ef skráin er ekki til, skaltu búa hana til með owner-readable-only file permi
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+178"/>
         <source>%1 client</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6478,7 +6490,7 @@ Ef skráin er ekki til, skaltu búa hana til með owner-readable-only file permi
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+0"/>
         <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6553,22 +6565,22 @@ Ef skráin er ekki til, skaltu búa hana til með owner-readable-only file permi
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+17"/>
         <source>Error creating %s: You can&apos;t create non-HD wallets with this version.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-13"/>
+        <location line="-16"/>
         <source>Error initializing block database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-104"/>
+        <location line="-101"/>
         <source>Auroracoin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+99"/>
+        <location line="+96"/>
         <source>Config setting for %s only applied on %s network when in [%s] section.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6598,17 +6610,22 @@ Ef skráin er ekki til, skaltu búa hana til með owner-readable-only file permi
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+18"/>
         <source>Error loading %s: You can&apos;t disable HD on an already existing HD wallet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-14"/>
+        <location line="-17"/>
         <source>Error loading block database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-102"/>
+        <source>Can&apos;t generate a change-address key. No keys in the internal keypool and can&apos;t generate any keys.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+103"/>
         <source>Error loading wallet %s. Duplicate -wallet filename specified.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6929,7 +6946,7 @@ Ef skráin er ekki til, skaltu búa hana til með owner-readable-only file permi
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+15"/>
         <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6944,7 +6961,7 @@ Ef skráin er ekki til, skaltu búa hana til með owner-readable-only file permi
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-13"/>
+        <location line="-16"/>
         <source>Unsupported logging category %s=%s.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6996,6 +7013,24 @@ Ef skráin er ekki til, skaltu búa hana til með owner-readable-only file permi
     <message>
         <location line="+1"/>
         <source>Zapping all transactions from wallet...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WalletController</name>
+    <message>
+        <location filename="../walletcontroller.cpp" line="+68"/>
+        <source>Close wallet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Are you sure you wish to close wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Closing the wallet for too long can result in having to resync the entire chain if pruning is enabled.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
