@@ -7019,7 +7019,7 @@ Ef skráin er ekki til, skaltu búa hana til með owner-readable-only file permi
 <context>
     <name>WalletController</name>
     <message>
-        <location filename="../walletcontroller.cpp" line="+68"/>
+        <location filename="../walletcontroller.cpp" line="+70"/>
         <source>Close wallet</source>
         <translation type="unfinished"></translation>
     </message>

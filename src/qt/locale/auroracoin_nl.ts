@@ -7017,7 +7017,7 @@ Als het bestand niet bestaat, maak het dan aan, met een alleen-lezen-permissie.<
 <context>
     <name>WalletController</name>
     <message>
-        <location filename="../walletcontroller.cpp" line="+68"/>
+        <location filename="../walletcontroller.cpp" line="+70"/>
         <source>Close wallet</source>
         <translation type="unfinished"></translation>
     </message>
