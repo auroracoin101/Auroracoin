@@ -164,6 +164,10 @@ void OptionsDialog::setModel(OptionsModel *_model)
         if (_model->isRestartRequired())
             showRestartWarning(true);
 
+        // Prune values are in GB to be consistent with intro.cpp
+        static constexpr uint64_t nMinDiskSpace = (MIN_DISK_SPACE_FOR_BLOCK_FILES / GB_BYTES) + (MIN_DISK_SPACE_FOR_BLOCK_FILES % GB_BYTES) ? 1 : 0;
+        ui->pruneSize->setRange(nMinDiskSpace, _model->node().getAssumedBlockchainSize());
+
         QString strLabel = _model->getOverriddenByCommandLine();
         if (strLabel.isEmpty())
             strLabel = tr("none");
@@ -172,10 +176,6 @@ void OptionsDialog::setModel(OptionsModel *_model)
         mapper->setModel(_model);
         setMapper();
         mapper->toFirst();
-
-        // Prune values are in GB to be consistent with intro.cpp
-        static constexpr uint64_t nMinDiskSpace = (MIN_DISK_SPACE_FOR_BLOCK_FILES / GB_BYTES) + (MIN_DISK_SPACE_FOR_BLOCK_FILES % GB_BYTES) ? 1 : 0;
-        ui->pruneSize->setRange(nMinDiskSpace, _model->node().getAssumedBlockchainSize());
 
         updateDefaultProxyNets();
     }
