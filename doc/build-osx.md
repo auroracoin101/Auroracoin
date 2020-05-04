@@ -82,6 +82,8 @@ Auroracoin is now available at `./src/auroracoind`
 
 Before running, you may create an empty configuration file:
 
+    mkdir -p "/Users/${USER}/Library/Application Support/Auroracoin"
+
     touch "/Users/${USER}/Library/Application Support/Auroracoin/auroracoin.conf"
 
     chmod 600 "/Users/${USER}/Library/Application Support/Auroracoin/auroracoin.conf"
