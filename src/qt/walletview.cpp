@@ -320,6 +320,7 @@ void WalletView::showProgress(const QString &title, int nProgress)
         if (progressDialog) {
             progressDialog->close();
             progressDialog->deleteLater();
+            progressDialog = nullptr;
         }
     } else if (progressDialog) {
         if (progressDialog->wasCanceled()) {
