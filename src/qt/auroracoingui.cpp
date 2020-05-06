@@ -340,7 +340,7 @@ void AuroracoinGUI::createActions()
     openAction->setStatusTip(tr("Open an Auroracoin URI or payment request"));
 
     m_open_wallet_action = new QAction(tr("Open Wallet"), this);
-    m_open_wallet_action->setMenu(new QMenu(this));
+    m_open_wallet_action->setEnabled(false);
     m_open_wallet_action->setStatusTip(tr("Open a wallet"));
 
     m_close_wallet_action = new QAction(tr("Close Wallet..."), this);
@@ -637,6 +637,9 @@ void AuroracoinGUI::setWalletController(WalletController* wallet_controller)
     assert(wallet_controller);
 
     m_wallet_controller = wallet_controller;
+
+    m_open_wallet_action->setEnabled(true);
+    m_open_wallet_action->setMenu(new QMenu(this));
 
     connect(wallet_controller, &WalletController::walletAdded, this, &AuroracoinGUI::addWallet);
     connect(wallet_controller, &WalletController::walletRemoved, this, &AuroracoinGUI::removeWallet);
