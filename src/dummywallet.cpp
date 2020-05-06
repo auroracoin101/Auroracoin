@@ -26,6 +26,7 @@ void DummyWalletInit::AddWalletOptions() const
 {
     std::vector<std::string> opts = {
         "-addresstype",
+        "-avoidpartialspends",
         "-changetype",
         "-disablewallet",
         "-discardfee=<amt>",
