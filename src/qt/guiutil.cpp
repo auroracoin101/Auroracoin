@@ -62,6 +62,7 @@
 
 #include <objc/objc-runtime.h>
 #include <CoreServices/CoreServices.h>
+#include <QProcess>
 #endif
 
 namespace GUIUtil {
@@ -394,8 +395,17 @@ bool openAuroracoinConf()
     configFile.close();
 
     /* Open auroracoin.conf with the associated application */
-    return QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
+    bool res = QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
+#ifdef Q_OS_MAC
+    // Workaround for macOS-specific behavior; see #15409.
+    if (!res) {
+        res = QProcess::startDetached("/usr/bin/open", QStringList{"-t", boostPathToQString(pathConfig)});
+    }
+#endif
+
+    return res;
 }
+
 
 ToolTipToRichTextFilter::ToolTipToRichTextFilter(int _size_threshold, QObject *parent) :
     QObject(parent),
