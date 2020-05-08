@@ -6,6 +6,9 @@
 """Test multisig RPCs"""
 
 from test_framework.test_framework import DigiByteTestFramework
+from test_framework.util import (
+    assert_raises_rpc_error,
+)
 import decimal
 
 class RpcCreateMultiSigTest(DigiByteTestFramework):
@@ -26,7 +29,9 @@ class RpcCreateMultiSigTest(DigiByteTestFramework):
     def run_test(self):
         node0, node1, node2 = self.nodes
 
-        # 50 AUR each, rest will be 25 AUR each
+        self.check_addmultisigaddress_errors()
+
+        self.log.info('Generating blocks ...')
         node0.generate(149)
         self.sync_all()
 
@@ -38,6 +43,15 @@ class RpcCreateMultiSigTest(DigiByteTestFramework):
                     self.do_multisig()
 
         self.checkbalances()
+
+    def check_addmultisigaddress_errors(self):
+        self.log.info('Check that addmultisigaddress fails when the private keys are missing')
+        addresses = [self.nodes[1].getnewaddress(address_type='legacy') for _ in range(2)]
+        assert_raises_rpc_error(-5, 'no full public key for address', lambda: self.nodes[0].addmultisigaddress(nrequired=1, keys=addresses))
+        for a in addresses:
+            # Importing all addresses should not change the result
+            self.nodes[0].importaddress(a)
+        assert_raises_rpc_error(-5, 'no full public key for address', lambda: self.nodes[0].addmultisigaddress(nrequired=1, keys=addresses))
 
     def checkbalances(self):
         node0, node1, node2 = self.nodes
