@@ -1512,12 +1512,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+67"/>
         <source>none</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+94"/>
+        <location line="+90"/>
         <source>Confirm options reset</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1860,7 +1860,7 @@
         <translation>Enter a DigiByte address (e.g. %1)</translation>
     </message>
     <message>
-        <location filename="../guiutil.cpp" line="+866"/>
+        <location filename="../guiutil.cpp" line="+876"/>
         <source>%1 d</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1970,7 +1970,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../auroracoin.cpp" line="+578"/>
+        <location filename="../auroracoin.cpp" line="+582"/>
         <source>%1 didn&apos;t yet exit safely...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1980,7 +1980,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../guiutil.cpp" line="-862"/>
+        <location filename="../guiutil.cpp" line="-871"/>
         <source>Enter an Auroracoin address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2046,7 +2046,7 @@
         <location line="+23"/>
         <location line="+36"/>
         <location line="+23"/>
-        <location line="+713"/>
+        <location line="+716"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
@@ -2068,7 +2068,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1430"/>
         <source>Client version</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2168,7 +2168,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+238"/>
+        <location line="+241"/>
         <source>&amp;Reset</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2197,7 +2197,7 @@
     <message>
         <location line="+65"/>
         <location filename="../rpcconsole.cpp" line="+503"/>
-        <location line="+754"/>
+        <location line="+757"/>
         <source>Select a peer to view detailed information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2232,13 +2232,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1161"/>
-        <location line="+1069"/>
+        <location line="-1164"/>
+        <location line="+1072"/>
         <source>User Agent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-734"/>
+        <location line="-737"/>
         <source>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2253,7 +2253,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+641"/>
+        <location line="+644"/>
         <source>Services</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2303,7 +2303,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1166"/>
+        <location line="-1169"/>
         <source>Last block time</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2318,7 +2318,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+214"/>
+        <location line="+217"/>
         <source>&amp;Network Traffic</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2338,7 +2338,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/debugwindow.ui" line="-318"/>
+        <location filename="../forms/debugwindow.ui" line="-321"/>
         <source>Debug log file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2348,7 +2348,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-249"/>
+        <location filename="../rpcconsole.cpp" line="-252"/>
         <source>1 &amp;hour</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2386,7 +2386,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+161"/>
+        <location line="+164"/>
         <source>Welcome to the %1 RPC console.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4017,7 +4017,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>UnitDisplayStatusBarControl</name>
     <message>
-        <location filename="../auroracoingui.cpp" line="+1404"/>
+        <location filename="../auroracoingui.cpp" line="+1423"/>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4038,7 +4038,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+301"/>
+        <location line="+308"/>
         <location line="+39"/>
         <location line="+5"/>
         <source>Fee bump error</source>
@@ -4628,12 +4628,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>AuroracoinGUI</name>
     <message>
-        <location filename="../auroracoin.cpp" line="-72"/>
+        <location filename="../auroracoin.cpp" line="-76"/>
         <source>A fatal error occurred. Auroracoin can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../auroracoingui.cpp" line="-1159"/>
+        <location filename="../auroracoingui.cpp" line="-1178"/>
         <source>&amp;Overview</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4823,7 +4823,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>&amp;Command-line options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4843,12 +4843,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>default wallet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+13"/>
         <source>Opening Wallet &lt;b&gt;%1&lt;/b&gt;...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4858,7 +4858,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+15"/>
+        <source>No wallets available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+25"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4908,7 +4913,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+178"/>
+        <location line="+181"/>
         <source>%1 client</source>
         <translation type="unfinished"></translation>
     </message>
