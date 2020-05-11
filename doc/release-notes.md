@@ -2,7 +2,7 @@ Auroracoin version 0.18.1 is now available from:
 
   <https://bitcoincore.org/bin/bitcoin-core-0.18.1/>
 
-This is a new major version release, including new features, various bug
+This is a new minor version release, including new features, various bug
 fixes and performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at GitHub:
@@ -46,19 +46,6 @@ From 0.17.0 onwards, macOS <10.10 is no longer supported. 0.17.0 is
 built using Qt 5.9.x, which doesn't support versions of macOS older than
 10.10. Additionally, Auroracoin does not yet change appearance when
 macOS "dark mode" is activated.
-
-In addition to previously-supported CPU platforms, this release's
-pre-compiled distribution also provides binaries for the RISC-V
-platform.
-
-If you are using the `systemd` unit configuration file located at
-`contrib/init/auroracoind.service`, it has been changed to use
-`/var/lib/auroracoind` as the data directory instead of
-`~auroracoin/.auroracoin`. When switching over to the new configuration file,
-please make sure that the filesystem on which `/var/lib/auroracoind` will
-exist has enough space (check using `df -h /var/lib/auroracoind`), and
-optionally copy over your existing data directory. See the [systemd init
-file section](#systemd-init-file) for more details.
 
 Known issues
 ============
