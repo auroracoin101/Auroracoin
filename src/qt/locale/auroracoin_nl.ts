@@ -1856,12 +1856,12 @@ Adres: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+63"/>
+        <location line="+67"/>
         <source>none</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+94"/>
+        <location line="+90"/>
         <source>Confirm options reset</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2248,12 +2248,12 @@ Adres: %4
         <translation>Voer een Auroracoin adres in (bijv. AafeSfiXVkHpcPmb9nQJTDAE5sKybkJAzz)</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+17"/>
         <source>Enter an Auroracoin address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+757"/>
+        <location line="+766"/>
         <source>%1 d</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2363,7 +2363,7 @@ Adres: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../auroracoin.cpp" line="+578"/>
+        <location filename="../auroracoin.cpp" line="+582"/>
         <source>%1 didn&apos;t yet exit safely...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2420,12 +2420,12 @@ Adres: %4
     </message>
     <message>
         <location line="+30"/>
-        <location line="+1069"/>
+        <location line="+1072"/>
         <source>User Agent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1043"/>
+        <location line="-1046"/>
         <source>Using BerkeleyDB version</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2490,7 +2490,7 @@ Adres: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+179"/>
+        <location line="+182"/>
         <source>&amp;Reset</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2519,7 +2519,7 @@ Adres: %4
     <message>
         <location line="+65"/>
         <location filename="../rpcconsole.cpp" line="+503"/>
-        <location line="+754"/>
+        <location line="+757"/>
         <source>Select a peer to view detailed information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2609,7 +2609,7 @@ Adres: %4
         <translation>Clientnaam</translation>
     </message>
     <message>
-        <location filename="../forms/debugwindow.ui" line="-1407"/>
+        <location filename="../forms/debugwindow.ui" line="-1410"/>
         <location line="+26"/>
         <location line="+26"/>
         <location line="+26"/>
@@ -2621,7 +2621,7 @@ Adres: %4
         <location line="+23"/>
         <location line="+36"/>
         <location line="+23"/>
-        <location line="+713"/>
+        <location line="+716"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
@@ -2643,7 +2643,7 @@ Adres: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1427"/>
+        <location line="-1430"/>
         <source>Client version</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2723,7 +2723,7 @@ Adres: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="+98"/>
         <source>&amp;Network Traffic</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2748,7 +2748,7 @@ Adres: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-518"/>
+        <location line="-521"/>
         <source>Welcome to the Auroracoin RPC console.</source>
         <translation>Welkom bij de Auroracoin RPC console.</translation>
     </message>
@@ -2836,7 +2836,7 @@ Adres: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+161"/>
+        <location line="+164"/>
         <source>Welcome to the %1 RPC console.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4612,7 +4612,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+301"/>
+        <location line="+308"/>
         <location line="+39"/>
         <location line="+5"/>
         <source>Fee bump error</source>
@@ -5701,7 +5701,7 @@ Als het bestand niet bestaat, maak het dan aan, met een alleen-lezen-permissie.<
 <context>
     <name>AuroracoinGUI</name>
     <message>
-        <location filename="../auroracoin.cpp" line="-185"/>
+        <location filename="../auroracoin.cpp" line="-189"/>
         <source>A fatal error occurred. Auroracoin can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5896,7 +5896,7 @@ Als het bestand niet bestaat, maak het dan aan, met een alleen-lezen-permissie.<
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>&amp;Command-line options</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5916,12 +5916,12 @@ Als het bestand niet bestaat, maak het dan aan, met een alleen-lezen-permissie.<
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+30"/>
         <source>default wallet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+13"/>
         <source>Opening Wallet &lt;b&gt;%1&lt;/b&gt;...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5931,7 +5931,12 @@ Als het bestand niet bestaat, maak het dan aan, met een alleen-lezen-permissie.<
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+15"/>
+        <source>No wallets available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+25"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5981,7 +5986,7 @@ Als het bestand niet bestaat, maak het dan aan, met een alleen-lezen-permissie.<
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+178"/>
+        <location line="+181"/>
         <source>%1 client</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6283,7 +6288,7 @@ Als het bestand niet bestaat, maak het dan aan, met een alleen-lezen-permissie.<
 <context>
     <name>QObject::QObject</name>
     <message>
-        <location filename="../auroracoin.cpp" line="+72"/>
+        <location filename="../auroracoin.cpp" line="+76"/>
         <source>Error parsing command line arguments: %1.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6315,7 +6320,7 @@ Als het bestand niet bestaat, maak het dan aan, met een alleen-lezen-permissie.<
 <context>
     <name>UnitDisplayStatusBarControl</name>
     <message>
-        <location filename="../auroracoingui.cpp" line="+122"/>
+        <location filename="../auroracoingui.cpp" line="+124"/>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation type="unfinished"></translation>
     </message>
