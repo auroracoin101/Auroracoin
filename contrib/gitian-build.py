@@ -68,14 +68,14 @@ def build():
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'auroracoin='+args.commit, '--url', 'auroracoin='+args.url, '../Auroracoin/contrib/gitian-descriptors/gitian-win.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-unsigned', '--destination', '../gitian.sigs/', '../Auroracoin/contrib/gitian-descriptors/gitian-win.yml'])
         subprocess.check_call('mv build/out/auroracoin-*-win-unsigned.tar.gz inputs/', shell=True)
-        subprocess.check_call('mv build/out/auroracoin-*.zip build/out/auroracoin-*.exe ../auroracoin-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/auroracoin-*.zip build/out/auroracoin-*.exe build/out/src/auroracoin-*.tar.gz ../auroracoin-binaries/'+args.version, shell=True)
 
     if args.macos:
         print('\nCompiling ' + args.version + ' MacOS')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'auroracoin='+args.commit, '--url', 'auroracoin='+args.url, '../Auroracoin/contrib/gitian-descriptors/gitian-osx.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-unsigned', '--destination', '../gitian.sigs/', '../Auroracoin/contrib/gitian-descriptors/gitian-osx.yml'])
         subprocess.check_call('mv build/out/auroracoin-*-osx-unsigned.tar.gz inputs/', shell=True)
-        subprocess.check_call('mv build/out/auroracoin-*.tar.gz build/out/auroracoin-*.dmg ../auroracoin-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/auroracoin-*.tar.gz build/out/auroracoin-*.dmg build/out/src/auroracoin-*.tar.gz ../auroracoin-binaries/'+args.version, shell=True)
 
     os.chdir(workdir)
 
