@@ -132,6 +132,7 @@ AURORACOIN_CORE_H = \
   core_memusage.h \
   cuckoocache.h \
   ecwrapper.h \
+  flatfile.h \
   fs.h \
   httprpc.h \
   httpserver.h \
@@ -251,6 +252,7 @@ libauroracoin_server_a_SOURCES = \
   chain.cpp \
   checkpoints.cpp \
   consensus/tx_verify.cpp \
+  flatfile.cpp \
   httprpc.cpp \
   httpserver.cpp \
   index/base.cpp \

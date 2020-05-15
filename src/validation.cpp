@@ -16,6 +16,7 @@
 #include <consensus/tx_verify.h>
 #include <consensus/validation.h>
 #include <cuckoocache.h>
+#include <flatfile.h>
 #include <hash.h>
 #include <index/txindex.h>
 #include <policy/fees.h>
@@ -325,6 +326,8 @@ static void FindFilesToPruneManual(std::set<int>& setFilesToPrune, int nManualPr
 static void FindFilesToPrune(std::set<int>& setFilesToPrune, uint64_t nPruneAfterHeight);
 bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsViewCache &inputs, bool fScriptChecks, unsigned int flags, bool cacheSigStore, bool cacheFullScriptStore, PrecomputedTransactionData& txdata, std::vector<CScriptCheck> *pvChecks = nullptr);
 static FILE* OpenUndoFile(const CDiskBlockPos &pos, bool fReadOnly = false);
+static FlatFileSeq BlockFileSeq();
+static FlatFileSeq UndoFileSeq();
 
 bool CheckFinalTx(const CTransaction &tx, int flags)
 {
@@ -4015,8 +4018,8 @@ void UnlinkPrunedFiles(const std::set<int>& setFilesToPrune)
 {
     for (std::set<int>::iterator it = setFilesToPrune.begin(); it != setFilesToPrune.end(); ++it) {
         CDiskBlockPos pos(*it, 0);
-        fs::remove(GetBlockPosFilename(pos, "blk"));
-        fs::remove(GetBlockPosFilename(pos, "rev"));
+        fs::remove(BlockFileSeq().FileName(pos));
+        fs::remove(UndoFileSeq().FileName(pos));
         LogPrintf("Prune: %s deleted blk/rev (%05u)\n", __func__, *it);
     }
 }
@@ -4128,7 +4131,7 @@ static FILE* OpenDiskFile(const CDiskBlockPos &pos, const char *prefix, bool fRe
 {
     if (pos.IsNull())
         return nullptr;
-    fs::path path = GetBlockPosFilename(pos, prefix);
+    fs::path path = GetBlockPosFilename(pos);
     fs::create_directories(path.parent_path());
     FILE* file = fsbridge::fopen(path, fReadOnly ? "rb": "rb+");
     if (!file && !fReadOnly)
@@ -4147,6 +4150,16 @@ static FILE* OpenDiskFile(const CDiskBlockPos &pos, const char *prefix, bool fRe
     return file;
 }
 
+static FlatFileSeq BlockFileSeq()
+{
+    return FlatFileSeq(GetBlocksDir(), "blk", BLOCKFILE_CHUNK_SIZE);
+}
+
+static FlatFileSeq UndoFileSeq()
+{
+    return FlatFileSeq(GetBlocksDir(), "rev", UNDOFILE_CHUNK_SIZE);
+}
+
 FILE* OpenBlockFile(const CDiskBlockPos &pos, bool fReadOnly) {
     return OpenDiskFile(pos, "blk", fReadOnly);
 }
@@ -4156,9 +4169,9 @@ static FILE* OpenUndoFile(const CDiskBlockPos &pos, bool fReadOnly) {
     return OpenDiskFile(pos, "rev", fReadOnly);
 }
 
-fs::path GetBlockPosFilename(const CDiskBlockPos &pos, const char *prefix)
+fs::path GetBlockPosFilename(const CDiskBlockPos &pos)
 {
-    return GetBlocksDir() / strprintf("%s%05u.dat", prefix, pos.nFile);
+    return BlockFileSeq().FileName(pos);
 }
 
 CBlockIndex * CChainState::InsertBlockIndex(const uint256& hash)
