@@ -9,7 +9,6 @@ import struct
 
 from test_framework.test_framework import DigiByteTestFramework, SkipTest
 from test_framework.util import (assert_equal,
-                                 bytes_to_hex_str,
                                  hash256,
                                 )
 
@@ -85,7 +84,7 @@ class ZMQTest (DigiByteTestFramework):
         body = msg[1]
         msgSequence = struct.unpack('<I', msg[-1])[-1]
         assert_equal(msgSequence, 0)  # must be sequence 0 on hashblock
-        blkhash = bytes_to_hex_str(body)
+        blkhash = body.hex()
         assert_equal(genhashes[0], blkhash)  # blockhash from generate must be equal to the hash received over zmq
 
         # rawblock
@@ -97,7 +96,7 @@ class ZMQTest (DigiByteTestFramework):
         assert_equal(msgSequence, 0) #must be sequence 0 on rawblock
 
         # Check the hash of the rawblock's header matches generate
-        assert_equal(genhashes[0], bytes_to_hex_str(hash256(body[:80])))
+        assert_equal(genhashes[0], hash256(body[:80]).hex())
 
         self.log.info("Generate 10 blocks (and 10 coinbase txes)")
         n = 10
@@ -112,12 +111,12 @@ class ZMQTest (DigiByteTestFramework):
             topic = msg[0]
             body = msg[1]
             if topic == b"hashblock":
-                zmqHashes.append(bytes_to_hex_str(body))
+                zmqHashes.append(body.hex())
                 msgSequence = struct.unpack('<I', msg[-1])[-1]
                 assert_equal(msgSequence, blockcount + 1)
                 blockcount += 1
             if topic == b"rawblock":
-                zmqRawHashed.append(bytes_to_hex_str(hash256(body[:80])))
+                zmqRawHashed.append(hash256(body[:80]).hex())
                 msgSequence = struct.unpack('<I', msg[-1])[-1]
                 assert_equal(msgSequence, blockcount)
 
@@ -135,7 +134,7 @@ class ZMQTest (DigiByteTestFramework):
         topic = msg[0]
         assert_equal(topic, b"hashtx")
         body = msg[1]
-        hashZMQ = bytes_to_hex_str(body)
+        hashZMQ = body.hex()
         msgSequence = struct.unpack('<I', msg[-1])[-1]
         assert_equal(msgSequence, blockcount + 1)
 
@@ -143,7 +142,7 @@ class ZMQTest (DigiByteTestFramework):
         topic = msg[0]
         assert_equal(topic, b"rawtx")
         body = msg[1]
-        hashedZMQ = bytes_to_hex_str(hash256(body))
+        hashedZMQ = hash256(body).hex()
         msgSequence = struct.unpack('<I', msg[-1])[-1]
         assert_equal(msgSequence, blockcount+1)
         assert_equal(hashRPC, hashZMQ)  # txid from sendtoaddress must be equal to the hash received over zmq
