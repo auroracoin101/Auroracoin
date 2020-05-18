@@ -262,7 +262,7 @@ public:
             return true;
         }
         return false;
-        }
+    }
 };
 
 struct Stacks
