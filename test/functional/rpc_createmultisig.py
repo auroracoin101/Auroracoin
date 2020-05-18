@@ -59,7 +59,7 @@ class RpcCreateMultiSigTest(DigiByteTestFramework):
         pk_obj = ECPubKey()
         pk_obj.set(binascii.unhexlify(pk2))
         pk_obj.compressed = False
-        pk2 = binascii.hexlify(pk_obj.get_bytes()).decode()
+        pk2 = pk_obj.get_bytes().hex()
 
         # Check all permutations of keys because order matters apparently
         for keys in itertools.permutations([pk0, pk1, pk2]):

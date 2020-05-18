@@ -53,7 +53,7 @@ class ZMQTest (AuroracoinTestFramework):
         body = msg[1]
         msgSequence = struct.unpack('<I', msg[-1])[-1]
         assert_equal(msgSequence, 0) #must be sequence 0 on hashblock
-        blkhash = bytes_to_hex_str(body)
+        blkhash = body.hex()
 
         assert_equal(genhashes[0], blkhash) #blockhash from generate must be equal to the hash received over zmq
 
@@ -68,7 +68,7 @@ class ZMQTest (AuroracoinTestFramework):
             topic = msg[0]
             body = msg[1]
             if topic == b"hashblock":
-                zmqHashes.append(bytes_to_hex_str(body))
+                zmqHashes.append(body.hex())
                 msgSequence = struct.unpack('<I', msg[-1])[-1]
                 assert_equal(msgSequence, blockcount+1)
                 blockcount += 1
@@ -86,7 +86,7 @@ class ZMQTest (AuroracoinTestFramework):
         body = msg[1]
         hashZMQ = ""
         if topic == b"hashtx":
-            hashZMQ = bytes_to_hex_str(body)
+            hashZMQ = body.hex()
             msgSequence = struct.unpack('<I', msg[-1])[-1]
             assert_equal(msgSequence, blockcount+1)
 

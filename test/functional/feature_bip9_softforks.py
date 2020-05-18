@@ -51,7 +51,7 @@ class BIP9SoftForksTest(ComparisonTestFramework):
         return tx
 
     def sign_transaction(self, node, tx):
-        signresult = node.signrawtransactionwithwallet(bytes_to_hex_str(tx.serialize()))
+        signresult = node.signrawtransactionwithwallet(tx.serialize().hex())
         tx = CTransaction()
         f = BytesIO(hex_str_to_bytes(signresult['hex']))
         tx.deserialize(f)

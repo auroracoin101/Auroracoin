@@ -10,7 +10,7 @@ from binascii import a2b_hex, b2a_hex
 from hashlib import sha256
 from struct import pack
 
-def b2x(b):
+def b.hex():
     return b2a_hex(b).decode('ascii')
 
 # NOTE: This does not work for signed numbers (set the high bit) or zero (use b'\0')
@@ -58,7 +58,7 @@ def template_to_bytearray(tmpl, txlist):
     return bytearray(blk)
 
 def template_to_hex(tmpl, txlist):
-    return b2x(template_to_bytearray(tmpl, txlist))
+    return template_to_bytearray(tmpl, txlist).hex()
 
 def assert_template(node, tmpl, txlist, expect):
     rsp = node.getblocktemplate({'data':template_to_hex(tmpl, txlist),'mode':'proposal'})
@@ -86,8 +86,8 @@ class GetBlockTemplateProposalTest(AuroracoinTestFramework):
         if 'coinbasetxn' not in tmpl:
             rawcoinbase = encodeUNum(tmpl['height'])
             rawcoinbase += b'\x01-'
-            hexcoinbase = b2x(rawcoinbase)
-            hexoutval = b2x(pack('<Q', tmpl['coinbasevalue']))
+            hexcoinbase = rawcoinbase.hex()
+            hexoutval = pack('<Q', tmpl['coinbasevalue']).hex()
             tmpl['coinbasetxn'] = {'data': '01000000' + '01' + '0000000000000000000000000000000000000000000000000000000000000000ffffffff' + ('%02x' % (len(rawcoinbase),)) + hexcoinbase + 'fffffffe' + '01' + hexoutval + '00' + '00000000'}
         txlist = list(bytearray(a2b_hex(a['data'])) for a in (tmpl['coinbasetxn'],) + tuple(tmpl['transactions']))
 
@@ -140,7 +140,7 @@ class GetBlockTemplateProposalTest(AuroracoinTestFramework):
         # Test 9: Bad merkle root
         rawtmpl = template_to_bytearray(tmpl, txlist)
         rawtmpl[4+32] = (rawtmpl[4+32] + 1) % 0x100
-        rsp = node.getblocktemplate({'data':b2x(rawtmpl),'mode':'proposal'})
+        rsp = node.getblocktemplate({'data':rawtmpl.hex(),'mode':'proposal'})
         if rsp != 'bad-txnmrklroot':
             raise AssertionError('unexpected: %s' % (rsp,))
 
