@@ -75,8 +75,8 @@ class VersionBitsWarningTest(DigiByteTestFramework):
         node.generatetoaddress(VB_PERIOD - VB_THRESHOLD + 1, node_deterministic_address)
 
         # Check that we're not getting any versionbit-related errors in get*info()
-        assert(not VB_PATTERN.match(node.getmininginfo()["warnings"]))
-        assert(not VB_PATTERN.match(node.getnetworkinfo()["warnings"]))
+        assert not VB_PATTERN.match(node.getmininginfo()["warnings"])
+        assert not VB_PATTERN.match(node.getnetworkinfo()["warnings"])
 
         # Build one period of blocks with VB_THRESHOLD blocks signaling some unknown bit
         self.send_blocks_with_version(node.p2p, VB_THRESHOLD, VB_UNKNOWN_VERSION)
@@ -96,8 +96,8 @@ class VersionBitsWarningTest(DigiByteTestFramework):
         # Generating one more block will be enough to generate an error.
         node.generatetoaddress(1, node_deterministic_address)
         # Check that get*info() shows the versionbits unknown rules warning
-        assert(WARN_UNKNOWN_RULES_ACTIVE in node.getmininginfo()["warnings"])
-        assert(WARN_UNKNOWN_RULES_ACTIVE in node.getnetworkinfo()["warnings"])
+        assert WARN_UNKNOWN_RULES_ACTIVE in node.getmininginfo()["warnings"]
+        assert WARN_UNKNOWN_RULES_ACTIVE in node.getnetworkinfo()["warnings"]
         # Check that the alert file shows the versionbits unknown rules warning
         wait_until(lambda: self.versionbits_in_alert_file(), timeout=60)
 

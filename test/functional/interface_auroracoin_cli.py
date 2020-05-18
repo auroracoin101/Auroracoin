@@ -16,7 +16,7 @@ class TestDigiByteCli(DigiByteTestFramework):
         """Main test logic"""
 
         cli_response = self.nodes[0].cli("-version").send_cli()
-        assert("DigiByte Core RPC client version" in cli_response)
+        assert "DigiByte Core RPC client version" in cli_response
 
         self.log.info("Compare responses from getwalletinfo RPC and `auroracoin-cli getwalletinfo`")
         if self.is_wallet_compiled():
