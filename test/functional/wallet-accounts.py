@@ -81,7 +81,7 @@ class WalletAccountsTest(DigiByteTestFramework):
             
             node.getnewaddress(account)
             assert_equal(node.getaccount(address), account)
-            assert(address in node.getaddressesbyaccount(account))
+            assert address in node.getaddressesbyaccount(account)
             
             node.sendfrom("", address, amount_to_send)
         
@@ -97,7 +97,7 @@ class WalletAccountsTest(DigiByteTestFramework):
         
         for account in accounts:
             address = node.getaccountaddress(account)
-            assert(address != account_addresses[account])
+            assert address != account_addresses[account]
             assert_equal(node.getreceivedbyaccount(account), 2)
             node.move(account, "", node.getbalance(account))
 
@@ -114,8 +114,8 @@ class WalletAccountsTest(DigiByteTestFramework):
         for account in accounts:
             address = node.getaccountaddress("")
             node.setaccount(address, account)
-            assert(address in node.getaddressesbyaccount(account))
-            assert(address not in node.getaddressesbyaccount(""))
+            assert address in node.getaddressesbyaccount(account)
+            assert address not in node.getaddressesbyaccount("")
         
         for account in accounts:
             addresses = []

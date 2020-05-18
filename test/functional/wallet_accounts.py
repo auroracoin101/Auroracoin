@@ -119,7 +119,7 @@ class WalletAccountsTest(DigiByteTestFramework):
             node.setaccount(address, account.name)
             account.add_address(address)
             account.verify(node)
-            assert(address not in node.getaddressesbyaccount(""))
+            assert address not in node.getaddressesbyaccount("")
         
         # Check that addmultisigaddress can assign accounts.
         for account in accounts:

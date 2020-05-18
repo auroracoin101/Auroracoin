@@ -91,7 +91,7 @@
              test_node0.send_dandeliontx_getdata(node0_tx.calc_sha256(True))
              time.sleep(1)
              try:
-               assert(test_node0.message_count['notfound']==1)
+               assert test_node0.message_count['notfound']==1
                if not test_1_passed:
                  test_1_passed = True
                  self.log.info('Success: resistance to active probing')
@@ -104,7 +104,7 @@
              test_node0.send_dandeliontx_getdata(node0_tx.calc_sha256(True))
              time.sleep(1)
              try:
-               assert(test_node0.message_count['notfound']==1)
+               assert test_node0.message_count['notfound']==1
                if not test_2_passed:
                  test_2_passed = True
                  self.log.info('Success: loop behavior')
@@ -117,7 +117,7 @@
              test_node0.send_dandeliontx_getdata(node0_tx.calc_sha256(True))
              time.sleep(1)
              try:
-               assert(test_node0.message_count['tx']==1)
+               assert test_node0.message_count['tx']==1
                if not test_3_passed:
                  test_3_passed = True
                  self.log.info('Success: resistance to black holes')
@@ -126,7 +126,7 @@
                  self.log.info('Failed: resistance to black holes')
 
           all_tests_passed = test_1_passed and test_2_passed and test_3_passed
-         assert(all_tests_passed)
+         assert all_tests_passed
 
   if __name__ == '__main__':
      DandelionTest().main()
