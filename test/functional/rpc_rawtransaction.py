@@ -431,9 +431,12 @@ class RawTransactionsTest(DigiByteTestFramework):
 
         txId = self.nodes[0].sendtoaddress(self.nodes[2].getnewaddress(), 1.0)
         rawTx = self.nodes[0].getrawtransaction(txId, True)
+        vout = next(o for o in rawTx['vout'] if o['value'] == Decimal('1.00000000'))
 
-        # FIXME: Some missing code here
-
+        self.sync_all()
+        inputs = [{ "txid" : txId, "vout" : vout['n'] }]
+        outputs = { self.nodes[0].getnewaddress() : Decimal("0.99999000") } # 1000 sat fee
+        rawTx = self.nodes[2].createrawtransaction(inputs, outputs)
         rawTxSigned = self.nodes[2].signrawtransactionwithwallet(rawTx)
         assert_equal(rawTxSigned['complete'], True)
         # 1000 sat fee, ~200 b transaction, fee rate should land around 5 sat/b = 0.00005000 BTC/kB
@@ -450,7 +453,6 @@ class RawTransactionsTest(DigiByteTestFramework):
         assert_equal(testres['allowed'], True)
         self.nodes[2].sendrawtransaction(hexstring=rawTxSigned['hex'], maxfeerate=0.00007000)
 
-        # FIXME: More missing code here
 
 if __name__ == '__main__':
     RawTransactionsTest().main()
