@@ -1,5 +1,6 @@
 ---
 name: "auroracoin-win-signer"
+distro: "ubuntu"
 suites:
 - "bionic"
 architectures:

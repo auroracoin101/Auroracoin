@@ -1,6 +1,7 @@
 ---
 name: "auroracoin-osx-201906010"
 enable_cache: true
+distro: "ubuntu"
 suites:
 - "bionic"
 architectures:
