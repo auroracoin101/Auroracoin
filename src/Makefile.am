@@ -533,6 +533,8 @@ if TARGET_WINDOWS
 auroracoind_SOURCES += auroracoind-res.rc
 endif
 
+# Libraries below may be listed more than once to resolve circular dependencies (see
+# https://eli.thegreenplace.net/2013/07/09/library-order-in-static-linking#circular-dependency)
 auroracoind_LDADD = \
   $(LIBAURORACOIN_SERVER) \
   $(LIBAURORACOIN_WALLET) \
