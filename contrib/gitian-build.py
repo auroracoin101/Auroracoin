@@ -95,7 +95,7 @@ def sign():
     if args.windows:
         print('\nSigning ' + args.version + ' Windows')
         subprocess.check_call('cp inputs/auroracoin-' + args.version + '-win-unsigned.tar.gz inputs/auroracoin-win-unsigned.tar.gz', shell=True)
-        subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../Auroracoin/contrib/gitian-descriptors/gitian-win-signer.yml'])
+        subprocess.check_call(['bin/gbuild', '--skip-image', '--upgrade', '--commit', 'signature='+args.commit, '../auroracoin/contrib/gitian-descriptors/gitian-win-signer.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-signed', '--destination', '../gitian.sigs/', '../Auroracoin/contrib/gitian-descriptors/gitian-win-signer.yml'])
         subprocess.check_call('mv build/out/auroracoin-*win64-setup.exe ../auroracoin-binaries/'+args.version, shell=True)
         subprocess.check_call('mv build/out/auroracoin-*win32-setup.exe ../auroracoin-binaries/'+args.version, shell=True)
@@ -103,7 +103,7 @@ def sign():
     if args.macos:
         print('\nSigning ' + args.version + ' MacOS')
         subprocess.check_call('cp inputs/auroracoin-' + args.version + '-osx-unsigned.tar.gz inputs/auroracoin-osx-unsigned.tar.gz', shell=True)
-        subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../Auroracoin/contrib/gitian-descriptors/gitian-osx-signer.yml'])
+        subprocess.check_call(['bin/gbuild', '--skip-image', '--upgrade', '--commit', 'signature='+args.commit, '../auroracoin/contrib/gitian-descriptors/gitian-osx-signer.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-signed', '--destination', '../gitian.sigs/', '../Auroracoin/contrib/gitian-descriptors/gitian-osx-signer.yml'])
         subprocess.check_call('mv build/out/auroracoin-osx-signed.dmg ../auroracoin-binaries/'+args.version+'/auroracoin-'+args.version+'-osx.dmg', shell=True)
 
