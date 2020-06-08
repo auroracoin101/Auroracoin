@@ -34,12 +34,12 @@ class AbandonConflictTest(DigiByteTestFramework):
 
     def run_test(self):
         self.nodes[1].generate(100)
-        sync_blocks(self.nodes)
+        self.sync_blocks()
         balance = self.nodes[0].getbalance()
         txA = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), Decimal("10"))
         txB = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), Decimal("10"))
         txC = self.nodes[0].sendtoaddress(self.nodes[0].getnewaddress(), Decimal("10"))
-        sync_mempools(self.nodes)
+        self.sync_mempools()
         self.nodes[1].generate(1)
 
         # Can not abandon non-wallet transaction
@@ -47,7 +47,7 @@ class AbandonConflictTest(DigiByteTestFramework):
         # Can not abandon confirmed transaction
         assert_raises_rpc_error(-5, 'Transaction not eligible for abandonment', lambda: self.nodes[0].abandontransaction(txid=txA))
 
-        sync_blocks(self.nodes)
+        self.sync_blocks()
         newbalance = self.nodes[0].getbalance()
         assert balance - newbalance < Decimal("0.001")  #no more than fees lost
         balance = newbalance
@@ -164,7 +164,7 @@ class AbandonConflictTest(DigiByteTestFramework):
         self.nodes[1].generate(1)
 
         connect_nodes(self.nodes[0], 1)
-        sync_blocks(self.nodes)
+        self.sync_blocks()
 
         # Verify that B and C's 10 DGB outputs are available for spending again because AB1 is now conflicted
         newbalance = self.nodes[0].getbalance()
