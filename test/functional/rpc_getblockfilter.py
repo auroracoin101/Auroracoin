@@ -30,7 +30,7 @@ class GetBlockFilterTest(BitcoinTestFramework):
 
         # Reorg node 0 to a new chain
         connect_nodes(self.nodes[0], 1)
-        sync_blocks(self.nodes)
+        self.sync_blocks()
 
         assert_equal(self.nodes[0].getblockcount(), 4)
         chain1_hashes = [self.nodes[0].getblockhash(block_height) for block_height in range(4)]
