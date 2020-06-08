@@ -17,6 +17,7 @@
 #include <keystore.h>
 #include <validation.h>
 #include <policy/policy.h>
+#include <policy/settings.h>
 #include <script/script.h>
 #include <script/sign.h>
 #include <script/script_error.h>
