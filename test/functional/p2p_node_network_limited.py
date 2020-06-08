@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2009-2019 The Bitcoin Core developers
+# Copyright (c) 2017-2019 The Bitcoin Core developers
 # Copyright (c) 2014-2019 The DigiByte Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -12,7 +12,13 @@ and that it responds to getdata requests for blocks correctly:
 from test_framework.messages import CInv, msg_getdata, msg_verack, NODE_BLOOM, NODE_NETWORK_LIMITED, NODE_WITNESS
 from test_framework.mininode import P2PInterface, mininode_lock
 from test_framework.test_framework import DigiByteTestFramework
-from test_framework.util import assert_equal, disconnect_nodes, connect_nodes_bi, sync_blocks, wait_until
+from test_framework.util import (
+    assert_equal,
+    disconnect_nodes,
+    connect_nodes_bi,
+    wait_until,
+)
+
 
 class P2PIgnoreInv(P2PInterface):
     firstAddrnServices = 0

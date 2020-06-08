@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2009-2019 The Bitcoin Core developers
+# Copyright (c) 2014-2019 The Bitcoin Core developers
 # Copyright (c) 2014-2019 The DigiByte Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -21,7 +21,12 @@ happened previously.
 """
 
 from test_framework.test_framework import DigiByteTestFramework
-from test_framework.util import (assert_raises_rpc_error, connect_nodes, sync_blocks, assert_equal, set_node_times)
+from test_framework.util import (
+    assert_raises_rpc_error,
+    connect_nodes,
+    assert_equal,
+    set_node_times,
+)
 
 import collections
 import enum

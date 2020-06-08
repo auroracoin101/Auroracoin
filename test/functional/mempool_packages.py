@@ -9,7 +9,11 @@ from decimal import Decimal
 
 from test_framework.messages import COIN
 from test_framework.test_framework import DigiByteTestFramework
-from test_framework.util import assert_equal, assert_raises_rpc_error, satoshi_round, sync_blocks, sync_mempools
+from test_framework.util import (
+    assert_equal,
+    assert_raises_rpc_error,
+    satoshi_round,
+)
 
 MAX_ANCESTORS = 25
 MAX_DESCENDANTS = 25
