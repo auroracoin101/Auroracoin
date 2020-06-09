@@ -3,12 +3,12 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef AURORACOIN_RPC_RAWTRANSACTION_H
-#define AURORACOIN_RPC_RAWTRANSACTION_H
+#ifndef AURORACOIN_RPC_RAWTRANSACTION_UTIL_H
+#define AURORACOIN_RPC_RAWTRANSACTION_UTIL_H
 
 class CBasicKeyStore;
-struct CMutableTransaction;
 class UniValue;
+struct CMutableTransaction;
 
 namespace interfaces {
 class Chain;
@@ -20,4 +20,4 @@ UniValue SignTransaction(interfaces::Chain& chain, CMutableTransaction& mtx, con
 /** Create a transaction from univalue parameters */
 CMutableTransaction ConstructTransaction(const UniValue& inputs_in, const UniValue& outputs_in, const UniValue& locktime, const UniValue& rbf);
 
-#endif // AURORACOIN_RPC_RAWTRANSACTION_H
+#endif // AURORACOIN_RPC_RAWTRANSACTION_UTIL_H
