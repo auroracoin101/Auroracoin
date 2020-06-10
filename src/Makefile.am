@@ -249,6 +249,9 @@ obj/build.h: FORCE
 libauroracoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
 # server: shared between auroracoind and auroracoin-qt
+# Contains code accessing mempool and chain state that is meant to be separated
+# from wallet and gui code (see node/README.md). Shared code should go in
+# libauroracoin_common or libauroracoin_util libraries, instead.
 libauroracoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(AURORACOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libauroracoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libauroracoin_server_a_SOURCES = \
