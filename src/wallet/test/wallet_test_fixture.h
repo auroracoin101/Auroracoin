@@ -6,7 +6,7 @@
 #ifndef AURORACOIN_WALLET_TEST_WALLET_TEST_FIXTURE_H
 #define AURORACOIN_WALLET_TEST_WALLET_TEST_FIXTURE_H
 
-#include <test/test_auroracoin.h>
+#include <test/setup_common.h>
 
 #include <interfaces/chain.h>
 #include <interfaces/wallet.h>

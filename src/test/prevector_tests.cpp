@@ -11,7 +11,7 @@
 #include <serialize.h>
 #include <streams.h>
 
-#include <test/test_auroracoin.h>
+#include <test/setup_common.h>
 
 #include <boost/test/unit_test.hpp>
 

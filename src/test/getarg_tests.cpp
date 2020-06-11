@@ -6,7 +6,7 @@
 
 #include <util/strencodings.h>
 #include <util/system.h>
-#include <test/test_auroracoin.h>
+#include <test/setup_common.h>
 
 #include <string>
 #include <vector>
