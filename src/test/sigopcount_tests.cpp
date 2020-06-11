@@ -11,7 +11,7 @@
 #include <script/script.h>
 #include <script/standard.h>
 #include <uint256.h>
-#include <test/test_auroracoin.h>
+#include <test/setup_common.h>
 
 #include <vector>
 

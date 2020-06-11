@@ -9,7 +9,7 @@
 #include <consensus/validation.h>
 #include <primitives/transaction.h>
 #include <script/script.h>
-#include <test/test_auroracoin.h>
+#include <test/setup_common.h>
 
 #include <boost/test/unit_test.hpp>
 

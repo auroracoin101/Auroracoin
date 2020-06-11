@@ -34,8 +34,8 @@ bench_bench_auroracoin_SOURCES = \
   bench/lockedpool.cpp \
   bench/poly1305.cpp \
   bench/prevector.cpp \
-  test/test_auroracoin.h \
-  test/test_auroracoin.cpp \
+  test/setup_common.h \
+  test/setup_common.cpp \
   test/util.h \
   test/util.cpp
 

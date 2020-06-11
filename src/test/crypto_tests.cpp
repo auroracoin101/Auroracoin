@@ -15,7 +15,7 @@
 #include <crypto/hmac_sha512.h>
 #include <random.h>
 #include <util/strencodings.h>
-#include <test/test_auroracoin.h>
+#include <test/setup_common.h>
 #include <vector>
 #include <boost/test/unit_test.hpp>
 #include <openssl/aes.h>

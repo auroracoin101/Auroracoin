@@ -34,10 +34,10 @@ TEST_QT_H = \
   qt/test/wallettests.h
 
 TEST_AURORACOIN_CPP = \
-  test/test_auroracoin.cpp
+  test/setup_common.cpp
 
 TEST_AURORACOIN_H = \
-  test/test_auroracoin.h
+  test/setup_common.h
 
 qt_test_test_auroracoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(AURORACOIN_INCLUDES) $(AURORACOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_TEST_INCLUDES) $(PROTOBUF_CFLAGS)
