@@ -33,7 +33,11 @@ bench_bench_auroracoin_SOURCES = \
   bench/bech32.cpp \
   bench/lockedpool.cpp \
   bench/poly1305.cpp \
-  bench/prevector.cpp
+  bench/prevector.cpp \
+  test/test_auroracoin.h \
+  test/test_auroracoin.cpp \
+  test/util.h \
+  test/util.cpp
 
 nodist_bench_bench_auroracoin_SOURCES = $(GENERATED_BENCH_FILES)
 
