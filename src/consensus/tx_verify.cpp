@@ -176,8 +176,8 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
             if (coin.IsCoinBase()) {
                 if (coin.nHeight < 225001) {
                     if (nSpendHeight - coin.nHeight < COINBASE_MATURITY)
-                        return state.Invalid(false,
-                            REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
+                        return state.DoS(0, false,
+                            REJECT_INVALID, "bad-txns-premature-spend-of-coinbase", false,
                             strprintf("tried to spend coinbase at depth %d", nSpendHeight - coin.nHeight));
                 } else {
                     if (nSpendHeight - coin.nHeight < COINBASE_MATURITY_2) {
@@ -191,6 +191,8 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
                             if (strict) {
                                 return state.Invalid(false,
                                     REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
+                                //return state.DoS(0, false,                                         // This could cause a chain split in the current situation.
+                                //    REJECT_INVALID, "bad-txns-premature-spend-of-coinbase", false, // TODO: fix this when old wallets aren't part of the network any more.
                                     strprintf("tried to spend coinbase at depth %d", nSpendHeight - coin.nHeight));
                             }
                             else {
