@@ -2550,17 +2550,12 @@ bool static ProcessMessage(CNode* pfrom, const std::string& strCommand, CDataStr
                     int64_t nEmbargo = 1000000*DANDELION_EMBARGO_MINIMUM+PoissonNextSend(nCurrTime, DANDELION_EMBARGO_AVG_ADD);
                     connman->insertDandelionEmbargo(tx.GetHash(),nEmbargo);
                     LogPrint(BCLog::DANDELION, "dandeliontx %s embargoed for %d seconds\n", tx.GetHash().ToString(), (nEmbargo-nCurrTime)/1000000);
-                }
-                int nDoS = 0;
-                if (state.IsInvalid(nDoS)) {
+                } else {
                     LogPrint(BCLog::MEMPOOLREJ, "%s from peer=%d was not accepted: %s\n", tx.GetHash().ToString(),
                              pfrom->GetId(), FormatStateMessage(state));
                     if (state.GetRejectCode() > 0 && state.GetRejectCode() < REJECT_INTERNAL) { // Never send AcceptToMemoryPool's internal codes over P2P
                         connman->PushMessage(pfrom, msgMaker.Make(NetMsgType::REJECT, strCommand, (unsigned char)state.GetRejectCode(),
                                                                   state.GetRejectReason().substr(0, MAX_REJECT_MESSAGE_LENGTH), inv.hash));
-                    }
-                    if (nDoS > 0) {
-                        Misbehaving(pfrom->GetId(), nDoS);
                     }
                 }
             }
