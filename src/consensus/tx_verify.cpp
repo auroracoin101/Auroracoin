@@ -176,7 +176,7 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
             if (coin.IsCoinBase()) {
                 if (coin.nHeight < 225001) {
                     if (nSpendHeight - coin.nHeight < COINBASE_MATURITY)
-                        return state.Invalid(ValidationInvalidReason::TX_MISSING_INPUTS, false, REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
+                        return state.Invalid(ValidationInvalidReason::TX_PREMATURE_SPEND, false, REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
                             strprintf("tried to spend coinbase at depth %d", nSpendHeight - coin.nHeight));
                 } else {
                     if (nSpendHeight - coin.nHeight < COINBASE_MATURITY_2) {
@@ -188,7 +188,7 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
                             LogPrintf("Accepting white-listed block %d.\n", nSpendHeight);
                         } else {
                             if (strict) {
-                                return state.Invalid(ValidationInvalidReason::TX_MISSING_INPUTS, false, REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
+                                return state.Invalid(ValidationInvalidReason::TX_PREMATURE_SPEND, false, REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
                                     strprintf("tried to spend coinbase at depth %d", nSpendHeight - coin.nHeight));
                             }
                             else {
