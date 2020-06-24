@@ -163,7 +163,7 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
 {
     // are the actual inputs available?
     if (!inputs.HaveInputs(tx)) {
-        return state.DoS(0, ValidationInvalidReason::TX_MISSING_INPUTS, false, REJECT_INVALID, "bad-txns-inputs-missingorspent", false,
+        return state.Invalid(ValidationInvalidReason::TX_MISSING_INPUTS, false, REJECT_INVALID, "bad-txns-inputs-missingorspent",
                          strprintf("%s: inputs missing/spent", __func__));
     }
 
@@ -176,7 +176,7 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
             if (coin.IsCoinBase()) {
                 if (coin.nHeight < 225001) {
                     if (nSpendHeight - coin.nHeight < COINBASE_MATURITY)
-                        return state.DoS(0, ValidationInvalidReason::TX_MISSING_INPUTS, false, REJECT_INVALID, "bad-txns-premature-spend-of-coinbase", false,
+                        return state.Invalid(ValidationInvalidReason::TX_MISSING_INPUTS, false, REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
                             strprintf("tried to spend coinbase at depth %d", nSpendHeight - coin.nHeight));
                 } else {
                     if (nSpendHeight - coin.nHeight < COINBASE_MATURITY_2) {
@@ -189,9 +189,6 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
                         } else {
                             if (strict) {
                                 return state.Invalid(ValidationInvalidReason::TX_MISSING_INPUTS, false, REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
-                                // This could cause a chain split in the current situation.
-                                // TODO: fix this when old wallets aren't part of the network any more.
-                                // return state.DoS(0, ValidationInvalidReason::TX_MISSING_INPUTS, false, REJECT_INVALID, "bad-txns-premature-spend-of-coinbase", false,
                                     strprintf("tried to spend coinbase at depth %d", nSpendHeight - coin.nHeight));
                             }
                             else {
@@ -204,20 +201,20 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
         // Check for negative or overflow input values
         nValueIn += coin.out.nValue;
         if (!MoneyRange(coin.out.nValue) || !MoneyRange(nValueIn)) {
-            return state.DoS(100, ValidationInvalidReason::CONSENSUS, false, REJECT_INVALID, "bad-txns-inputvalues-outofrange");
+            return state.Invalid(ValidationInvalidReason::CONSENSUS, false, REJECT_INVALID, "bad-txns-inputvalues-outofrange");
         }
     }
 
     const CAmount value_out = tx.GetValueOut();
     if (nValueIn < value_out) {
-        return state.DoS(100, ValidationInvalidReason::CONSENSUS, false, REJECT_INVALID, "bad-txns-in-belowout", false,
+        return state.Invalid(ValidationInvalidReason::CONSENSUS, false, REJECT_INVALID, "bad-txns-in-belowout",
             strprintf("value in (%s) < value out (%s)", FormatMoney(nValueIn), FormatMoney(value_out)));
     }
 
     // Tally transaction fees
     const CAmount txfee_aux = nValueIn - value_out;
     if (!MoneyRange(txfee_aux)) {
-        return state.DoS(100, ValidationInvalidReason::CONSENSUS, false, REJECT_INVALID, "bad-txns-fee-outofrange");
+        return state.Invalid(ValidationInvalidReason::CONSENSUS, false, REJECT_INVALID, "bad-txns-fee-outofrange");
     }
 
     txfee = txfee_aux;
