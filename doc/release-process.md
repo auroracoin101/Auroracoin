@@ -251,8 +251,6 @@ digibyte-${VERSION}-x86_64-linux-gnu.tar.gz
 digibyte-${VERSION}-osx64.tar.gz
 digibyte-${VERSION}-osx.dmg
 digibyte-${VERSION}.tar.gz
-digibyte-${VERSION}-win32-setup.exe
-digibyte-${VERSION}-win32.zip
 digibyte-${VERSION}-win64-setup.exe
 digibyte-${VERSION}-win64.zip
 ```
