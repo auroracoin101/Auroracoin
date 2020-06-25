@@ -462,7 +462,7 @@ UniValue getinfo(const JSONRPCRequest& request)
     obj.pushKV("version", CLIENT_VERSION);
     obj.pushKV("protocolversion", PROTOCOL_VERSION);
 
-    obj.pushKV("blocks", (int)chainActive.Height());
+    obj.pushKV("blocks", (int)::ChainActive().Height());
     obj.pushKV("timeoffset", GetTimeOffset());
     obj.pushKV("connections", (int)g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL));
     obj.pushKV("proxy", (proxy.IsValid() ? proxy.proxy.ToStringIPPort() : std::string()));
