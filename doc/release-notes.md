@@ -1,3 +1,20 @@
+*After branching off for a major version release of Auroracoin, use this
+template to create the initial release notes draft.*
+
+*The release notes draft is a temporary file that can be added to by anyone. See
+[/doc/developer-notes.md#release-notes](/doc/developer-notes.md#release-notes)
+for the process.*
+
+*Create the draft, named* "*version* Release Notes Draft"
+*(e.g. "0.20.0 Release Notes Draft"), as a collaborative wiki in:*
+
+https://github.com/aurarad/Auroracoin/wiki/
+
+*Before the final release, move the notes back to this git repository.*
+
+*version* Release Notes Draft
+===============================
+
 Auroracoin version 0.18.1 is now available from:
 
   <https://bitcoincore.org/bin/bitcoin-core-0.18.1/>
