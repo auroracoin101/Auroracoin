@@ -306,4 +306,15 @@ public:
     }
 };
 
+// Utility class for indicating to compiler thread analysis that a mutex is
+// locked (when it couldn't be determined otherwise).
+struct SCOPED_LOCKABLE LockAnnotation
+{
+    template <typename Mutex>
+    explicit LockAnnotation(Mutex& mutex) EXCLUSIVE_LOCK_FUNCTION(mutex)
+    {
+    }
+    ~LockAnnotation() UNLOCK_FUNCTION() {}
+};
+
 #endif // AURORACOIN_SYNC_H
