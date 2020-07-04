@@ -80,7 +80,6 @@ BASE_SCRIPTS = [
     'feature_fee_estimation.py',
     'wallet_hd.py',
     'wallet_backup.py',
-    'p2p_dandelion.py', # p2p dandelion anonymous tx test
     # vv Tests less than 5m vv
     'mining_getblocktemplate_longpoll.py',
     'feature_maxuploadtarget.py',
