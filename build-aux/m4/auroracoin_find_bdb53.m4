@@ -7,7 +7,7 @@ AC_DEFUN([AURORACOIN_FIND_BDB53],[
   AC_ARG_VAR(BDB_LIBS, [Linker flags for BerkeleyDB, bypasses autodetection])
 
   if test "x$BDB_CFLAGS" = "x"; then
-    AC_MSG_CHECKING([for Berkeley DB C++ headers])
+    AC_MSG_CHECKING([for Berkeley DB 5.3 C++ headers])
     BDB_CPPFLAGS=
     bdbpath=X
     bdb53path=X
