@@ -146,6 +146,7 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "getblockhashes", 1, "low" },
     { "getblockhashes", 2, "options"},
     { "setnetworkactive", 0, "state" },
+    { "setwalletflag", 1, "value" },
     { "getmempoolancestors", 1, "verbose" },
     { "getmempooldescendants", 1, "verbose" },
     { "bumpfee", 1, "options" },
