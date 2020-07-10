@@ -424,7 +424,7 @@ libauroracoin_consensus_a_SOURCES = \
   crypto/luffa.c \
   crypto/shavite.c \
   crypto/simd.c \
-  crypto/skein.c \
+  crypto/skein.cpp \
   crypto/hashgroestl.h \
   crypto/hashqubit.h \
   crypto/hashskein.h \
