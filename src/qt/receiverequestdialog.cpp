@@ -10,7 +10,6 @@
 #include <qt/auroracoinunits.h>
 #include <qt/guiutil.h>
 #include <qt/optionsmodel.h>
-#include <qt/qrimagewidget.h>
 
 #include <QClipboard>
 #include <QPixmap>

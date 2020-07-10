@@ -5,8 +5,6 @@
 
 #include <qt/auroracoinunits.h>
 
-#include <primitives/transaction.h>
-
 #include <QStringList>
 
 AuroracoinUnits::AuroracoinUnits(QObject *parent):

@@ -27,9 +27,7 @@
 #include <scheduler.h>
 #include <tinyformat.h>
 #include <txmempool.h>
-#include <ui_interface.h>
 #include <util/system.h>
-#include <util/moneystr.h>
 #include <util/strencodings.h>
 #include <util/validation.h>
 
@@ -71,11 +69,12 @@ static constexpr int HISTORICAL_BLOCK_AGE = 7 * 24 * 60 * 60;
 static constexpr int32_t MAX_PEER_TX_IN_FLIGHT = 100;
 
 /** How many microseconds to delay requesting transactions from inbound peers */
-static constexpr int64_t INBOUND_PEER_TX_DELAY = 2 * 1000000; // 2 seconds
+static constexpr std::chrono::microseconds INBOUND_PEER_TX_DELAY{std::chrono::seconds{2}};
 /** How long to wait (in microseconds) before downloading a transaction from an additional peer */
 static constexpr int64_t GETDATA_TX_INTERVAL = 60 * 1000000; // 1 minute
+static constexpr std::chrono::microseconds CHRONO_GETDATA_TX_INTERVAL{std::chrono::seconds{60}};
 /** Maximum delay (in microseconds) for transaction requests to avoid biasing some peers over others. */
-static constexpr int64_t MAX_GETDATA_RANDOM_DELAY = 2 * 1000000; // 2 seconds
+static constexpr std::chrono::microseconds MAX_GETDATA_RANDOM_DELAY{std::chrono::seconds{2}};
 /** How long to wait (in microseconds) before expiring an in-flight getdata request to a peer */
 static constexpr std::chrono::microseconds TX_EXPIRY_INTERVAL{GETDATA_TX_INTERVAL * 10};
 
@@ -681,6 +680,15 @@ static void FindNextBlocksToDownload(NodeId nodeid, unsigned int count, std::vec
     }
 }
 
+std::chrono::microseconds GetTxRequestTime(const uint256& txid) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
+{
+    auto it = g_already_asked_for.find(txid);
+    if (it != g_already_asked_for.end()) {
+        return it->second;
+    }
+    return {};
+}
+
 void UpdateTxRequestTime(const uint256& txid, std::chrono::microseconds request_time) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
 {
     auto it = g_already_asked_for.find(txid);
@@ -691,17 +699,17 @@ void UpdateTxRequestTime(const uint256& txid, std::chrono::microseconds request_
     }
 }
 
-int64_t CalculateTxGetDataTime(const uint256& txid, int64_t current_time, bool use_inbound_delay) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
+std::chrono::microseconds CalculateTxGetDataTime(const uint256& txid, std::chrono::microseconds current_time, bool use_inbound_delay) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
 {
-    int64_t process_time;
-    int64_t last_request_time = GetTxRequestTime(txid);
+    std::chrono::microseconds process_time;
+    const auto last_request_time = GetTxRequestTime(txid);
     // First time requesting this tx
-    if (last_request_time == 0) {
+    if (last_request_time.count() == 0) {
         process_time = current_time;
     } else {
         // Randomize the delay to avoid biasing some peers over others (such as due to
         // fixed ordering of peer processing in ThreadMessageHandler)
-        process_time = last_request_time + GETDATA_TX_INTERVAL + GetRand(MAX_GETDATA_RANDOM_DELAY);
+        process_time = last_request_time + CHRONO_GETDATA_TX_INTERVAL + GetRandMicros(MAX_GETDATA_RANDOM_DELAY);
     }
 
     // We delay processing announcements from inbound peers
