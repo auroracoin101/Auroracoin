@@ -9,7 +9,6 @@
 
 #include <qt/walletmodeltransaction.h>
 
-#include <interfaces/node.h>
 #include <policy/policy.h>
 
 WalletModelTransaction::WalletModelTransaction(const QList<SendCoinsRecipient> &_recipients) :

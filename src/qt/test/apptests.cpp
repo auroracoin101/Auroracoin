@@ -5,7 +5,6 @@
 #include <qt/test/apptests.h>
 
 #include <chainparams.h>
-#include <init.h>
 #include <qt/auroracoin.h>
 #include <qt/auroracoingui.h>
 #include <qt/networkstyle.h>
@@ -15,9 +14,6 @@
 
 #if defined(HAVE_CONFIG_H)
 #include <config/auroracoin-config.h>
-#endif
-#ifdef ENABLE_WALLET
-#include <wallet/db.h>
 #endif
 
 #include <QAction>

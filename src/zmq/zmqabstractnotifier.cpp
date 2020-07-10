@@ -4,7 +4,6 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <zmq/zmqabstractnotifier.h>
-#include <util/system.h>
 
 const int CZMQAbstractNotifier::DEFAULT_ZMQ_SNDHWM;
 
