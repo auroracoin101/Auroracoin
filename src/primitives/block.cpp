@@ -9,8 +9,8 @@
 #include <crypto/common.h>
 #include <crypto/hashgroestl.h>
 #include <crypto/hashqubit.h>
-#include <crypto/hashskein.h>
 #include <crypto/scrypt.h>
+#include <crypto/skein.h>
 #include <consensus/consensus.h>
 #include <chainparams.h>
 #include <util/system.h>
@@ -57,7 +57,11 @@ uint256 CBlockHeader::GetPoWAlgoHash(const Consensus::Params& params) const
         case ALGO_GROESTL:
             return HashGroestl(BEGIN(nVersion), END(nNonce));
         case ALGO_SKEIN:
-            return HashSkein(BEGIN(nVersion), END(nNonce));
+        {
+            uint256 thash;
+            skein(BEGIN(nVersion), BEGIN(thash));
+            return thash;
+        }
         case ALGO_QUBIT:
             return HashQubit(BEGIN(nVersion), END(nNonce));
         case ALGO_UNKNOWN:

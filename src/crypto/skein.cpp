@@ -33,9 +33,9 @@
 #include <stddef.h>
 #include <string.h>
 
-#include "hash.h"
 #include "sph_skein.h"
 #include "uint256.h"
+#include <openssl/sha.h>
 
 #if SPH_SMALL_FOOTPRINT && !defined SPH_SMALL_FOOTPRINT_SKEIN
 #define SPH_SMALL_FOOTPRINT_SKEIN   1
@@ -1253,7 +1253,7 @@ void skein(const char *input, char *output)
     sph_skein512(&ctx_skein, input, 80);
     sph_skein512_close(&ctx_skein, static_cast<void*>(&hash1));
 
-    CHash256().Write((unsigned char*)&hash1, 64).Finalize((unsigned char*)output);
+    SHA256((unsigned char*)&hash1, 64, (unsigned char*)output);
 }
 
 #endif
