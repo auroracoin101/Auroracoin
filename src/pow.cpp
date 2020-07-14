@@ -225,7 +225,7 @@ unsigned int GetNextWorkRequiredMULTI(const CBlockIndex* pindexLast, const Conse
 	// Limit adjustment step
 	// Use medians to prevent time-warp attacks
 	int64_t nActualTimespan = pindexLast-> GetMedianTimePast() - pindexFirst->GetMedianTimePast();
-	nActualTimespan = params.nAveragingTargetTimespanV4 + (nActualTimespan - params.nAveragingTargetTimespanV4)/4;
+	nActualTimespan = params.nAveragingTargetTimespan + (nActualTimespan - params.nAveragingTargetTimespan)/4;
 
 	//LogPrintf("nActualTimespan = %d before bounds\n", nActualTimespan);
 
@@ -238,7 +238,7 @@ unsigned int GetNextWorkRequiredMULTI(const CBlockIndex* pindexLast, const Conse
 	bnNew.SetCompact(pindexPrevAlgo->nBits);
 
 	bnNew *= nActualTimespan;
-	bnNew /= params.nAveragingTargetTimespanV4;
+	bnNew /= params.nAveragingTargetTimespan;
 
 	//Per-algo retarget
 	int nAdjustments = pindexPrevAlgo->nHeight + NUM_ALGOS - 1 - pindexLast->nHeight;
