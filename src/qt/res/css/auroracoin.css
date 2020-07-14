@@ -1104,7 +1104,7 @@ WalletFrame {
     /* MODAL OVERLAY */
     
     QWidget#bgWidget { /* The 'frame' overlaying the overview-page */
-        background:#93accdc;
+        background:#93accd;
         color:#fff;
         padding-left:10px;
         padding-right:10px;
