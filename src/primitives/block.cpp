@@ -7,7 +7,7 @@
 #include <primitives/block.h>
 #include <util/strencodings.h>
 #include <crypto/common.h>
-#include <crypto/hashgroestl.h>
+#include <crypto/groestl.h>
 #include <crypto/hashqubit.h>
 #include <crypto/scrypt.h>
 #include <crypto/skein.h>
@@ -55,7 +55,11 @@ uint256 CBlockHeader::GetPoWAlgoHash(const Consensus::Params& params) const
             return thash;
         }
         case ALGO_GROESTL:
-            return HashGroestl(BEGIN(nVersion), END(nNonce));
+        {
+            uint256 thash;
+            groestl(BEGIN(nVersion), BEGIN(thash));
+            return thash;
+        }
         case ALGO_SKEIN:
         {
             uint256 thash;
