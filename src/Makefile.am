@@ -418,7 +418,8 @@ libauroracoin_consensus_a_SOURCES = \
   crypto/bmw.c \
   crypto/cubehash.c \
   crypto/echo.c \
-  crypto/groestl.c \
+  crypto/groestl.cpp \
+  crypto/groestl.h \
   crypto/jh.c \
   crypto/keccak.c \
   crypto/luffa.c \
@@ -426,7 +427,6 @@ libauroracoin_consensus_a_SOURCES = \
   crypto/simd.c \
   crypto/skein.cpp \
   crypto/skein.h \
-  crypto/hashgroestl.h \
   crypto/hashqubit.h \
   crypto/scrypt.cpp \
   crypto/scrypt-sse2.cpp \
