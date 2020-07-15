@@ -1067,50 +1067,6 @@ bool ReadRawBlockFromDisk(std::vector<uint8_t>& block, const CBlockIndex* pindex
     return ReadRawBlockFromDisk(block, block_pos, message_start);
 }
 
-CAmount GetDGBSubsidy(int nHeight, const Consensus::Params& consensusParams) {
-	// thanks to RealSolid & WDC for helping out with this code
-	CAmount qSubsidy;
-    
-	if (nHeight < consensusParams.alwaysUpdateDiffChangeTarget)
-	{
-		qSubsidy = 8000*COIN;
-		int blocks = nHeight - consensusParams.nDiffChangeTarget;
-		int weeks = (blocks / consensusParams.patchBlockRewardDuration)+1;
-		//decrease reward by 0.5% every 10080 blocks
-		for(int i = 0; i < weeks; i++)  qSubsidy -= (qSubsidy/200);
-	}
-	else if(nHeight<consensusParams.workComputationChangeTarget)
-	{
-		qSubsidy = 2459*COIN;
-		int blocks = nHeight - consensusParams.alwaysUpdateDiffChangeTarget;
-		int weeks = (blocks / consensusParams.patchBlockRewardDuration2)+1;
-		//decrease reward by 1% every month
-		for(int i = 0; i < weeks; i++)  qSubsidy -= (qSubsidy/100);
-	}
-	else
-	{
-		//hard fork point: 1.43M
-		//subsidy at hard fork: 2157
-		//monthly decay factor: 98884/100000
-		//last block number: 41668798
-		//expected years after hard fork: 19.1395
-
-		qSubsidy = 2157*COIN/2;
-		int64_t blocks = nHeight - consensusParams.workComputationChangeTarget;
-		int64_t months = blocks*15/(3600*24*365/12);
-		for(int64_t i = 0; i < months; i++)
-		{
-			qSubsidy*=98884;
-			qSubsidy/=100000;
-		}
-	}
-
-	return qSubsidy;
-
-}
-
-
-
 // GetBlockSubsidy consensusParams is a Digibytism
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
