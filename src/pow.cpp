@@ -229,10 +229,10 @@ unsigned int GetNextWorkRequiredMULTI(const CBlockIndex* pindexLast, const Conse
 
 	//LogPrintf("nActualTimespan = %d before bounds\n", nActualTimespan);
 
-	if (nActualTimespan < params.nMinActualTimespanV4)
-		nActualTimespan = params.nMinActualTimespanV4;
-	if (nActualTimespan > params.nMaxActualTimespanV4)
-		nActualTimespan = params.nMaxActualTimespanV4;
+	if (nActualTimespan < params.nMinActualTimespan)
+		nActualTimespan = params.nMinActualTimespan;
+	if (nActualTimespan > params.nMaxActualTimespan)
+		nActualTimespan = params.nMaxActualTimespan;
 
 	//Global retarget
 	bnNew.SetCompact(pindexPrevAlgo->nBits);

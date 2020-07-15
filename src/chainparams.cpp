@@ -105,8 +105,8 @@ public:
         consensus.nMaxAdjustDown = 16;
         consensus.nMaxAdjustUp = 8;
 
-        consensus.nMinActualTimespanV4 = consensus.nAveragingTargetTimespan * (100 - consensus.nMaxAdjustUp) / 100;
-        consensus.nMaxActualTimespanV4 = consensus.nAveragingTargetTimespan * (100 + consensus.nMaxAdjustDown) / 100;
+        consensus.nMinActualTimespan = consensus.nAveragingTargetTimespan * (100 - consensus.nMaxAdjustUp) / 100;
+        consensus.nMaxActualTimespan = consensus.nAveragingTargetTimespan * (100 + consensus.nMaxAdjustDown) / 100;
 
         consensus.nLocalTargetAdjustment = 4; //target adjustment per algo
 
@@ -291,8 +291,8 @@ public:
         consensus.nMaxAdjustDown = 16;
         consensus.nMaxAdjustUp = 8;
 
-        consensus.nMinActualTimespanV4 = consensus.nAveragingTargetTimespan * (100 - consensus.nMaxAdjustUp) / 100;
-        consensus.nMaxActualTimespanV4 = consensus.nAveragingTargetTimespan * (100 + consensus.nMaxAdjustDown) / 100;
+        consensus.nMinActualTimespan = consensus.nAveragingTargetTimespan * (100 - consensus.nMaxAdjustUp) / 100;
+        consensus.nMaxActualTimespan = consensus.nAveragingTargetTimespan * (100 + consensus.nMaxAdjustDown) / 100;
 
         consensus.nLocalTargetAdjustment = 4; //target adjustment per algo
         consensus.nLocalDifficultyAdjustment = 4; //difficulty adjustment per algo
@@ -430,8 +430,8 @@ public:
         consensus.nMaxAdjustDown = 16;
         consensus.nMaxAdjustUp = 8;
 
-        consensus.nMinActualTimespanV4 = consensus.nAveragingTargetTimespan * (100 - consensus.nMaxAdjustUp) / 100;
-        consensus.nMaxActualTimespanV4 = consensus.nAveragingTargetTimespan * (100 + consensus.nMaxAdjustDown) / 100;
+        consensus.nMinActualTimespan = consensus.nAveragingTargetTimespan * (100 - consensus.nMaxAdjustUp) / 100;
+        consensus.nMaxActualTimespan = consensus.nAveragingTargetTimespan * (100 + consensus.nMaxAdjustDown) / 100;
 
         consensus.nLocalTargetAdjustment = 4; //target adjustment per algo
         consensus.nLocalDifficultyAdjustment = 4; //difficulty adjustment per algo
