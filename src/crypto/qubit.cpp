@@ -1,44 +1,33 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The DigiByte developers
+// Copyright (c) 2009-2012 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef HASH_QUBIT
-#define HASH_QUBIT
 
 #include "uint256.h"
-#include "serialize.h"
+/*#include "serialize.h"*/
 #include "sph_luffa.h"
 #include "sph_cubehash.h"
 #include "sph_shavite.h"
 #include "sph_simd.h"
 #include "sph_echo.h"
 
-#include <openssl/sha.h>
-#include <openssl/ripemd.h>
+/*#include <openssl/sha.h>
+#include <openssl/ripemd.h>*/
 #include <vector>
 
 
-template<typename T1>
-inline uint256 HashQubit(const T1 pbegin, const T1 pend)
-
+uint256 qubit(const char *input)
 {
-    sph_luffa512_context	 ctx_luffa;
-	sph_cubehash512_context  ctx_cubehash;
-	sph_shavite512_context	 ctx_shavite;
-	sph_simd512_context		 ctx_simd;
-	sph_echo512_context		 ctx_echo;
-    static unsigned char pblank[1];
-
-#ifndef QT_NO_DEBUG
-    //std::string strhash;
-    //strhash = "";
-#endif
-
+    sph_luffa512_context     ctx_luffa;
+    sph_cubehash512_context  ctx_cubehash;
+    sph_shavite512_context   ctx_shavite;
+    sph_simd512_context      ctx_simd;
+    sph_echo512_context      ctx_echo;
 
     uint512 hash[5];
 
     sph_luffa512_init(&ctx_luffa);
-    sph_luffa512 (&ctx_luffa, (pbegin == pend ? pblank : static_cast<const void*>(&pbegin[0])), (pend - pbegin) * sizeof(pbegin[0]));
+    sph_luffa512(&ctx_luffa, input, 80);
     sph_luffa512_close(&ctx_luffa, static_cast<void*>(&hash[0]));
 
     sph_cubehash512_init(&ctx_cubehash);
@@ -58,6 +47,5 @@ inline uint256 HashQubit(const T1 pbegin, const T1 pend)
     sph_echo512_close(&ctx_echo, static_cast<void*>(&hash[4]));
 
     return hash[4].trim256();
-}
 
-#endif
+}

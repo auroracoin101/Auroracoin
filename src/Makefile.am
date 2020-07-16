@@ -423,11 +423,12 @@ libauroracoin_consensus_a_SOURCES = \
   crypto/jh.c \
   crypto/keccak.c \
   crypto/luffa.c \
+  crypto/qubit.cpp \
+  crypto/qubit.h \
   crypto/shavite.c \
   crypto/simd.c \
   crypto/skein.cpp \
   crypto/skein.h \
-  crypto/hashqubit.h \
   crypto/scrypt.cpp \
   crypto/scrypt-sse2.cpp \
   crypto/sph_blake.h \

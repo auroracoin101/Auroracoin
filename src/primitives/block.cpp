@@ -8,7 +8,7 @@
 #include <util/strencodings.h>
 #include <crypto/common.h>
 #include <crypto/groestl.h>
-#include <crypto/hashqubit.h>
+#include <crypto/qubit.h>
 #include <crypto/scrypt.h>
 #include <crypto/skein.h>
 #include <consensus/consensus.h>
@@ -67,7 +67,11 @@ uint256 CBlockHeader::GetPoWAlgoHash(const Consensus::Params& params) const
             return thash;
         }
         case ALGO_QUBIT:
-            return HashQubit(BEGIN(nVersion), END(nNonce));
+        {
+            uint256 thash;
+            thash = qubit(BEGIN(nVersion));
+            return thash;
+        }
         case ALGO_UNKNOWN:
             // This block will be rejected anyway, but returning an always-invalid
             // PoW hash will allow it to be rejected sooner.
