@@ -44,41 +44,41 @@ int CBlockHeader::GetAlgo() const
 
 uint256 CBlockHeader::GetPoWAlgoHash(const Consensus::Params& params) const
 {
+    uint256 thash;
+
     switch (GetAlgo())
     {
         case ALGO_SHA256D:
+        {
             return GetHash();
+        }
         case ALGO_SCRYPT:
         {
-            uint256 thash;
             scrypt_1024_1_1_256(BEGIN(nVersion), END(thash));
-            return thash;
+            break;
         }
         case ALGO_GROESTL:
         {
-            uint256 thash;
             groestl(BEGIN(nVersion), BEGIN(thash));
-            return thash;
+            break;
         }
         case ALGO_SKEIN:
         {
-            uint256 thash;
             skein(BEGIN(nVersion), BEGIN(thash));
-            return thash;
+            break;
         }
         case ALGO_QUBIT:
         {
-            uint256 thash;
             thash = qubit(BEGIN(nVersion));
-            return thash;
+            break;
         }
         case ALGO_UNKNOWN:
             // This block will be rejected anyway, but returning an always-invalid
             // PoW hash will allow it to be rejected sooner.
-            return ArithToUint256(~arith_uint256(0));
+            thash = ArithToUint256(~arith_uint256(0));
+            break;
     }
-    assert(false);
-    return GetHash();
+    return thash;
 }
 
 std::string CBlock::ToString(const Consensus::Params& params) const
