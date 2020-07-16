@@ -111,8 +111,8 @@ public:
         consensus.nLocalTargetAdjustment = 4; //target adjustment per algo
 
 
-        // DigiByte Hard Fork Block Heights
-        consensus.multiAlgoDiffChangeTarget = 145000; // Block 145,000 MultiAlgo Hard Fork
+        // Auroracoin Hard Fork Block Heights
+        consensus.multiAlgoDiffChangeTarget = 225000; // Block 225,000 MultiAlgo Hard Fork
         consensus.workComputationChangeTarget = 1430000; // Block 1,430,000 DigiSpeed Hard Fork
 
         consensus.fPowAllowMinDifficultyBlocks = false;
