@@ -3373,14 +3373,6 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
     if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams, block.GetAlgo()))
         return state.Invalid(ValidationInvalidReason::BLOCK_INVALID_HEADER, false, REJECT_INVALID, "bad-diffbits", "incorrect proof of work");
 
-    // Check for non-standard SCRYPT version.
-    if (VersionBitsState(pindexPrev, consensusParams, Consensus::DEPLOYMENT_RESERVEALGO, versionbitscache) == ThresholdState::ACTIVE &&
-        block.GetAlgo() == ALGO_SCRYPT &&
-        (block.nVersion & BLOCK_VERSION_ALGO) != BLOCK_VERSION_SCRYPT)
-    {
-        return state.Invalid(ValidationInvalidReason::BLOCK_INVALID_HEADER, false, REJECT_INVALID, "invalid-algo", "invalid algo id");
-    }
-
     // Check against checkpoints
     if (fCheckpointsEnabled) {
         // Don't accept any forks from the main chain prior to last checkpoint.
