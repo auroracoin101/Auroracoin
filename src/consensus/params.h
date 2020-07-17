@@ -97,33 +97,23 @@ struct Params {
     int64_t patchBlockRewardDuration;
     int64_t patchBlockRewardDuration2;
 
-	int64_t nAveragingInterval;
+    int64_t nAveragingInterval;
     int64_t multiAlgoTargetSpacing;
-	int64_t multiAlgoTargetSpacingV4;
     int64_t nAveragingTargetTimespan;
-	int64_t nAveragingTargetTimespanV4;
 
-	int64_t nMaxAdjustDown;
-	int64_t nMaxAdjustUp;
-	int64_t nMaxAdjustDownV3;
-	int64_t nMaxAdjustUpV3;
-	int64_t nMaxAdjustDownV4;
-	int64_t nMaxAdjustUpV4;
+    int64_t nMaxAdjustDown;
+    int64_t nMaxAdjustUp;
 
-	int64_t nMinActualTimespan;
-	int64_t nMaxActualTimespan;
-	int64_t nMinActualTimespanV3;
-	int64_t nMaxActualTimespanV3;
-	int64_t nMinActualTimespanV4;
-	int64_t nMaxActualTimespanV4;
+    int64_t nMinActualTimespan;
+    int64_t nMaxActualTimespan;
 
-	int64_t nLocalTargetAdjustment;
-	int64_t nLocalDifficultyAdjustment;
+    int64_t nLocalTargetAdjustment;
+    int64_t nLocalDifficultyAdjustment;
 
-	int64_t multiAlgoDiffChangeTarget;
-	int64_t alwaysUpdateDiffChangeTarget;
-	int64_t workComputationChangeTarget;
-	int64_t algoSwapChangeTarget;
+    int64_t multiAlgoDiffChangeTarget;
+    int64_t alwaysUpdateDiffChangeTarget;
+    int64_t workComputationChangeTarget;
+    int64_t algoSwapChangeTarget;
 
     uint32_t nOdoShapechangeInterval;
 
