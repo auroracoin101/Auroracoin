@@ -49,14 +49,14 @@ SplashScreen::SplashScreen(interfaces::Node& node, Qt::WindowFlags f, const Netw
 
     // create a bitmap according to device pixelratio
     //QSize splashSize(480*devicePixelRatio,320*devicePixelRatio);
-    QSize splashSize(420*devicePixelRatio,360*devicePixelRatio);
+    QSize splashSize(360*devicePixelRatio,240*devicePixelRatio);
     pixmap = QPixmap(splashSize);
 
     // change to HiDPI if it makes sense
     pixmap.setDevicePixelRatio(devicePixelRatio);
 
     QPainter pixPaint(&pixmap);
-    pixPaint.setPen(QColor(100,100,100));
+    pixPaint.setPen(QColor(255,255,255));
 
     // draw a slightly radial gradient
     QRadialGradient gradient(QPoint(0,0), splashSize.width()/devicePixelRatio);
