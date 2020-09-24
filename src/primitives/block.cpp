@@ -54,7 +54,7 @@ uint256 CBlockHeader::GetPoWAlgoHash(const Consensus::Params& params) const
         }
         case ALGO_SCRYPT:
         {
-            scrypt_1024_1_1_256(BEGIN(nVersion), END(thash));
+            scrypt_1024_1_1_256(BEGIN(nVersion), BEGIN(thash));
             break;
         }
         case ALGO_GROESTL:
