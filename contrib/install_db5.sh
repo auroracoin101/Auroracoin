@@ -87,7 +87,7 @@ patch -p1 < clang.patch
 cd build_unix/
 
 "${BDB_PREFIX}/${BDB_VERSION}/dist/configure" \
-  --enable-cxx --disable-shared --disable-replication --with-pic --enable-posixmutexes --prefix="${BDB_PREFIX}" \
+  --enable-cxx --disable-shared --disable-replication --with-pic --with-mutex=Darwin/_spin_lock_try --prefix="${BDB_PREFIX}" \
   "${@}"
 
 make install
