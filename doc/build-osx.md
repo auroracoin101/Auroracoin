@@ -16,7 +16,7 @@ Then install [Homebrew](https://brew.sh).
 Dependencies
 ----------------------
 
-    brew install automake berkeley-db4 libtool boost miniupnpc openssl pkg-config protobuf python qt libevent qrencode
+    brew install automake libtool boost miniupnpc openssl pkg-config protobuf python qt libevent qrencode
 
 See [dependencies.md](dependencies.md) for a complete overview.
 
@@ -26,29 +26,29 @@ If you want to build the disk image with `make deploy` (.dmg / optional), you ne
 
 Berkeley DB
 -----------
-It is recommended to use Berkeley DB 4.8. If you have to build it yourself,
-you can use [the installation script included in contrib/](/contrib/install_db4.sh)
+It is recommended to use Berkeley DB 5.3. If you have to build it yourself,
+you can use [the installation script included in contrib/](/contrib/install_db5.sh)
 like so:
 
 ```shell
-./contrib/install_db4.sh .
+./contrib/install_db5.sh .
 ```
 
 from the root of the repository.
 
 **Note**: You only need Berkeley DB if the wallet is enabled (see [*Disable-wallet mode*](/doc/build-osx.md#disable-wallet-mode)).
 
-Build DigiByte Core
-------------------------
+Build Auroracoin
+----------------
 
-+1. Clone the Bitcoin Core source code:
+1. Clone the Auroracoin source code:
 
-        git clone https://github.com/digibyte/digibyte
-        cd digibyte
+        git clone https://github.com/aurarad/Auroracoin
+        cd Auroracoin
 
-2.  Build DigiByte Core:
+2.  Build Auroracoin:
 
-    Configure and build the headless DigiByte Core binaries as well as the GUI (if Qt is found).
+    Configure and build the headless Auroracoin binaries as well as the GUI (if Qt is found).
 
     You can disable the GUI build by passing `--without-gui` to configure.
 
@@ -66,12 +66,12 @@ Build DigiByte Core
 
 Disable-wallet mode
 --------------------
-When the intention is to run only a P2P node without a wallet, Bitcoin Core may be compiled in
+When the intention is to run only a P2P node without a wallet, Auroracoin may be compiled in
 disable-wallet mode with:
 
     ./configure --disable-wallet
 
-In this case there is no dependency on Berkeley DB 4.8.
+In this case there is no dependency on Berkeley DB 5.3.
 
 Mining is also possible in disable-wallet mode using the `getblocktemplate` RPC call.
 
@@ -104,7 +104,7 @@ Other commands:
 Notes
 -----
 
-* Tested on OS X 10.10 Yosemite through macOS 10.13 High Sierra on 64-bit Intel processors only.
+* Tested on OS X 10.15.6 Catalina on 64-bit Intel processors only.
 
 * Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/bitcoin/bitcoin/issues/7714)
 
