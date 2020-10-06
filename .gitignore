@@ -85,6 +85,7 @@ src/qt/auroracoin-qt.includes
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
+!depends/Makefile
 auroracoin-qt
 Auroracoin-Qt.app
 background.tiff*
