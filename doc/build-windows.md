@@ -102,6 +102,57 @@ Build using:
     CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=/
     make
 
+Cross-compilation using Gentoo Linux
+------------------------------------
+
+The first step to cross-compile Auroracoin on Gentoo linux is installing crossdev.
+
+    emerge --ask sys-devel/crossdev
+
+This small tool allows one to install various cross-building environments, including the one we will be using.
+
+    crossdev --target x86_64-w64-mingw32
+
+This will install the MinGW cross-toolchain for 64 bit Windows. This will however install the win32 threads version
+of the compiler<sup>[1](#footnote1)</sup>. To switch to the posix threading version, perform the following steps:
+
+Backup /etc/portage/package.use/cross-x86_64-w64-mingw32 as this file will be overwritten in the process.
+
+    USE="libraries idl tools" crossdev --ex-only --ex-pkg cross-x86_64-w64-mingw32/mingw64-runtime -t x86_64-w64-mingw32
+
+Modify /etc/portage/package.use/cross-x86_64-w64-mingw32 to:
+
+    cross-x86_64-w64-mingw32/binutils -multilib
+    cross-x86_64-w64-mingw32/mingw64-runtime libraries idl tools -selinux -multilib
+    cross-x86_64-w64-mingw32/gcc -sanitize -vtv -pie nopie -selinux -boundschecking -d -gcj -gtk -libffi -mudflap -objc -objc++ -objc-gc -multilib
+
+Recompile the compiler, now with the posix threads:
+
+    EXTRA_ECONF="--enable-threads=posix" emerge -1 cross-x86_64-w64-mingw32/gcc
+
+Backup /etc/portage/package.use/cross-x86_64-w64-mingw32 again. Rerun crossdev:
+
+    USE="libraries idl tools" crossdev --ex-only --ex-pkg cross-x86_64-w64-mingw32/mingw64-runtime -t x86_64-w64-mingw32
+
+Make sure /etc/portage/package.use/cross-x86_64-w64-mingw32 looks like this:
+
+    cross-x86_64-w64-mingw32/binutils -multilib
+    cross-x86_64-w64-mingw32/mingw64-runtime libraries idl tools -selinux -multilib
+    cross-x86_64-w64-mingw32/gcc -sanitize -vtv -pie nopie -selinux -boundschecking -d -gcj -gtk -libffi -mudflap -objc -objc++ -objc-gc -multilib
+
+Verify that the compiler has the posix thread model:
+
+    x86_64-w64-mingw32-gcc -v
+
+From within the Auroracoin directory you can now start the build:
+
+    cd depends
+    make HOST=x86_64-w64-mingw32
+    cd ..
+    ./autogen.sh
+    CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=/
+    make
+
 ## Depends system
 
 For further documentation on the depends system see [README.md](../depends/README.md) in the depends directory.
