@@ -100,7 +100,21 @@ UniValue getaddressmempool(const JSONRPCRequest& request)
             RPCHelpMan{"getaddressmempool",
                 "\nReturns all mempool deltas for an address (requires addressindex to be enabled)..",
                 {},
-                RPCResult{""},
+                RPCResult{
+            "[\n"
+            "  {\n"
+            "    \"address\"  (string) The address base58check encoded\n"
+            "    \"txid\"  (string) The output txid\n"
+            "    \"index\"  (number) The block height\n"
+            "    \"satoshis\"  (number) The number of satoshis of the output\n"
+            "         {\n"
+            "             \"prevtxid\" \n"
+            "             \"prevout\" \n"
+            "         }\n"
+            "    \"timestamp\" (number)\n"
+            "  }\n"
+            "]\n"
+                },
                 RPCExamples{""},
                 }.ToString());
 
