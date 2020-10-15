@@ -170,7 +170,8 @@ static UniValue getpeerinfo(const JSONRPCRequest& request)
         // Use the sanitized form of subver here, to avoid tricksy remote peers from
         // corrupting or modifying the JSON output by putting special characters in
         // their ver message.
-        obj.pushKV("subver", stats.cleanSubVer);
+        obj.pushKV("subver", stats.cleanSubVer);  // Obsolete, use "subversion"
+        obj.pushKV("subversion", stats.cleanSubVer);
         obj.pushKV("inbound", stats.fInbound);
         obj.pushKV("addnode", stats.m_manual_connection);
         obj.pushKV("startingheight", stats.nStartingHeight);

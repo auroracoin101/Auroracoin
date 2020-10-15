@@ -36,7 +36,7 @@ if [ "${DIGIBYTE_GENBUILD_NO_GIT}" != "1" -a -e "$(which git 2>/dev/null)" -a "$
 
     # otherwise generate suffix from git, i.e. string like "59887e8-dirty"
     SUFFIX=$(git rev-parse --short HEAD)
-    git diff-index --quiet HEAD -- || SUFFIX="$SUFFIX-DGB"
+    git diff-index --quiet HEAD -- || SUFFIX="$SUFFIX-AUR"
 fi
 
 if [ -n "$DESC" ]; then

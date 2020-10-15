@@ -72,10 +72,7 @@ const std::string BITCOIN_VERSION(DO_STRINGIZE(BITCOIN_VER));
 
 static std::string FormatVersion(int nVersion)
 {
-    if (nVersion % 100 == 0)
-        return strprintf("%d.%d.%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100);
-    else
-        return strprintf("%d.%d.%d.%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100, nVersion % 100);
+    return strprintf("%d.%02d.%d.%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100, nVersion % 100);
 }
 
 std::string FormatFullVersion()
