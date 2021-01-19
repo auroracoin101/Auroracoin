@@ -115,6 +115,8 @@ public:
         consensus.multiAlgoDiffChangeTarget = 225000; // Block 225,000 MultiAlgo Hard Fork
         consensus.workComputationChangeTarget = 1430000; // Block 1,430,000 DigiSpeed Hard Fork
 
+        consensus.blockSequentialAlgoMaxCount = 5; // Maximum sequential blocks of same algo
+
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 28224; // 28224 - 70% of 40320
