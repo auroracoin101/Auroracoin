@@ -3392,6 +3392,25 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
     if (block.GetBlockTime() > nAdjustedTime + MAX_FUTURE_BLOCK_TIME)
         return state.Invalid(ValidationInvalidReason::BLOCK_TIME_FUTURE, false, REJECT_INVALID, "time-too-new", "block timestamp too far in the future");
 
+    // Check amount of algos in row.
+    if(pindexPrev) {
+        // Check count of sequence of same algo
+        if (nHeight > (consensusParams.multiAlgoDiffChangeTarget + consensusParams.blockSequentialAlgoMaxCount)) {
+            int nAlgo = block.GetAlgo();
+            int nAlgoCount = 1;
+            const CBlockIndex* piPrev = pindexPrev;
+            while (piPrev && (nAlgoCount <= consensusParams.blockSequentialAlgoMaxCount)) {
+               if (piPrev->GetAlgo() != nAlgo)
+                   break;
+               nAlgoCount++;
+               piPrev = piPrev->pprev;
+            }
+            if (nAlgoCount > consensusParams.blockSequentialAlgoMaxCount) {
+               return state.Invalid(ValidationInvalidReason::BLOCK_INVALID_HEADER, false, REJECT_INVALID, "algo-toomany", "too many blocks from same algo");
+            }
+        }
+    }
+
     if(block.nVersion < VERSIONBITS_TOP_BITS && IsWitnessEnabled(pindexPrev, consensusParams))
     {
             return state.Invalid(ValidationInvalidReason::BLOCK_INVALID_HEADER, false, REJECT_OBSOLETE, strprintf("bad-version(0x%08x)", block.nVersion),
