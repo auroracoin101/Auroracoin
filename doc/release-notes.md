@@ -64,6 +64,18 @@ built using Qt 5.9.x, which doesn't support versions of macOS older than
 10.10. Additionally, Auroracoin does not yet change appearance when
 macOS "dark mode" is activated.
 
+Network
+-------
+
+- When fetching a transaction announced by multiple peers, previous versions of
+  Auroracoin would sequentially attempt to download the transaction from each
+  announcing peer until the transaction is received, in the order that those
+  peers' announcements were received.  In this release, the download logic has
+  changed to randomize the fetch order across peers and to prefer sending
+  download requests to outbound peers over inbound peers. This fixes an issue
+  where inbound peers can prevent a node from getting a transaction.
+
+
 Known issues
 ============
 
