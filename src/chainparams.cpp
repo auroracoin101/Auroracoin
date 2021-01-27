@@ -189,7 +189,6 @@ public:
 
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
-        fMineBlocksOnDemand = false;
 
         checkpointData = (CCheckpointData) {
          {
@@ -366,7 +365,6 @@ public:
 
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
-        fMineBlocksOnDemand = false;
 
 
         checkpointData = {
@@ -470,7 +468,6 @@ public:
 
         fDefaultConsistencyChecks = true;
         fRequireStandard = false;
-        fMineBlocksOnDemand = true;
 
         checkpointData = {
             {
