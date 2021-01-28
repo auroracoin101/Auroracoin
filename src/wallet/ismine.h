@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef AURORACOIN_SCRIPT_ISMINE_H
-#define AURORACOIN_SCRIPT_ISMINE_H
+#ifndef AURORACOIN_WALLET_ISMINE_H
+#define AURORACOIN_WALLET_ISMINE_H
 
 #include <script/standard.h>
 
@@ -16,7 +16,7 @@ class CKeyStore;
 class CScript;
 
 /** IsMine() return codes */
-enum isminetype
+enum isminetype : unsigned int
 {
     ISMINE_NO         = 0,
     ISMINE_WATCH_ONLY = 1 << 0,
@@ -51,4 +51,4 @@ struct CachableAmount
     }
 };
 
-#endif // AURORACOIN_SCRIPT_ISMINE_H
+#endif // AURORACOIN_WALLET_ISMINE_H
