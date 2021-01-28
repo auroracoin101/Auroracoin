@@ -1063,20 +1063,21 @@ void AuroracoinGUI::message(const QString& title, QString message, unsigned int 
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
 
-    QString msgType;
+    bool prefix = !(style & CClientUIInterface::MSG_NOPREFIX);
+    style &= ~CClientUIInterface::MSG_NOPREFIX;
 
-    // Prefer supplied title over style based title
+    QString msgType;
     if (!title.isEmpty()) {
         msgType = title;
     } else {
         switch (style) {
         case CClientUIInterface::MSG_ERROR:
             msgType = tr("Error");
-            message = tr("Error: %1").arg(message);
+            if (prefix) message = tr("Error: %1").arg(message);
             break;
         case CClientUIInterface::MSG_WARNING:
             msgType = tr("Warning");
-            message = tr("Warning: %1").arg(message);
+            if (prefix) message = tr("Warning: %1").arg(message);
             break;
         case CClientUIInterface::MSG_INFORMATION:
             msgType = tr("Information");
