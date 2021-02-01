@@ -373,7 +373,7 @@ SECONDARY: $(QT_QM)
 
 $(srcdir)/qt/auroracoinstrings.cpp: $(libauroracoin_server_a_SOURCES) $(libauroracoin_wallet_a_SOURCES) $(libauroracoin_common_a_SOURCES) $(libauroracoin_zmq_a_SOURCES) $(libauroracoin_consensus_a_SOURCES) $(libauroracoin_util_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
-	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" COPYRIGHT_HOLDERS="$(COPYRIGHT_HOLDERS)" COPYRIGHT_HOLDERS_SUBSTITUTION="$(COPYRIGHT_HOLDERS_SUBSTITUTION)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
+	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) COPYRIGHT_HOLDERS="$(COPYRIGHT_HOLDERS)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
 translate: $(srcdir)/qt/auroracoinstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(AURORACOIN_QT_BASE_CPP) qt/auroracoin.cpp $(AURORACOIN_QT_WINDOWS_CPP) $(AURORACOIN_QT_WALLET_CPP) $(AURORACOIN_QT_H) $(AURORACOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
