@@ -75,6 +75,24 @@ Network
   download requests to outbound peers over inbound peers. This fixes an issue
   where inbound peers can prevent a node from getting a transaction.
 
+Low-level changes
+=================
+
+RPC
+---
+
+
+Tests
+-----
+
+- The regression test chain, that can be enabled by the `-regtest` command line
+  flag, now requires transactions to not violate standard policy by default.
+  Making the default the same as for mainnet, makes it easier to test mainnet
+  behavior on regtest. Be reminded that the testnet still allows non-standard
+  txs by default and that the policy can be locally adjusted with the
+  `-acceptnonstdtxn` command line flag for both test chains.
+
+
 
 Known issues
 ============
