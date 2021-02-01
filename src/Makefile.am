@@ -357,6 +357,8 @@ crypto_libauroracoin_crypto_base_a_SOURCES = \
   crypto/aes_helper.c \
   crypto/aes.h \
   crypto/brg_endian.h \
+  crypto/chacha_poly_aead.h \
+  crypto/chacha_poly_aead.cpp \
   crypto/chacha20.h \
   crypto/chacha20.cpp \
   crypto/common.h \
@@ -653,7 +655,7 @@ auroracoin_wallet_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(CRYPTO_LIBS) $(EVENT_PTHR
 # auroracoinconsensus library #
 if BUILD_AURORACOIN_LIBS
 include_HEADERS = script/auroracoinconsensus.h
-libauroracoinconsensus_la_SOURCES = $(crypto_libauroracoin_crypto_base_a_SOURCES) $(libauroracoin_consensus_a_SOURCES)
+libauroracoinconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libauroracoin_crypto_base_a_SOURCES) $(libauroracoin_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
   libauroracoinconsensus_la_SOURCES += compat/glibc_compat.cpp
