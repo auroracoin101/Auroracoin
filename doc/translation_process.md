@@ -95,7 +95,7 @@ with each language file to update (replace <lang> with the language code):
 
 ```
 cd src/qt/locale/
-lconvert -locations relative -no-obsolete -i auroracoin_<lang>.ts auroracoin_en.ts -o auroracoin_<lang>.ts
+lconvert -locations relative -no-obsolete -i auroracoin_en.ts auroracoin_<lang>.ts -o auroracoin_<lang>.ts
 ```
 
 **Do not directly download translations** one by one from the Transifex website, as we do a few post-processing steps before committing the translations.
