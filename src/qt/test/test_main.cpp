@@ -7,7 +7,6 @@
 #include <config/auroracoin-config.h>
 #endif
 
-#include <chainparams.h>
 #include <interfaces/node.h>
 #include <qt/auroracoin.h>
 #include <qt/test/apptests.h>
