@@ -91,7 +91,6 @@ def compile_copyright_regex(copyright_style, year_style, name):
 EXPECTED_HOLDER_NAMES = [
     "Satoshi Nakamoto\n",
     "The Bitcoin Core developers\n",
-    "Bitcoin Core Developers\n",
     "The DigiByte developers\n",
     "The Auroracoin developers\n",
     "BitPay Inc\.\n",
