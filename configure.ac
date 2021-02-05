@@ -149,7 +149,8 @@ AC_ARG_ENABLE([extended-functional-tests],
     [use_extended_functional_tests=no])
 
 AC_ARG_ENABLE([fuzz],
-    AS_HELP_STRING([--enable-fuzz],[enable building of fuzz targets (default no)]),
+    AS_HELP_STRING([--enable-fuzz],
+    [enable building of fuzz targets (default no). enabling this will disable all other targets]),
     [enable_fuzz=$enableval],
     [enable_fuzz=no])
 
@@ -1009,6 +1010,29 @@ AC_SUBST(LEVELDB_CPPFLAGS)
 AC_SUBST(LIBLEVELDB)
 AC_SUBST(LIBMEMENV)
 
+dnl enable-fuzz should disable all other targets
+if test "x$enable_fuzz" = "xyes"; then
+  AC_MSG_WARN(enable-fuzz will disable all other targets)
+  build_auroracoin_utils=no
+  build_auroracoin_cli=no
+  build_auroracoin_tx=no
+  build_auroracoin_wallet=no
+  build_auroracoind=no
+  build_auroracoin_libs=no
+  auroracoin_enable_qt=no
+  auroracoin_enable_qt_test=no
+  auroracoin_enable_qt_dbus=no
+  enable_wallet=no
+  use_bench=no
+  use_upnp=no
+  use_zmq=no
+else
+  AURORACOIN_QT_INIT
+
+  dnl sets $auroracoin_enable_qt, $auroracoin_enable_qt_test, $auroracoin_enable_qt_dbus
+  AURORACOIN_QT_CONFIGURE([$use_pkgconfig])
+fi
+
 if test x$enable_wallet != xno; then
     dnl Check for libdb_cxx only if wallet enabled
     AURORACOIN_FIND_BDB53
@@ -1042,11 +1066,6 @@ if test x$have_miniupnpc != xno; then
   ])
 fi
 fi
-
-AURORACOIN_QT_INIT
-
-dnl sets $auroracoin_enable_qt, $auroracoin_enable_qt_test, $auroracoin_enable_qt_dbus
-AURORACOIN_QT_CONFIGURE([$use_pkgconfig])
 
 if test x$build_auroracoin_wallet$build_auroracoin_cli$build_auroracoin_tx$build_auroracoind$auroracoin_enable_qt$use_tests$use_bench = xnonononononono; then
     use_boost=no
