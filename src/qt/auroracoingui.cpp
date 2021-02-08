@@ -644,7 +644,7 @@ void AuroracoinGUI::setWalletController(WalletController* wallet_controller)
     connect(wallet_controller, &WalletController::walletAdded, this, &AuroracoinGUI::addWallet);
     connect(wallet_controller, &WalletController::walletRemoved, this, &AuroracoinGUI::removeWallet);
 
-    for (WalletModel* wallet_model : m_wallet_controller->getWallets()) {
+    for (WalletModel* wallet_model : m_wallet_controller->getOpenWallets()) {
         addWallet(wallet_model);
     }
 }
