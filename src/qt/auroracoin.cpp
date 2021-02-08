@@ -414,7 +414,6 @@ static void SetupUIArgs()
     gArgs.AddArg("-uiplatform", strprintf("Select platform to customize UI for (one of windows, macosx, other; default: %s)", AuroracoinGUI::DEFAULT_UIPLATFORM), true, OptionsCategory::GUI);
 }
 
-#ifndef AURORACOIN_QT_TEST
 int GuiMain(int argc, char* argv[])
 {
 #ifdef WIN32
@@ -597,4 +596,3 @@ int GuiMain(int argc, char* argv[])
     }
     return rv;
 }
-#endif // AURORACOIN_QT_TEST
