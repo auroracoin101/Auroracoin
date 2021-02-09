@@ -357,23 +357,23 @@ static UniValue getrawtransaction(const JSONRPCRequest& request)
         return EncodeHexTx(*tx, RPCSerializationFlags());
     }
 
+    // FIXME: DGB code below that repeats fetching the data, just to fill in some extra blanks that we have already.
+    // Refactor at some time.
     int nHeight = 0;
     int nConfirmations = 0;
     int nBlockTime = 0;
     {
         LOCK(cs_main);
-        BlockMap::iterator mi = mapBlockIndex.find(hash_block);
-        if (mi != mapBlockIndex.end() && (*mi).second) {
-            CBlockIndex* pindex = (*mi).second;
-            if (::ChainActive().Contains(pindex)) {
-                nHeight = pindex->nHeight;
-                nConfirmations = 1 + ::ChainActive().Height() - pindex->nHeight;
-                nBlockTime = pindex->GetBlockTime();
-            } else {
-                nHeight = -1;
-                nConfirmations = 0;
-                nBlockTime = pindex->GetBlockTime();
-            }
+        CBlockIndex* pindex = LookupBlockIndex(hash_block);
+        // Same check to see if in_active_chain.
+        if (::ChainActive().Contains(pindex)) {
+            nHeight = pindex->nHeight;
+            nConfirmations = 1 + ::ChainActive().Height() - pindex->nHeight;
+            nBlockTime = pindex->GetBlockTime();
+        } else {
+            nHeight = -1;
+            nConfirmations = 0;
+            nBlockTime = pindex->GetBlockTime();
         }
     }
 
