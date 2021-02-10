@@ -147,7 +147,6 @@ AURORACOIN_CORE_H = \
   interfaces/wallet.h \
   key.h \
   key_io.h \
-  keystore.h \
   dbwrapper.h \
   limitedmap.h \
   logging.h \
@@ -189,6 +188,7 @@ AURORACOIN_CORE_H = \
   script/keyorigin.h \
   script/sigcache.h \
   script/sign.h \
+  script/signingprovider.h \
   script/standard.h \
   shutdown.h \
   streams.h \
@@ -489,7 +489,6 @@ libauroracoin_common_a_SOURCES = \
   ecwrapper.cpp \
   key.cpp \
   key_io.cpp \
-  keystore.cpp \
   merkleblock.cpp \
   netaddress.cpp \
   netbase.cpp \
@@ -503,6 +502,7 @@ libauroracoin_common_a_SOURCES = \
   scheduler.cpp \
   script/descriptor.cpp \
   script/sign.cpp \
+  script/signingprovider.cpp \
   script/standard.cpp \
   versionbitsinfo.cpp \
   warnings.cpp \
