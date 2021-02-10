@@ -9,7 +9,7 @@
 #define AURORACOIN_OUTPUTTYPE_H
 
 #include <attributes.h>
-#include <keystore.h>
+#include <script/signingprovider.h>
 #include <script/standard.h>
 
 #include <string>
