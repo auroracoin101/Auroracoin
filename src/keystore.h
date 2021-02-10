@@ -56,7 +56,4 @@ public:
 /** Return the CKeyID of the key involved in a script (if there is a unique one). */
 CKeyID GetKeyForDestination(const CBasicKeyStore& store, const CTxDestination& dest);
 
-/** Checks if a CKey is in the given CBasicKeyStore compressed or otherwise*/
-bool HaveKey(const CBasicKeyStore& store, const CKey& key);
-
 #endif // AURORACOIN_KEYSTORE_H
