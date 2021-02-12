@@ -640,7 +640,7 @@ fs::path static GetAutostartFilePath()
     std::string chain = gArgs.GetChainName();
     if (chain == CBaseChainParams::MAIN)
         return GetAutostartDir() / "auroracoin.desktop";
-    return GetAutostartDir() / strprintf("auroracoin-%s.lnk", chain);
+    return GetAutostartDir() / strprintf("auroracoin-%s.desktop", chain);
 }
 
 bool GetStartOnSystemStartup()
