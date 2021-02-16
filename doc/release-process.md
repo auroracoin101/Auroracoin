@@ -7,7 +7,7 @@ Release Process
 
 * Update translations (ping wumpus on IRC) see [translation_process.md](https://github.com/digibyte/digibyte/blob/master/doc/translation_process.md#synchronising-translations).
 
-* Update manpages, see [gen-manpages.sh](https://github.com/digibyte/digibyte/blob/master/contrib/devtools/README.md#gen-manpagessh).
+* Update manpages, see [gen-manpages.sh](https://github.com/aurarad/Auroracoin/blob/master/contrib/devtools/README.md#gen-manpagessh).
 * Update release candidate version in `configure.ac` (`CLIENT_VERSION_RC`).
 
 ### Before every major and minor release
