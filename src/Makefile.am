@@ -313,7 +313,7 @@ libauroracoin_server_a_SOURCES += dummywallet.cpp
 endif
 
 if ENABLE_ZMQ
-libauroracoin_zmq_a_CPPFLAGS = $(AURORACOIN_INCLUDES) $(ZMQ_CFLAGS)
+libauroracoin_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(AURORACOIN_INCLUDES) $(ZMQ_CFLAGS)
 libauroracoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libauroracoin_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
