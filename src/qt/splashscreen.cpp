@@ -17,6 +17,7 @@
 #include <interfaces/wallet.h>
 #include <ui_interface.h>
 #include <util/system.h>
+#include <util/translation.h>
 #include <version.h>
 
 #include <QApplication>

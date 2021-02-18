@@ -41,19 +41,7 @@ int64_t GetStartupTime();
 
 extern const char * const AURORACOIN_CONF_FILENAME;
 
-/** Translate a message to the native language of the user. */
-const extern std::function<std::string(const char*)> G_TRANSLATION_FUN;
-
 extern int miningAlgo;
-
-/**
- * Translation function: Call Translate signal on UI interface, which returns a boost::optional result.
- * If no translation slot is registered, nothing is returned, and simply return the input.
- */
-inline std::string _(const char* psz)
-{
-    return G_TRANSLATION_FUN ? (G_TRANSLATION_FUN)(psz) : psz;
-}
 
 void SetupEnvironment();
 bool SetupNetworking();
