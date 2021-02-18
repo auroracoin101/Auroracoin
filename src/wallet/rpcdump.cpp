@@ -18,9 +18,9 @@
 #include <util/bip32.h>
 #include <util/system.h>
 #include <util/time.h>
-#include <wallet/wallet.h>
-
+#include <util/translation.h>
 #include <wallet/rpcwallet.h>
+#include <wallet/wallet.h>
 
 #include <stdint.h>
 #include <tuple>
