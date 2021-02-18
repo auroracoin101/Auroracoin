@@ -249,7 +249,7 @@ dnl ----
 
 dnl Internal. Check included version of Qt against minimum specified in doc/dependencies.md
 dnl Requires: INCLUDES must be populated as necessary.
-dnl Output: auroracoin_cv_qt5=yes|no
+dnl Output: auroracoin_cv_qt58=yes|no
 AC_DEFUN([_AURORACOIN_QT_CHECK_QT5],[
   AC_CACHE_CHECK(for Qt 5, auroracoin_cv_qt5,[
   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
