@@ -75,6 +75,13 @@ Network
   download requests to outbound peers over inbound peers. This fixes an issue
   where inbound peers can prevent a node from getting a transaction.
 
+Deprecated or removed RPCs
+--------------------------
+
+- The `totalFee` option of the `bumpfee` RPC has been deprecated and will be
+  removed in 0.20.  To continue using this option start with
+  `-deprecatedrpc=totalFee`.  See the `bumpfee` RPC help text for more details.
+
 Low-level changes
 =================
 
