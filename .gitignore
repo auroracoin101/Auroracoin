@@ -91,6 +91,9 @@ auroracoin-qt
 Auroracoin-Qt.app
 background.tiff*
 
+# Qt Creator
+Makefile.am.user
+
 # Unit-tests
 Makefile.test
 auroracoin-qt_test
