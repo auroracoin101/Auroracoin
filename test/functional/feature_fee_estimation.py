@@ -29,6 +29,7 @@ P2SH_2 = CScript([OP_HASH160, hash160(REDEEM_SCRIPT_2), OP_EQUAL])
 # Associated ScriptSig's to spend satisfy P2SH_1 and P2SH_2
 SCRIPT_SIG = [CScript([OP_TRUE, REDEEM_SCRIPT_1]), CScript([OP_TRUE, REDEEM_SCRIPT_2])]
 
+
 def small_txpuzzle_randfee(from_node, conflist, unconflist, amount, min_fee, fee_increment):
     """Create and send a transaction with a random fee.
 
@@ -69,6 +70,7 @@ def small_txpuzzle_randfee(from_node, conflist, unconflist, amount, min_fee, fee
     unconflist.append({"txid": txid, "vout": 1, "amount": amount})
 
     return (ToHex(tx), fee)
+
 
 def split_inputs(from_node, txins, txouts, initial_split=False):
     """Generate a lot of inputs so we can generate a ton of transactions.
@@ -190,22 +192,22 @@ class EstimateFeeTest(DigiByteTestFramework):
         split_inputs(self.nodes[0], self.nodes[0].listunspent(0), self.txouts, True)
 
         # Mine
-        while (len(self.nodes[0].getrawmempool()) > 0):
+        while len(self.nodes[0].getrawmempool()) > 0:
             self.nodes[0].generate(1)
 
         # Repeatedly split those 2 outputs, doubling twice for each rep
         # Use txouts to monitor the available utxo, since these won't be tracked in wallet
         reps = 0
-        while (reps < 5):
+        while reps < 5:
             # Double txouts to txouts2
-            while (len(self.txouts) > 0):
+            while len(self.txouts) > 0:
                 split_inputs(self.nodes[0], self.txouts, self.txouts2)
-            while (len(self.nodes[0].getrawmempool()) > 0):
+            while len(self.nodes[0].getrawmempool()) > 0:
                 self.nodes[0].generate(1)
             # Double txouts2 to txouts
-            while (len(self.txouts2) > 0):
+            while len(self.txouts2) > 0:
                 split_inputs(self.nodes[0], self.txouts2, self.txouts)
-            while (len(self.nodes[0].getrawmempool()) > 0):
+            while len(self.nodes[0].getrawmempool()) > 0:
                 self.nodes[0].generate(1)
             reps += 1
         self.log.info("Finished splitting")
@@ -244,6 +246,7 @@ class EstimateFeeTest(DigiByteTestFramework):
         self.sync_blocks(self.nodes[0:3], wait=.1)
         self.log.info("Final estimates after emptying mempools")
         check_estimates(self.nodes[1], self.fees_per_kb)
+
 
 if __name__ == '__main__':
     EstimateFeeTest().main()
