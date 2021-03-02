@@ -56,7 +56,7 @@ class AuroracoinApplication: public QApplication
 {
     Q_OBJECT
 public:
-    explicit AuroracoinApplication(interfaces::Node& node, int &argc, char **argv);
+    explicit AuroracoinApplication(interfaces::Node& node);
     ~AuroracoinApplication();
 
 #ifdef ENABLE_WALLET
