@@ -79,7 +79,6 @@ class BlockchainTest(DigiByteTestFramework):
 
         keys = [
             'bestblockhash',
-            'bip9_softforks',
             'blocks',
             'chain',
             'chainwork',
