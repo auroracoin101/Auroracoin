@@ -78,7 +78,7 @@ Now, you can either build from self-compiled [depends](/depends/README.md) or in
 
 BerkeleyDB is required for the wallet.
 
-Ubuntu and Debian have their own libdb-dev and libdb++-dev packages, but these will install
+Ubuntu and Debian have their own `libdb-dev` and `libdb++-dev` packages, but these will instal
 BerkeleyDB 5.1 or later. For having binary wallet compatibility with the distributed executables, it is advised
 to build Auroracoin against BerkeleyDB 5.3. If you do not care about wallet compatibility,
 pass `--with-incompatible-bdb` to configure.
