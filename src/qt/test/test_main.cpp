@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
 
     // Don't remove this, it's needed to access
     // QApplication:: and QCoreApplication:: in the tests
-    AuroracoinApplication app(*node, argc, argv);
+    AuroracoinApplication app(*node);
     app.setApplicationName("Auroracoin-Qt-test");
 
     AppTests app_tests(app);
