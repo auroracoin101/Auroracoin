@@ -52,3 +52,13 @@ rpcport=4000
 The configuration file is not automatically created; you can create it using your favorite text editor. By default, the configuration file name is `auroracoin.conf` and it is located in the Auroracoin data directory, but both the Auroracoin data directory and the configuration file path may be  changed using the `-datadir` and `-conf` command-line options.
 
 The `includeconf=<file>` option in the `auroracoin.conf` file can be used to include additional configuration files.
+
+### Default configuration file locations
+
+Operating System | Data Directory | Example Path
+-- | -- | --
+Windows | `%APPDATA%\Auroracoin\` | `C:\Users\username\AppData\Roaming\Auroracoin\auroracoin.conf`
+Linux | `$HOME/.auroracoin/` | `/home/username/.auroracoin/auroracoin.conf`
+macOS | `$HOME/Library/Application Support/Auroracoin/` | `/Users/username/Library/Application Support/Auroracoin/auroracoin.conf`
+
+You can find an example auroracoin.conf file in [share/examples/auroracoin.conf](../share/examples/auroracoin.conf).
