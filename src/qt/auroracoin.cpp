@@ -283,6 +283,10 @@ void AuroracoinApplication::parameterSetup()
     m_node.initParameterInteraction();
 }
 
+void AuroracoinApplication::SetPrune(bool prune, bool force) {
+     optionsModel->SetPrune(prune, force);
+}
+
 void AuroracoinApplication::requestInitialize()
 {
     qDebug() << __func__ << ": Requesting initialize";
