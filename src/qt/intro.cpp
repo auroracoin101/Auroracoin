@@ -182,8 +182,10 @@ void Intro::setDataDirectory(const QString &dataDir)
     }
 }
 
-bool Intro::pickDataDirectory(interfaces::Node& node)
+bool Intro::showIfNeeded(interfaces::Node& node, bool& did_show_intro)
 {
+    did_show_intro = false;
+
     QSettings settings;
     /* If data directory provided on command line, no need to look at settings
        or show a picking dialog */
@@ -207,6 +209,7 @@ bool Intro::pickDataDirectory(interfaces::Node& node)
         Intro intro(0, node.getAssumedBlockchainSize(), node.getAssumedChainStateSize());
         intro.setDataDirectory(dataDir);
         intro.setWindowIcon(QIcon(":icons/auroracoin"));
+        did_show_intro = true;
 
         while(true)
         {
