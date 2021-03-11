@@ -132,7 +132,7 @@
 <context>
     <name>AddressTableModel</name>
     <message>
-        <location filename="../addresstablemodel.cpp" line="+164"/>
+        <location filename="../addresstablemodel.cpp" line="+166"/>
         <source>Label</source>
         <translation type="unfinished"></translation>
     </message>
@@ -297,12 +297,12 @@
 <context>
     <name>AuroracoinGUI</name>
     <message>
-        <location filename="../auroracoin.cpp" line="+391"/>
+        <location filename="../auroracoin.cpp" line="+387"/>
         <source>A fatal error occurred. Auroracoin can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../auroracoingui.cpp" line="+245"/>
+        <location filename="../auroracoingui.cpp" line="+242"/>
         <source>&amp;Overview</source>
         <translation type="unfinished"></translation>
     </message>
@@ -512,7 +512,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+30"/>
+        <location line="+29"/>
         <source>default wallet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -557,12 +557,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
-        <source>Restore</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+12"/>
+        <location line="+18"/>
         <source>Main Window</source>
         <translation type="unfinished"></translation>
     </message>
@@ -777,7 +772,7 @@
 <context>
     <name>BanTableModel</name>
     <message>
-        <location filename="../bantablemodel.cpp" line="+87"/>
+        <location filename="../bantablemodel.cpp" line="+89"/>
         <source>IP/Netmask</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1131,6 +1126,11 @@
     </message>
     <message>
         <location line="+10"/>
+        <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
         <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1145,7 +1145,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+9"/>
+        <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1165,12 +1170,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+78"/>
         <source>Error: Specified data directory &quot;%1&quot; cannot be created.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location line="+36"/>
+        <location line="+39"/>
         <source>%n GB of free space available</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -1185,8 +1190,16 @@
             <numerusform></numerusform>
         </translation>
     </message>
+    <message numerus="yes">
+        <location line="+4"/>
+        <source>(%n GB needed for full chain)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location line="-12"/>
+        <location line="-16"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1746,14 +1759,14 @@
         <location filename="../paymentserver.cpp" line="+228"/>
         <location line="+346"/>
         <location line="+42"/>
-        <location line="+110"/>
+        <location line="+108"/>
         <location line="+14"/>
         <location line="+18"/>
         <source>Payment request error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-529"/>
+        <location line="-527"/>
         <source>Cannot start auroracoin: click-to-pay handler</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1809,12 +1822,12 @@
         <location line="+31"/>
         <location line="+10"/>
         <location line="+17"/>
-        <location line="+85"/>
+        <location line="+83"/>
         <source>Payment request rejected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-152"/>
+        <location line="-150"/>
         <source>Payment request network doesn&apos;t match client network.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1829,12 +1842,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+167"/>
+        <location line="+165"/>
         <source>Payment request cannot be parsed!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-382"/>
+        <location line="-380"/>
         <location line="+9"/>
         <source>Payment request file handling</source>
         <translation type="unfinished"></translation>
@@ -1856,7 +1869,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+65"/>
+        <location line="+63"/>
         <source>Refund from %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1889,7 +1902,7 @@
 <context>
     <name>PeerTableModel</name>
     <message>
-        <location filename="../peertablemodel.cpp" line="+109"/>
+        <location filename="../peertablemodel.cpp" line="+111"/>
         <source>NodeId</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1922,27 +1935,22 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../auroracoin.cpp" line="+77"/>
-        <source>Error parsing command line arguments: %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+37"/>
+        <location filename="../auroracoin.cpp" line="+118"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>Error: Cannot parse configuration file: %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+15"/>
         <source>Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+57"/>
+        <location line="+64"/>
         <source>%1 didn&apos;t yet exit safely...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1973,7 +1981,7 @@
     </message>
     <message>
         <location line="+2"/>
-        <location line="+50"/>
+        <location line="+47"/>
         <source>%1 s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2261,8 +2269,8 @@
     </message>
     <message>
         <location line="+65"/>
-        <location filename="../rpcconsole.cpp" line="+500"/>
-        <location line="+768"/>
+        <location filename="../rpcconsole.cpp" line="+499"/>
+        <location line="+759"/>
         <source>Select a peer to view detailed information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2417,7 +2425,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="-663"/>
+        <location filename="../rpcconsole.cpp" line="-654"/>
         <source>&amp;Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2450,7 +2458,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+47"/>
+        <location line="+38"/>
         <source>&amp;Unban</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2714,7 +2722,7 @@
 <context>
     <name>RecentRequestsTableModel</name>
     <message>
-        <location filename="../recentrequeststablemodel.cpp" line="+27"/>
+        <location filename="../recentrequeststablemodel.cpp" line="+29"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2753,7 +2761,7 @@
     <name>SendCoinsDialog</name>
     <message>
         <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+603"/>
+        <location filename="../sendcoinsdialog.cpp" line="+604"/>
         <source>Send Coins</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2940,7 +2948,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-512"/>
+        <location filename="../sendcoinsdialog.cpp" line="-513"/>
         <source>Copy quantity</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2970,7 +2978,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+192"/>
+        <location line="+193"/>
         <source> from wallet &apos;%1&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3044,7 +3052,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         </translation>
     </message>
     <message>
-        <location line="-617"/>
+        <location line="-618"/>
         <source>Copy change</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3054,7 +3062,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+136"/>
+        <location line="+137"/>
         <location line="+10"/>
         <source>%1 to %2</source>
         <translation type="unfinished"></translation>
@@ -3698,7 +3706,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>TransactionTableModel</name>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="+225"/>
+        <location filename="../transactiontablemodel.cpp" line="+227"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3834,7 +3842,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>TransactionView</name>
     <message>
-        <location filename="../transactionview.cpp" line="+73"/>
+        <location filename="../transactionview.cpp" line="+72"/>
         <location line="+16"/>
         <source>All</source>
         <translation type="unfinished"></translation>
@@ -3955,7 +3963,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+201"/>
+        <location line="+196"/>
         <source>Export Transaction History</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4041,7 +4049,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>WalletController</name>
     <message>
-        <location filename="../walletcontroller.cpp" line="+70"/>
+        <location filename="../walletcontroller.cpp" line="+73"/>
         <source>Close wallet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4072,7 +4080,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+308"/>
+        <location line="+309"/>
         <location line="+39"/>
         <location line="+5"/>
         <source>Fee bump error</source>
@@ -4501,6 +4509,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+1"/>
+        <source>Invalid P2P permission: &apos;%s&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4522,11 +4535,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <location line="+1"/>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Keypool ran out, please call keypoolrefill first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4697,11 +4705,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+1"/>
-        <source>Transaction too large for fee policy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>Transaction too large</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4738,6 +4741,16 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <location line="+1"/>
         <source>Unknown -blockfilterindex value %s.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Unknown address type &apos;%s&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Unknown change type &apos;%s&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
