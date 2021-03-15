@@ -7,6 +7,7 @@
 
 #include <qt/auroracoinunits.h>
 #include <qt/clientmodel.h>
+#include <qt/createwalletdialog.h>
 #include <qt/guiconstants.h>
 #include <qt/guiutil.h>
 #include <qt/modaloverlay.h>
@@ -344,6 +345,9 @@ void AuroracoinGUI::createActions()
     m_close_wallet_action = new QAction(tr("Close Wallet..."), this);
     m_close_wallet_action->setStatusTip(tr("Close wallet"));
 
+    m_create_wallet_action = new QAction(tr("Create Wallet..."), this);
+    m_create_wallet_action->setStatusTip(tr("Create a new wallet"));
+
     showHelpMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/" + theme + "/info"), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
     showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible auroracoin command-line options").arg(PACKAGE_NAME));
@@ -399,6 +403,12 @@ void AuroracoinGUI::createActions()
         connect(m_close_wallet_action, &QAction::triggered, [this] {
             m_wallet_controller->closeWallet(walletFrame->currentWalletModel(), this);
         });
+        connect(m_create_wallet_action, &QAction::triggered, [this] {
+            auto activity = new CreateWalletActivity(m_wallet_controller, this);
+            connect(activity, &CreateWalletActivity::created, this, &AuroracoinGUI::setCurrentWallet);
+            connect(activity, &CreateWalletActivity::finished, activity, &QObject::deleteLater);
+            activity->create();
+        });
     }
 #endif // ENABLE_WALLET
 
@@ -420,6 +430,7 @@ void AuroracoinGUI::createMenuBar()
     QMenu *file = appMenuBar->addMenu(tr("&File"));
     if(walletFrame)
     {
+        file->addAction(m_create_wallet_action);
         file->addAction(m_open_wallet_action);
         file->addAction(m_close_wallet_action);
         file->addSeparator();
