@@ -19,6 +19,10 @@ class DisconnectBanTest(DigiByteTestFramework):
         self.num_nodes = 2
 
     def run_test(self):
+        self.log.info("Connect nodes both way")
+        connect_nodes(self.nodes[0], 1)
+        connect_nodes(self.nodes[1], 0)
+
         self.log.info("Test setban and listbanned RPCs")
 
         self.log.info("setban: successfully ban single IP address")
@@ -75,7 +79,9 @@ class DisconnectBanTest(DigiByteTestFramework):
 
         # Clear ban lists
         self.nodes[1].clearbanned()
-        connect_nodes_bi(self.nodes, 0, 1)
+        self.log.info("Connect nodes both way")
+        connect_nodes(self.nodes[0], 1)
+        connect_nodes(self.nodes[1], 0)
 
         self.log.info("Test disconnectnode RPCs")
 
