@@ -57,7 +57,7 @@ Binary:              `/usr/bin/auroracoind`
 Configuration file:  `/etc/auroracoin/auroracoin.conf`
 Data directory:      `/var/lib/auroracoind`
 PID file:            `/var/run/auroracoind/auroracoind.pid` (OpenRC and Upstart) or `/run/auroracoind/auroracoind.pid` (systemd)
-Lock file:           `/var/lock/subsys/auroracoind` (CentOS)  
+Lock file:           `/var/lock/subsys/auroracoind` (CentOS)
 
 The PID directory (if applicable) and data directory should both be owned by the
 auroracoin user and group. It is advised for security reasons to make the
