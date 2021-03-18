@@ -26,7 +26,7 @@ from .util import (
     PortSeed,
     assert_equal,
     check_json_precision,
-    connect_nodes_bi,
+    connect_nodes,
     disconnect_nodes,
     get_datadir_path,
     initialize_datadir,
@@ -435,7 +435,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
         """
         Join the (previously split) network halves together.
         """
-        connect_nodes_bi(self.nodes, 1, 2)
+        connect_nodes(self.nodes[1], 2)
         self.sync_all()
 
     def sync_blocks(self, nodes=None, **kwargs):
