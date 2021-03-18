@@ -63,7 +63,7 @@ from test_framework.util import (
     assert_equal,
     assert_greater_than,
     assert_raises_rpc_error,
-    connect_nodes_bi,
+    connect_nodes,
 )
 from test_framework.segwit_addr import (
     encode,
@@ -91,7 +91,7 @@ class AddressTypeTest(DigiByteTestFramework):
         # Fully mesh-connect nodes for faster mempool sync
         for i, j in itertools.product(range(self.num_nodes), repeat=2):
             if i > j:
-                connect_nodes_bi(self.nodes, i, j)
+                connect_nodes(self.nodes[i], j)
         self.sync_all()
 
     def get_balances(self, confirmed=True):
