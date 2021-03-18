@@ -11,4 +11,4 @@ The software is a community-driven open source project, released under the MIT l
 See https://github.com/aurarad/Auroracoin and https://auroracoin.is/ for further information about the project.
 
 \section Navigation
-Use the buttons <code>Namespaces</code>, <code>Classes</code> or <code>Files</code> at the top of the page to start navigating the code.
+Use <a href="modules.html"><code>Modules</code></a>, <a href="namespaces.html"><code>Namespaces</code></a>, <a href="classes.html"><code>Classes</code></a>,
