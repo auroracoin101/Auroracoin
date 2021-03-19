@@ -77,12 +77,6 @@ git ls-files src/qt/locale/*ts|xargs -n1 basename|sed 's/\(auroracoin_\(.*\)\).t
 ```bash
 git ls-files src/qt/locale/*ts|xargs -n1 basename|sed 's/\(auroracoin_\(.*\)\).ts/  qt\/locale\/\1.ts \\/'
 ```
-5. Update `build_msvc/libauroracoin_qt/libauroracoin_qt.vcxproj` or via
-```bash
-git ls-files src/qt/locale/*ts|xargs -n1 basename |
-  sed 's/@/%40/' |
-  sed 's/\(auroracoin_\(.*\)\).ts/    <None Include="..\\..\\src\\qt\\locale\\\1.ts">\n      <DeploymentContent>true<\/DeploymentContent>\n    <\/None>/'
-```
 
 Auroracoin doesn't use Transifex. To update existing language files to include new strings do the following:
 
