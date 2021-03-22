@@ -1,0 +1,5 @@
+QT_TS = \
+  qt/locale/auroracoin_en_GB.ts \
+  qt/locale/auroracoin_en.ts \
+  qt/locale/auroracoin_is.ts \
+  qt/locale/auroracoin_nl.ts
