@@ -8,11 +8,7 @@ bin_PROGRAMS += qt/auroracoin-qt
 EXTRA_LIBRARIES += qt/libauroracoinqt.a
 
 # auroracoin qt core #
-QT_TS = \
-  qt/locale/auroracoin_en_GB.ts \
-  qt/locale/auroracoin_en.ts \
-  qt/locale/auroracoin_is.ts \
-  qt/locale/auroracoin_nl.ts
+include Makefile.qt_locale.include
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
