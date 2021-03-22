@@ -9,7 +9,7 @@ This module calls down into individual test cases via subprocess. It will
 forward all unrecognized arguments onto the individual test scripts.
 
 For a description of arguments recognized by test scripts, see
-`test/functional/test_framework/test_framework.py:DigiByteTestFramework.main`.
+`test/functional/test_framework/test_framework.py:BitcoinTestFramework.main`.
 
 """
 
@@ -113,7 +113,7 @@ BASE_SCRIPTS = [
     'wallet_keypool_topup.py',
     'feature_fee_estimation.py',
     'interface_zmq.py',
-    'interface_digibyte_cli.py',
+    'interface_auroracoin_cli.py',
     'mempool_resurrect.py',
     'wallet_txn_doublespend.py --mineblock',
     'tool_wallet.py',
@@ -278,9 +278,9 @@ def main():
 
     logging.debug("Temporary test directory at %s" % tmpdir)
 
-    enable_digibyted = config["components"].getboolean("ENABLE_DIGIBYTED")
+    enable_auroracoind = config["components"].getboolean("ENABLE_AURORACOIND")
 
-    if not enable_digibyted:
+    if not enable_auroracoind:
         print("No functional tests to run.")
         print("Rerun ./configure with --with-daemon and then make")
         sys.exit(0)
@@ -362,10 +362,10 @@ def main():
 def run_tests(*, test_list, src_dir, build_dir, tmpdir, jobs=1, enable_coverage=False, args=None, combined_logs_len=0, failfast=False, runs_ci, use_term_control):
     args = args or []
 
-    # Warn if digibyted is already running (unix only)
+    # Warn if auroracoind is already running (unix only)
     try:
-        if subprocess.check_output(["pidof", "digibyted"]) is not None:
-            print("%sWARNING!%s There is already a digibyted process running on this system. Tests may fail unexpectedly due to resource contention!" % (BOLD[1], BOLD[0]))
+        if subprocess.check_output(["pidof", "auroracoind"]) is not None:
+            print("%sWARNING!%s There is already a auroracoind process running on this system. Tests may fail unexpectedly due to resource contention!" % (BOLD[1], BOLD[0]))
     except (OSError, subprocess.SubprocessError):
         pass
 
@@ -633,7 +633,7 @@ class RPCCoverage():
     Coverage calculation works by having each test script subprocess write
     coverage files into a particular directory. These files contain the RPC
     commands invoked during testing, as well as a complete listing of RPC
-    commands per `digibyte-cli help` (`rpc_interface.txt`).
+    commands per `auroracoin-cli help` (`rpc_interface.txt`).
 
     After all tests complete, the commands run are combined and diff'd against
     the complete list to calculate uncovered RPC commands.
