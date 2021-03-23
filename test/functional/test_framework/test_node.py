@@ -334,7 +334,7 @@ class TestNode():
         self._raise_assertion_error('Expected messages "{}" does not partially match log:\n\n{}\n\n'.format(str(expected_msgs), print_log))
 
     @contextlib.contextmanager
-    def assert_memory_usage_stable(self, *, increase_allowed=0.03)
+    def assert_memory_usage_stable(self, *, increase_allowed=0.03):
         """Context manager that allows the user to assert that a node's memory usage (RSS)
         hasn't increased beyond some threshold percentage.
 
