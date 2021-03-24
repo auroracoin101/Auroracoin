@@ -54,28 +54,28 @@ class SkipTest(Exception):
         self.message = message
 
 
-class AuroracoinTestMetaClass(type):
-    """Metaclass for AuroracoinTestFramework.
+class BitcoinTestMetaClass(type):
+    """Metaclass for BitcoinTestFramework.
 
-    Ensures that any attempt to register a subclass of `AuroracoinTestFramework`
+    Ensures that any attempt to register a subclass of `BitcoinTestFramework`
     adheres to a standard whereby the subclass overrides `set_test_params` and
     `run_test` but DOES NOT override either `__init__` or `main`. If any of
     those standards are violated, a ``TypeError`` is raised."""
 
     def __new__(cls, clsname, bases, dct):
-        if not clsname == 'AuroracoinTestFramework':
+        if not clsname == 'BitcoinTestFramework':
             if not ('run_test' in dct and 'set_test_params' in dct):
-                raise TypeError("AuroracoinTestFramework subclasses must override "
+                raise TypeError("BitcoinTestFramework subclasses must override "
                                 "'run_test' and 'set_test_params'")
             if '__init__' in dct or 'main' in dct:
-                raise TypeError("AuroracoinTestFramework subclasses may not override "
+                raise TypeError("BitcoinTestFramework subclasses may not override "
                                 "'__init__' or 'main'")
 
         return super().__new__(cls, clsname, bases, dct)
 
 
-class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
-    """Base class for a auroracoin test script.
+class BitcoinTestFramework(metaclass=BitcoinTestMetaClass):
+    """Base class for a bitcoin test script.
 
     Individual auroracoin test scripts should subclass this class and override the set_test_params() and run_test() methods.
 
@@ -108,9 +108,9 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
 
         parser = argparse.ArgumentParser(usage="%(prog)s [options]")
         parser.add_argument("--nocleanup", dest="nocleanup", default=False, action="store_true",
-                            help="Leave digibyteds and test.* datadir on exit or error")
+                            help="Leave auroracoinds and test.* datadir on exit or error")
         parser.add_argument("--noshutdown", dest="noshutdown", default=False, action="store_true",
-                            help="Don't stop digibyteds after the test execution")
+                            help="Don't stop auroracoinds after the test execution")
         parser.add_argument("--cachedir", dest="cachedir", default=os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + "/../../cache"),
                             help="Directory for caching pregenerated datadirs (default: %(default)s)")
         parser.add_argument("--tmpdir", dest="tmpdir", help="Root directory for datadirs")
@@ -128,7 +128,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
         parser.add_argument("--pdbonfailure", dest="pdbonfailure", default=False, action="store_true",
                             help="Attach a python debugger if test fails")
         parser.add_argument("--usecli", dest="usecli", default=False, action="store_true",
-                            help="use digibyte-cli instead of RPC for all commands")
+                            help="use auroracoin-cli instead of RPC for all commands")
         parser.add_argument("--perf", dest="perf", default=False, action="store_true",
                             help="profile running nodes with perf for the duration of the test")
         parser.add_argument("--randomseed", type=int,
@@ -145,8 +145,8 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
         config = configparser.ConfigParser()
         config.read_file(open(self.options.configfile))
         self.config = config
-        self.options.digibyted = os.getenv("DIGIBYTED", default=config["environment"]["BUILDDIR"] + '/src/digibyted' + config["environment"]["EXEEXT"])
-        self.options.digibytecli = os.getenv("DIGIBYTECLI", default=config["environment"]["BUILDDIR"] + '/src/digibyte-cli' + config["environment"]["EXEEXT"])
+        self.options.auroracoind = os.getenv("AURORACOIND", default=config["environment"]["BUILDDIR"] + '/src/auroracoind' + config["environment"]["EXEEXT"])
+        self.options.auroracoincli = os.getenv("AURORACOINCLI", default=config["environment"]["BUILDDIR"] + '/src/auroracoin-cli' + config["environment"]["EXEEXT"])
 
         os.environ['PATH'] = os.pathsep.join([
             os.path.join(config['environment']['BUILDDIR'], 'src'),
@@ -221,7 +221,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
         else:
             for node in self.nodes:
                 node.cleanup_on_exit = False
-            self.log.info("Note: digibyteds were not stopped and may still be running")
+            self.log.info("Note: auroracoinds were not stopped and may still be running")
 
         should_clean_up = (
             not self.options.nocleanup and
@@ -347,7 +347,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
         if extra_args is None:
             extra_args = [[]] * num_nodes
         if binary is None:
-            binary = [self.options.digibyted] * num_nodes
+            binary = [self.options.auroracoind] * num_nodes
         assert_equal(len(extra_confs), num_nodes)
         assert_equal(len(extra_args), num_nodes)
         assert_equal(len(binary), num_nodes)
@@ -369,7 +369,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
             ))
 
     def start_node(self, i, *args, **kwargs):
-        """Start a digibyted"""
+        """Start an auroracoind"""
 
         node = self.nodes[i]
 
@@ -380,7 +380,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
             coverage.write_all_rpc_commands(self.options.coveragedir, node.rpc)
 
     def start_nodes(self, extra_args=None, *args, **kwargs):
-        """Start multiple digibyteds"""
+        """Start multiple auroracoinds"""
 
         if extra_args is None:
             extra_args = [None] * self.num_nodes
@@ -462,7 +462,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
         # User can provide log level as a number or string (eg DEBUG). loglevel was caught as a string, so try to convert it to an int
         ll = int(self.options.loglevel) if self.options.loglevel.isdigit() else self.options.loglevel.upper()
         ch.setLevel(ll)
-        # Format logs the same as digibyted's debug.log with microprecision (so log files can be concatenated and sorted)
+        # Format logs the same as auroracoind's debug.log with microprecision (so log files can be concatenated and sorted)
         formatter = logging.Formatter(fmt='%(asctime)s.%(msecs)03d000Z %(name)s (%(levelname)s): %(message)s', datefmt='%Y-%m-%dT%H:%M:%S')
         formatter.converter = time.gmtime
         fh.setFormatter(formatter)
@@ -472,7 +472,7 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
         self.log.addHandler(ch)
 
         if self.options.trace_rpc:
-            rpc_logger = logging.getLogger("DigiByteRPC")
+            rpc_logger = logging.getLogger("AuroracoinRPC")
             rpc_logger.setLevel(logging.DEBUG)
             rpc_handler = logging.StreamHandler(sys.stdout)
             rpc_handler.setLevel(logging.DEBUG)
@@ -558,10 +558,10 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
         except ImportError:
             raise SkipTest("python3-zmq module not available.")
 
-    def skip_if_no_digibyted_zmq(self):
-        """Skip the running test if digibyted has not been compiled with zmq support."""
+    def skip_if_no_bitcoind_zmq(self):
+        """Skip the running test if auroracoind has not been compiled with zmq support."""
         if not self.is_zmq_compiled():
-            raise SkipTest("digibyted has not been built with zmq enabled.")
+            raise SkipTest("auroracoind has not been built with zmq enabled.")
 
     def skip_if_no_wallet(self):
         """Skip the running test if wallet has not been compiled."""
@@ -569,9 +569,9 @@ class AuroracoinTestFramework(metaclass=AuroracoinTestMetaClass):
             raise SkipTest("wallet has not been compiled.")
 
     def skip_if_no_cli(self):
-        """Skip the running test if digibyte-cli has not been compiled."""
+        """Skip the running test if auroracoin-cli has not been compiled."""
         if not self.is_cli_compiled():
-            raise SkipTest("digibyte-cli has not been compiled.")
+            raise SkipTest("auroracoin-cli has not been compiled.")
 
     def is_cli_compiled(self):
         """Checks whether auroracoin-cli was compiled."""
