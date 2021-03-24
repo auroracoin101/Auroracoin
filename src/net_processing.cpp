@@ -32,6 +32,7 @@
 #include <util/validation.h>
 
 #include <memory>
+#include <typeinfo>
 
 #if defined(NDEBUG)
 # error "Auroracoin cannot be compiled without assertions."
