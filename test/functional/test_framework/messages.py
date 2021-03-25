@@ -1411,8 +1411,8 @@ class msg_cmpctblock:
         return "msg_cmpctblock(HeaderAndShortIDs=%s)" % repr(self.header_and_shortids)
 
 
-class msg_blocktxn:
-    __slots__ = ("block_transactions",)
+class msg_getblocktxn:
+    __slots__ = ("block_txn_request",)
     command = b"getblocktxn"
 
     def __init__(self):
@@ -1431,7 +1431,7 @@ class msg_blocktxn:
         return "msg_getblocktxn(block_txn_request=%s)" % (repr(self.block_txn_request))
 
 
-class msg_blocktxn():
+class msg_blocktxn:
     __slots__ = ()
 
     command = b"blocktxn"
