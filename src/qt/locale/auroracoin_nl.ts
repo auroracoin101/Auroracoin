@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="nl_NL">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -622,17 +622,17 @@
         <translation>Openen van portemonnee &lt;b&gt;%1&lt;/b&gt;...</translation>
     </message>
     <message>
-        <location line="+24"/>
-        <source>No wallets available</source>
-        <translation>Geen portemonnees beschikbaar</translation>
-    </message>
-    <message>
-        <location line="-15"/>
+        <location line="+9"/>
         <source>Open Wallet Failed</source>
         <translation>Openen van portemonnee mislukt</translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+15"/>
+        <source>No wallets available</source>
+        <translation>Geen portemonnees beschikbaar</translation>
+    </message>
+    <message>
+        <location line="+25"/>
         <source>&amp;File</source>
         <translation>&amp;Bestand</translation>
     </message>
@@ -657,17 +657,17 @@
         <translation>Grootte aanpassen</translation>
     </message>
     <message>
-        <location line="+26"/>
-        <source>Main Window</source>
-        <translation>Hoofdvenster</translation>
-    </message>
-    <message>
-        <location line="-12"/>
+        <location line="+14"/>
         <source>Restore</source>
         <translation>Herstellen</translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+12"/>
+        <source>Main Window</source>
+        <translation>Hoofdvenster</translation>
+    </message>
+    <message>
+        <location line="+19"/>
         <source>&amp;Help</source>
         <translation>&amp;Help</translation>
     </message>
@@ -773,7 +773,12 @@
         <translation>Transacties hierna zullen nog niet zichtbaar zijn.</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+13"/>
+        <source>Auroracoin</source>
+        <translation>Auroracoin</translation>
+    </message>
+    <message>
+        <location line="+14"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
@@ -783,12 +788,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-16"/>
-        <source>Auroracoin</source>
-        <translation>Auroracoin</translation>
-    </message>
-    <message>
-        <location line="+17"/>
+        <location line="+1"/>
         <source>Warning</source>
         <translation>Waarschuwing</translation>
     </message>
@@ -1137,7 +1137,32 @@
         <translation>Kan per invoer +/- %1 satoshi(s) variëren.</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+93"/>
+        <source></source>
+        <translation>wisselgeld van %1 (%2)</translation>
+    </message>
+    <message>
+        <location line="-581"/>
+        <source>Copy change</source>
+        <translation>Kopieer wisselgeld</translation>
+    </message>
+    <message>
+        <location line="+314"/>
+        <source>(%1 locked)</source>
+        <translation>(%1 vastgezet)</translation>
+    </message>
+    <message>
+        <location line="+155"/>
+        <source>yes</source>
+        <translation>ja</translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>no</source>
+        <translation>nee</translation>
+    </message>
+    <message>
+        <location line="+38"/>
         <source>Dust</source>
         <translation>Stof</translation>
     </message>
@@ -1189,32 +1214,7 @@
         <translation>Dit label wordt rood, als het wisselgeld minder dan %1 is.</translation>
     </message>
     <message>
-        <location line="+52"/>
-        <source></source>
-        <translation>wisselgeld van %1 (%2)</translation>
-    </message>
-    <message>
-        <location line="-581"/>
-        <source>Copy change</source>
-        <translation>Kopieer wisselgeld</translation>
-    </message>
-    <message>
-        <location line="+314"/>
-        <source>(%1 locked)</source>
-        <translation>(%1 vastgezet)</translation>
-    </message>
-    <message>
-        <location line="+155"/>
-        <source>yes</source>
-        <translation>ja</translation>
-    </message>
-    <message>
-        <location line="+0"/>
-        <source>no</source>
-        <translation>nee</translation>
-    </message>
-    <message>
-        <location line="+65"/>
+        <location line="+5"/>
         <location line="+54"/>
         <source>(no label)</source>
         <translation>(geen label)</translation>
@@ -1436,22 +1436,7 @@
         <translation>commandoregelopties</translation>
     </message>
     <message>
-        <location line="+4"/>
-        <source>UI options</source>
-        <translation>Gebruikersinterface-opties</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Choose data directory on startup (default: 0)</source>
-        <translation>Kies gegevensdirectory tijdens opstarten (standaard: 0)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>Stel taal in, bijvoorbeeld &quot;de_DE&quot; (standaard: systeemtaal)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+7"/>
         <source>Command-line options</source>
         <translation>Commandoregelopties</translation>
     </message>
@@ -1469,6 +1454,21 @@
         <location line="+1"/>
         <source>Show splash screen on startup (default: 1)</source>
         <translation>Laadscherm bij het opstarten weergeven. (standaard: 1)</translation>
+    </message>
+    <message>
+        <location line="-5"/>
+        <source>UI options</source>
+        <translation>Gebruikersinterface-opties</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Choose data directory on startup (default: 0)</source>
+        <translation>Kies gegevensdirectory tijdens opstarten (standaard: 0)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
+        <translation>Stel taal in, bijvoorbeeld &quot;de_DE&quot; (standaard: systeemtaal)</translation>
     </message>
     <message>
         <location filename="../forms/helpmessagedialog.ui" line="+19"/>
@@ -2530,14 +2530,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+520"/>
-        <location line="+7"/>
-        <location line="+13"/>
-        <source>Auroracoin</source>
-        <translation>Auroracoin</translation>
-    </message>
-    <message>
-        <location line="-19"/>
+        <location filename="../bitcoin.cpp" line="+521"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation>Fout: de gespecificeerde gegevensdirectory &quot;%1&quot; bestaat niet.</translation>
     </message>
@@ -2700,6 +2693,13 @@
         <location filename="../modaloverlay.cpp" line="-36"/>
         <source>unknown</source>
         <translation>onbekend</translation>
+    </message>
+    <message>
+        <location filename="../bitcoin.cpp" line="-80"/>
+        <location line="+7"/>
+        <location line="+13"/>
+        <source>Auroracoin</source>
+        <translation>Auroracoin</translation>
     </message>
 </context>
 <context>
@@ -4080,7 +4080,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <location filename="../utilitydialog.cpp" line="+48"/>
+        <location filename="../utilitydialog.cpp" line="+51"/>
         <source>Auroracoin Core is shutting down...</source>
         <translation>Auroracoin wordt afgesloten...</translation>
     </message>
@@ -4519,7 +4519,12 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
         <translation>Uitvoer index</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+52"/>
+        <source> (Certificate was not verified)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-33"/>
         <source>Merchant</source>
         <translation>Winkel</translation>
     </message>
@@ -4779,17 +4784,17 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
         <translation>Bereik...</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>Received with</source>
-        <translation>Ontvangen met</translation>
-    </message>
-    <message>
-        <location line="-2"/>
+        <location line="+9"/>
         <source>Enter address or label to search</source>
         <translation>Vul adres of label in om te zoeken</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="+2"/>
+        <source>Received with</source>
+        <translation>Ontvangen met</translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Sent to</source>
         <translation>Verstuurd aan</translation>
     </message>
@@ -5334,7 +5339,22 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
         <translation>Fout tijdens laden %s: Portemonnee vereist een nieuwere versie van %s</translation>
     </message>
     <message>
-        <location line="-101"/>
+        <location line="+80"/>
+        <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
+        <translation>Niet-ondersteund argument -benchmark genegeerd, gebruik -debug=bench.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
+        <translation>Niet-ondersteund argument -debugnet genegeerd, gebruik -debug=net.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Unsupported argument -tor found, use -onion.</source>
+        <translation>Niet-ondersteund argument -tor gevonden, gebruik -onion.</translation>
+    </message>
+    <message>
+        <location line="-183"/>
         <source>Can&apos;t generate a change-address key. No keys in the internal keypool and can&apos;t generate any keys.</source>
         <translation>Kan geen wisselgeldadres aanmaken. Geen sleutels in de interne sleutelpoel en kan geen sleutels aanmaken.</translation>
     </message>
@@ -5479,17 +5499,17 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
         <translation>Ongeldig -proxy adres of hostnaam: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="-4"/>
-        <source>Information</source>
-        <translation>Informatie</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="-2"/>
         <source>Invalid P2P permission: &apos;%s&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="-2"/>
+        <source>Information</source>
+        <translation>Informatie</translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Invalid amount for -%s=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation>Ongeldige hoeveelheid voor -%s=&lt;hoeveelheid&gt;: &apos;%s&apos;</translation>
     </message>
@@ -5509,17 +5529,17 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
         <translation>Ongeldige hoeveelheid voor -paytxfee=&lt;hoeveelheid&gt;: &apos;%s&apos; (moet tenminste %s zijn)</translation>
     </message>
     <message>
-        <location line="-4"/>
-        <source>Error loading %s: You can&apos;t disable HD on an already existing HD wallet</source>
-        <translation>Fout tijdens laden van %s: U kan HD niet uitzetten op een al bestaande HD portemonnee</translation>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+1"/>
         <source>Invalid netmask specified in -whitelist: &apos;%s&apos;</source>
         <translation>Ongeldig netmasker gespecificeerd in -whitelist: &apos;%s&apos;</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-5"/>
+        <source>Error loading %s: You can&apos;t disable HD on an already existing HD wallet</source>
+        <translation>Fout tijdens laden van %s: U kan HD niet uitzetten op een al bestaande HD portemonnee</translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Loading P2P addresses...</source>
         <translation>Laden van P2P adressen...</translation>
     </message>
@@ -5534,17 +5554,17 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
         <translation>Laden van de blokindex...</translation>
     </message>
     <message>
-        <location line="-3"/>
-        <source>Keypool ran out, please call keypoolrefill first</source>
-        <translation>Sleutelpoel is leeggelopen, roep a.u.b. eerst keypoolrefill aan.</translation>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+1"/>
         <source>Loading wallet...</source>
         <translation>Laden van de portemonnee...</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-4"/>
+        <source>Keypool ran out, please call keypoolrefill first</source>
+        <translation>Sleutelpoel is leeggelopen, roep a.u.b. eerst keypoolrefill aan.</translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
         <translation>Een poort moet opgegeven worden bij -whitebind: &apos;%s&apos;</translation>
     </message>
@@ -5691,7 +5711,12 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
         <translation>Transactie moet ten minste een ontvanger hebben.</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Transaction too large for fee policy</source>
+        <translation>Transactie te groot voor transactiekostenbeleid.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Transaction too large</source>
         <translation>Transactie te groot.</translation>
     </message>
@@ -5706,12 +5731,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
         <translation>Kan niet aan %s binden op deze computer. %s loopt waarschijnlijk al.</translation>
     </message>
     <message>
-        <location line="-3"/>
-        <source>Transaction too large for fee policy</source>
-        <translation>Transactie te groot voor transactiekostenbeleid.</translation>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+1"/>
         <source>Unable to create the PID file &apos;%s&apos;: %s</source>
         <translation>Kan geen PID bestand &apos;%s&apos; aanmaken: %s</translation>
     </message>
@@ -5781,17 +5801,22 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
         <translation>Portemonnee(s) verifiëren...</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Wallet needed to be rewritten: restart %s to complete</source>
-        <translation>Portemonnee moet herschreven worden: herstart %s om te voltooien.</translation>
-    </message>
-    <message>
-        <location line="-1"/>
+        <location line="+1"/>
         <source>Wallet %s resides outside wallet directory %s</source>
         <translation>Portemonnee %s verblijft buiten de portemonneedirectory %s.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+1"/>
+        <source>Wallet needed to be rewritten: restart %s to complete</source>
+        <translation>Portemonnee moet herschreven worden: herstart %s om te voltooien.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Warning</source>
+        <translation>Waarschuwing</translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Warning: unknown new rules activated (versionbit %i)</source>
         <translation>Waarschuwing: onbekende nieuwe regels geactiveerd (versiebit %i)</translation>
     </message>
@@ -5799,26 +5824,6 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
         <location line="+1"/>
         <source>Zapping all transactions from wallet...</source>
         <translation>Alle transacties van portemonnnee verwijderen...</translation>
-    </message>
-    <message>
-        <location line="-2"/>
-        <source>Warning</source>
-        <translation>Waarschuwing</translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
-        <translation>Niet-ondersteund argument -benchmark genegeerd, gebruik -debug=bench.</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
-        <translation>Niet-ondersteund argument -debugnet genegeerd, gebruik -debug=net.</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Unsupported argument -tor found, use -onion.</source>
-        <translation>Niet-ondersteund argument -tor gevonden, gebruik -onion.</translation>
     </message>
 </context>
 <context>
@@ -5890,7 +5895,7 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location filename="../bitcoin.cpp" line="-153"/>
+        <location filename="../bitcoin.cpp" line="-93"/>
         <source>A fatal error occurred. Auroracoin can no longer continue safely and will quit.</source>
         <translation>Er is een fatale fout opgetreden. Auroracoin kan niet meer veilig doorgaan en zal nu afgesloten worden.</translation>
     </message>

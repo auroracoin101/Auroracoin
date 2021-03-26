@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="is_IS">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -627,17 +627,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
-        <source>No wallets available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-15"/>
+        <location line="+9"/>
         <source>Open Wallet Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+15"/>
+        <source>No wallets available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+25"/>
         <source>&amp;File</source>
         <translation>&amp;Skrá</translation>
     </message>
@@ -662,17 +662,17 @@
         <translation>Þysja</translation>
     </message>
     <message>
-        <location line="+26"/>
-        <source>Main Window</source>
-        <translation>Aðalglugga</translation>
-    </message>
-    <message>
-        <location line="-12"/>
+        <location line="+14"/>
         <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+12"/>
+        <source>Main Window</source>
+        <translation>Aðalglugga</translation>
+    </message>
+    <message>
+        <location line="+19"/>
         <source>&amp;Help</source>
         <translation>&amp;Hjálp</translation>
     </message>
@@ -788,7 +788,12 @@
         <translation>Færslur á eftir þessari munu ekki sjást.</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+13"/>
+        <source>Auroracoin</source>
+        <translation>Auroracoin</translation>
+    </message>
+    <message>
+        <location line="+14"/>
         <source>Error</source>
         <translation>Villa</translation>
     </message>
@@ -798,12 +803,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Auroracoin</source>
-        <translation>Auroracoin</translation>
-    </message>
-    <message>
-        <location line="+17"/>
+        <location line="+18"/>
         <source>Warning</source>
         <translation>Viðvörun</translation>
     </message>
@@ -1446,22 +1446,7 @@
         <translation>innsláttar valmöguleikar</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <source>Command-line options</source>
-        <translation>Innsláttar valmöguleikar</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Set SSL root certificates for payment request (default: -system-)</source>
-        <translation>Stilla SSL rótar aðkenni fyrir greiðslubeiðni (sjálfgefið: -system-)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Show splash screen on startup (default: 1)</source>
-        <translation>Sýna upphafsskjá við ræsingu (sjálfgefið: 1)</translation>
-    </message>
-    <message>
-        <location line="-5"/>
+        <location line="+4"/>
         <source>UI options</source>
         <translation>Viðmóts valmöguleikar</translation>
     </message>
@@ -1477,8 +1462,23 @@
     </message>
     <message>
         <location line="+1"/>
+        <source>Command-line options</source>
+        <translation>Innsláttar valmöguleikar</translation>
+    </message>
+    <message>
+        <location line="+0"/>
         <source>Start minimized</source>
         <translation>Ræsa forritið með lágmörkuðum glugga </translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Set SSL root certificates for payment request (default: -system-)</source>
+        <translation>Stilla SSL rótar aðkenni fyrir greiðslubeiðni (sjálfgefið: -system-)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Show splash screen on startup (default: 1)</source>
+        <translation>Sýna upphafsskjá við ræsingu (sjálfgefið: 1)</translation>
     </message>
     <message>
         <location filename="../forms/helpmessagedialog.ui" line="+19"/>
@@ -2535,7 +2535,14 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../bitcoin.cpp" line="+521"/>
+        <location filename="../bitcoin.cpp" line="+520"/>
+        <location line="+7"/>
+        <location line="+13"/>
+        <source>Auroracoin</source>
+        <translation>Auroracoin</translation>
+    </message>
+    <message>
+        <location line="-19"/>
         <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
         <translation>Villa: Valda gagna mappan &quot;%1&quot; er ekki til.</translation>
     </message>
@@ -2698,13 +2705,6 @@
         <location filename="../modaloverlay.cpp" line="-36"/>
         <source>unknown</source>
         <translation>óþekktur</translation>
-    </message>
-    <message>
-        <location filename="../bitcoin.cpp" line="-80"/>
-        <location line="+7"/>
-        <location line="+13"/>
-        <source>Auroracoin</source>
-        <translation>Auroracoin</translation>
     </message>
 </context>
 <context>
@@ -4091,7 +4091,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <location filename="../utilitydialog.cpp" line="+50"/>
+        <location filename="../utilitydialog.cpp" line="+48"/>
         <source>Auroracoin Core is shutting down...</source>
         <translation>Auroracoin Kjarninn er að slökkva á sér...</translation>
     </message>
@@ -4530,7 +4530,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+52"/>
+        <source> (Certificate was not verified)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-33"/>
         <source>Merchant</source>
         <translation>Kaupmaður</translation>
     </message>
@@ -4790,17 +4795,17 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation>Tímabil...</translation>
     </message>
     <message>
-        <location line="+9"/>
-        <source>Enter address or label to search</source>
-        <translation>Settu inn reikningsnúmer eða tilvísun til að leita</translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+11"/>
         <source>Received with</source>
         <translation>Móttekin með</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-2"/>
+        <source>Enter address or label to search</source>
+        <translation>Settu inn reikningsnúmer eða tilvísun til að leita</translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Sent to</source>
         <translation>Sent til</translation>
     </message>
@@ -5345,32 +5350,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+72"/>
-        <source>Wallet %s resides outside wallet directory %s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Warning</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Unsupported argument -tor found, use -onion.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-183"/>
+        <location line="-101"/>
         <source>Can&apos;t generate a change-address key. No keys in the internal keypool and can&apos;t generate any keys.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5510,17 +5490,17 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-3"/>
-        <source>Information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+1"/>
         <source>Invalid -proxy address or hostname: &apos;%s&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-2"/>
+        <location line="-4"/>
+        <source>Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Invalid P2P permission: &apos;%s&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5535,17 +5515,17 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-2"/>
-        <source>Error loading %s: You can&apos;t disable HD on an already existing HD wallet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+1"/>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: &apos;%s&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-3"/>
+        <source>Error loading %s: You can&apos;t disable HD on an already existing HD wallet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: &apos;%s&apos; (must be at least %s)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5570,17 +5550,17 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-3"/>
-        <source>Keypool ran out, please call keypoolrefill first</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+1"/>
         <source>Loading wallet...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="-4"/>
+        <source>Keypool ran out, please call keypoolrefill first</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
         <source>Need to specify a port with -whitebind: &apos;%s&apos;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5726,7 +5706,12 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
+        <source>Transaction too large for fee policy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Transaction too large</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5741,12 +5726,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-3"/>
-        <source>Transaction too large for fee policy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+1"/>
         <source>Unable to create the PID file &apos;%s&apos;: %s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5821,13 +5801,38 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-1"/>
+        <source>Wallet %s resides outside wallet directory %s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>Warning: unknown new rules activated (versionbit %i)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Zapping all transactions from wallet...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-2"/>
+        <source>Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Unsupported argument -tor found, use -onion.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5883,7 +5888,7 @@ Dreift undir MIT/X11 hugbúnaðarleyfi, sjáið nánar í skjali í viðhengi e�
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location filename="../bitcoin.cpp" line="-93"/>
+        <location filename="../bitcoin.cpp" line="-153"/>
         <source>A fatal error occurred. Auroracoin can no longer continue safely and will quit.</source>
         <translation>Alvarleg villa átti sér stað. Auroracoin veskið verður að slökkva á sér .</translation>
     </message>
