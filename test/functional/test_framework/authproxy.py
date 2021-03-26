@@ -35,6 +35,7 @@ ServiceProxy class:
 
 import base64
 import decimal
+from http import HTTPStatus
 import http.client
 import json
 import logging
