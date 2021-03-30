@@ -521,6 +521,7 @@ class BitcoinTestFramework(metaclass=BitcoinTestMetaClass):
                 self.nodes[CACHE_NODE_ID].generatetoaddress(
                     nblocks=25 if i != 7 else 24,
                     address=TestNode.PRIV_KEYS[i % 4].address,
+                    algo="scrypt",
                 )
 
             assert_equal(self.nodes[CACHE_NODE_ID].getblockchaininfo()["blocks"], 199)
