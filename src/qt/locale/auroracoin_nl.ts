@@ -126,7 +126,7 @@
     <message>
         <location line="+4"/>
         <source>These are your Auroracoin addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit zijn uw Auroracoin adressen voor het ontvangen van betalingen. Gebruik de &apos;Nieuw ontvangstadres aanmaken&apos; knop in het ontvangentabblad om een nieuw adres aan te maken.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -212,7 +212,7 @@
     <message>
         <location line="+14"/>
         <source>Show passphrase</source>
-        <translation type="unfinished"></translation>
+        <translation>Wachtwoord weergeven</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -222,7 +222,7 @@
     <message>
         <location filename="../askpassphrasedialog.cpp" line="+48"/>
         <source>Enter the new passphrase for the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voer een nieuwe wachtwoordzin in voor de portemonnee. &lt;br/&gt;Geef a.u.b. een wachtwoordzin van  &lt;b&gt;tien of meer willekeurige tekens&lt;/b&gt;, of &lt;b&gt;acht of meer woorden&lt;/b&gt; op.</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -267,7 +267,7 @@
     <message>
         <location line="+1"/>
         <source>Enter the old passphrase and new passphrase for the wallet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geef de oude wachtwoordzin en de nieuwe wachtwoordzin voor de portemonnee op.</translation>
     </message>
     <message>
         <location line="+44"/>
@@ -292,7 +292,7 @@
     <message>
         <location line="+5"/>
         <source>Remember that encrypting your wallet cannot fully protect your auroracoins from being stolen by malware infecting your computer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw auroracoins stelen.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -302,12 +302,12 @@
     <message>
         <location line="+1"/>
         <source>Wallet to be encrypted</source>
-        <translation type="unfinished"></translation>
+        <translation>Portemonnee om te versleutelen.</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Your wallet is about to be encrypted. </source>
-        <translation type="unfinished"></translation>
+        <translation>Uw portemonnee staat op het punt versleuteld te worden. </translation>
     </message>
     <message>
         <location line="-5"/>
@@ -328,7 +328,7 @@
     <message>
         <location line="+91"/>
         <source>Your wallet is now encrypted. </source>
-        <translation type="unfinished"></translation>
+        <translation>Uw portemonnee is nu versleuteld. </translation>
     </message>
     <message>
         <location line="-7"/>
@@ -594,12 +594,12 @@
     <message>
         <location line="+0"/>
         <source>Create Wallet...</source>
-        <translation type="unfinished"></translation>
+        <translation>Portemonnee aanmaken...</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Create a new wallet</source>
-        <translation type="unfinished"></translation>
+        <translation>Maak een nieuwe portemonnee aan.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -785,7 +785,7 @@
     <message>
         <location line="+2"/>
         <source>Error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout: %1</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -795,7 +795,7 @@
     <message>
         <location line="+3"/>
         <source>Warning: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Waarschuwing: %1</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -1222,7 +1222,7 @@
     <message>
         <location line="-9"/>
         <source>change from %1 (%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>wisselgeld van %1 (%2)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1235,17 +1235,17 @@
     <message>
         <location filename="../walletcontroller.cpp" line="+201"/>
         <source>Creating Wallet &lt;b&gt;%1&lt;/b&gt;...</source>
-        <translation type="unfinished"></translation>
+        <translation>Aanmaken van portemonnee &lt;b&gt;%1&lt;/b&gt;...</translation>
     </message>
     <message>
         <location line="+26"/>
         <source>Create wallet failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Aanmaken van portemonnee mislukt</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Create wallet warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Waarschuwing tijdens aanmaken van portemonnee</translation>
     </message>
 </context>
 <context>
@@ -1253,47 +1253,47 @@
     <message>
         <location filename="../forms/createwalletdialog.ui" line="+14"/>
         <source>Create Wallet</source>
-        <translation type="unfinished"></translation>
+        <translation>Portemonnee aanmaken</translation>
     </message>
     <message>
         <location line="+38"/>
         <source>Wallet Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Portemonneenaam</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Encrypt the wallet. The wallet will be encrypted with a passphrase of your choice.</source>
-        <translation type="unfinished"></translation>
+        <translation>Versleutel de portemonnee. De portemonnee zal worden versleuteld met een wachtwoordzin naar keuze.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Encrypt Wallet</source>
-        <translation type="unfinished"></translation>
+        <translation>Versleutel portemonnee</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Disable private keys for this wallet. Wallets with private keys disabled will have no private keys and cannot have an HD seed or imported private keys. This is ideal for watch-only wallets.</source>
-        <translation type="unfinished"></translation>
+        <translation>Privésleutels worden voor deze portemonnee gedeactiveerd. Portemonnees met privésleutels gedeactiveerd zullen geen privésleutels, HD seed of geïmporteerde privésleutels bevatten. Dit is ideaal voor observatieportemonnees.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Disable Private Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Privésleutels deactiveren</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Make a blank wallet. Blank wallets do not initially have private keys or scripts. Private keys and addresses can be imported, or an HD seed can be set, at a later time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Maak een lege portemonnee. Lege portemonnees bevatten in eerste instantie geen privésleutels of scripts. Op een later moment kunnen privésleutels en adressen geimporteerd worden of een HD seed ingesteld worden.</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Make Blank Wallet</source>
-        <translation type="unfinished"></translation>
+        <translation>Maak lege portemonnee</translation>
     </message>
     <message>
         <location filename="../createwalletdialog.cpp" line="+19"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Aanmaken</translation>
     </message>
 </context>
 <context>
@@ -1526,7 +1526,7 @@
     <message>
         <location line="+10"/>
         <source>Reverting this setting requires re-downloading the entire blockchain. It is faster to download the full chain first and prune it later. Disables some advanced features.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze instelling terugzetten vereist het herdownloaden van de hele blokkenketen. Het is sneller om eerst de hele keten te downloaden en daarna deze uit te dunnen. Deactiveert enkele geavanceerde mogelijkheden.</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -1546,7 +1546,7 @@
     <message>
         <location line="+9"/>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder blokken na verificatie, behalve de meest recente %1 GB (uitdunnen)</translation>
     </message>
     <message>
         <location line="-3"/>
@@ -1607,8 +1607,8 @@
     <message numerus="yes">
         <location line="+10"/>
         <source>(%n GB needed for full chain)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>(%n GB vereist voor volledige keten)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -1717,22 +1717,22 @@
     <message>
         <location filename="../walletcontroller.cpp" line="+39"/>
         <source>Open wallet failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Openen van portemonnee mislukt</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Open wallet warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Waarschuwing tijdens openen portemonnee</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>default wallet</source>
-        <translation type="unfinished"></translation>
+        <translation>standaardportemonnee</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Opening Wallet &lt;b&gt;%1&lt;/b&gt;...</source>
-        <translation type="unfinished"></translation>
+        <translation>Openen van portemonnee &lt;b&gt;%1&lt;/b&gt;...</translation>
     </message>
 </context>
 <context>
@@ -2358,13 +2358,13 @@
         <location line="-35"/>
         <location line="+38"/>
         <source>Due to widespread security flaws in BIP70 it&apos;s strongly recommended that any merchant instructions to switch wallets be ignored.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vanwege vele veiligheidsproblemen in BIP70 wordt het ten strengste aangeraden om instructies door verkopers om portemonnees te veranderen te negeren.</translation>
     </message>
     <message>
         <location line="-37"/>
         <location line="+38"/>
         <source>If you are receiving this error you should request the merchant provide a BIP21 compatible URI.</source>
-        <translation type="unfinished"></translation>
+        <translation>Als u deze foutmelding krijgt moet u de verkoper vragen om u een BIP21-ondersteunde URI te geven.</translation>
     </message>
     <message>
         <location line="-36"/>
@@ -2527,7 +2527,7 @@
     <message>
         <location filename="../auroracoin.cpp" line="+75"/>
         <source>Error parsing command line arguments: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout tijdens verwerken van commandoregeloptie: %1.</translation>
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+521"/>
@@ -2552,12 +2552,12 @@
     <message>
         <location filename="../auroracoin.cpp" line="+42"/>
         <source>Error: Cannot parse configuration file: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout: Kan configuratiebestand niet inlezen: %1.</translation>
     </message>
     <message>
         <location line="+14"/>
         <source>Error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout: %1</translation>
     </message>
     <message>
         <location line="+58"/>
@@ -2717,17 +2717,17 @@
     <message>
         <location filename="../qrimagewidget.cpp" line="+45"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Resulterende URI is te lang, probeer de tekst voor label / bericht te verkorten.</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Error encoding URI into QR Code.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout tijdens omzetten van URI naar QR code.</translation>
     </message>
     <message>
         <location line="+38"/>
         <source>QR code support not available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ondersteuning voor QR codes niet beschikbaar.</translation>
     </message>
     <message>
         <location filename="../receiverequestdialog.cpp" line="+32"/>
@@ -3289,7 +3289,7 @@
     <message>
         <location line="+28"/>
         <source>&amp;Create new receiving address</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nieuw ontvangstadres aanmaken</translation>
     </message>
     <message>
         <location line="-77"/>
@@ -3749,7 +3749,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
     <message>
         <location line="+61"/>
         <source> from wallet &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation> van portemonnee &apos;%1&apos;</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -3760,7 +3760,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
         <location line="+14"/>
         <location line="+11"/>
         <source>%1 to &apos;%2&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 naar &apos;%2&apos;</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -3790,7 +3790,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
     <message>
         <location line="+7"/>
         <source>To review recipient list click &quot;Show Details...&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Om de ontvangerslijst nogmaals te bekijken klik op &quot;Details weergeven...&quot;</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -4521,7 +4521,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
     <message>
         <location line="+52"/>
         <source> (Certificate was not verified)</source>
-        <translation type="unfinished"></translation>
+        <translation> (Certificaat kon niet worden geverifieerd)</translation>
     </message>
     <message>
         <location line="-33"/>
@@ -4977,7 +4977,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
     <message>
         <location line="+7"/>
         <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
-        <translation type="unfinished"></translation>
+        <translation>Weet u zeker dat u de portemonee &lt;i&gt;%1&lt;/i&gt; wilt sluiten?</translation>
     </message>
     <message>
         <location line="-6"/>
@@ -5421,7 +5421,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
     <message>
         <location line="-6"/>
         <source>Error: Disk space is too low!</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout: Vrije schijfruimte is laag!</translation>
     </message>
     <message>
         <location line="-113"/>
@@ -5501,7 +5501,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
     <message>
         <location line="-2"/>
         <source>Invalid P2P permission: &apos;%s&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongeldige P2P permissie: &apos;%s&apos;</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -5581,7 +5581,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
     <message>
         <location line="-2"/>
         <source>Prune mode is incompatible with -blockfilterindex.</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitdunningsmodus is incompatibel met -blockfilterindex.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -5753,17 +5753,17 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
     <message>
         <location line="-1"/>
         <source>Unknown -blockfilterindex value %s.</source>
-        <translation type="unfinished"></translation>
+        <translation>Onbekende -blockfilterindex waarde %s.</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Unknown address type &apos;%s&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Onbekend adrestype &apos;%s&apos;</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Unknown change type &apos;%s&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Onbekend wisselgeld type &apos;%s&apos;</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5773,7 +5773,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
     <message>
         <location line="+1"/>
         <source>Unsupported logging category %s=%s.</source>
-        <translation type="unfinished">Niet-ondersteund logboekcategorie %s=%s.</translation>
+        <translation>Niet-ondersteund logboekcategorie %s=%s.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5793,7 +5793,7 @@ NB: Omdat de transactiekosten op een per-byte basis berekend worden, zullen de t
     <message>
         <location line="+1"/>
         <source>Verifying blocks...</source>
-        <translation type="unfinished">Blokken verifiëren....</translation>
+        <translation>Blokken verifiëren....</translation>
     </message>
     <message>
         <location line="+1"/>
