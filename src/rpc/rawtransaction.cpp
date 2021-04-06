@@ -73,6 +73,7 @@ void ScriptPubKeyToJSON(const CScript& scriptPubKey, UniValue& out, bool fInclud
 
 void TxToJSONExpanded(const CTransaction& tx, const uint256 hashBlock, UniValue& entry, int nHeight = 0, int nConfirmations = 0, int nBlockTime = 0)
 {
+    TxToUniv(tx, uint256(), entry, true, RPCSerializationFlags());
 
     uint256 txid = tx.GetHash();
     entry.pushKV("txid", txid.GetHex());
