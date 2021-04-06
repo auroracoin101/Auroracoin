@@ -368,14 +368,14 @@ static UniValue getrawtransaction(const JSONRPCRequest& request)
         LOCK(cs_main);
         CBlockIndex* pindex = LookupBlockIndex(hash_block);
         // Same check to see if in_active_chain.
-        if (::ChainActive().Contains(pindex)) {
+        if (pindex && ::ChainActive().Contains(pindex)) {
             nHeight = pindex->nHeight;
             nConfirmations = 1 + ::ChainActive().Height() - pindex->nHeight;
             nBlockTime = pindex->GetBlockTime();
         } else {
             nHeight = -1;
             nConfirmations = 0;
-            nBlockTime = pindex->GetBlockTime();
+            nBlockTime = 0;
         }
     }
 
