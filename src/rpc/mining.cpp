@@ -326,7 +326,7 @@ static UniValue getblocktemplate(const JSONRPCRequest& request)
                                 },
                         },
                         "\"template_request\""},
-                    {"algo", RPCArg::Type::STR, RPCArg::Optional::NO, "The mining algorithm to use for this pow hash, 'sha256d', 'scrypt', 'groestl', 'skein', 'qubit'"},
+                    {"algo", RPCArg::Type::STR, /* default */ strprintf("%s", GetAlgoName(miningAlgo)), "The mining algorithm to use for this pow hash, 'sha256d', 'scrypt', 'groestl', 'skein' or 'qubit'."},
 
                 },
                 RPCResult{
@@ -987,7 +987,7 @@ static const CRPCCommand commands[] =
     { "mining",             "getnetworkhashps",       &getnetworkhashps,       {"nblocks","height"} },
     { "mining",             "getmininginfo",          &getmininginfo,          {} },
     { "mining",             "prioritisetransaction",  &prioritisetransaction,  {"txid","dummy","fee_delta"} },
-    { "mining",             "getblocktemplate",       &getblocktemplate,       {"template_request"} },
+    { "mining",             "getblocktemplate",       &getblocktemplate,       {"template_request","algo"} },
     { "mining",             "submitblock",            &submitblock,            {"hexdata","dummy"} },
     { "mining",             "submitheader",           &submitheader,           {"hexdata"} },
 
