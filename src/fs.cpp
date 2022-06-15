@@ -14,6 +14,8 @@
 #include <windows.h>
 #endif
 
+#include <limits>
+
 namespace fsbridge {
 
 FILE *fopen(const fs::path& p, const char *mode)
