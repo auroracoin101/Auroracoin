@@ -30,6 +30,7 @@ However, 50% of the premined coins were never claimed and verifiably destroyed.
 Irc: #aur on freenode
 
 Forums: http://discord.gg/Fhm4758
+
 Reddit: http://www.reddit.com/r/auroracoin
 
 Community: http://www.auroracoin101.is
