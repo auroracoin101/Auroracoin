@@ -1,35 +1,44 @@
-## This is the stable branch
+# Notice! This is the stable branch
 
 Use this branch for running auroracoin in production environments. If you want the development branch,
 switch to [master](https://github.com/aurarad/Auroracoin/tree/master).
 
 
-# AuroraCoin AUR
+# Auroracoin AUR
 
-http://auroracoin.is
+http://en.auroracoin.is
 
 Follow [@OfficialAUR](https://twitter.com/OfficialAUR)
 
-Copyright (c) 2014-2018 Auroracoin Developers
+Copyright (c) 2014-2022 Auroracoin Developers
 
 
-## What is AuroraCoin?
+## What is Auroracoin?
 
-Auroracoin is a cryptocurrency for Iceland. It was initially based on Litecoin and 50% premined, later it incorporated the multi-algorithm PoW
-approach of DigiByte. The premined coins were distributed to the entire population of Iceland, commencing on midnight 25th of March 2014.
+Auroracoin is a cryptocurrency for Iceland started on 24th January 2014. 
+
+It was originally based on Litecoin and later in 2016 incorporated the multi-algorithm PoW approach of DigiByte.
+
+There was a 50% premine for distribution to Icelandic residents in 2014-2015 using national identification.
+
+Roughly half of the airdrop coins were claimed with the other half verifiably destroyed. 
 
 
 ## Community
 
-Forums: http://auroraspjall.is/
-
 Irc: #aur on freenode
 
-http://www.reddit.com/r/auroracoin
+Forums: http://discord.gg/Fhm4758
 
-http://www.reddit.com/r/AURmarket
+Reddit: http://www.reddit.com/r/auroracoin
 
-https://bitcointalk.org/index.php?topic=1044432.0
+Community: http://www.auroracoin101.is
+
+Market: http://coinpaprika.com/coin/aur-auroracoin/
+
+Explorer: http://chainz.cryptoid.info/aur
+
+Announcement: https://bitcointalk.org/index.php?topic=1044432.0
 
 ## License
 
@@ -69,7 +78,8 @@ not straightforward.
 
 ## Developers
 
-Developers are encouraged to create tools for Auroracoin to support the adoption of Auroracoin. Such software, e.g. for
-payments, will help Icelanders start using the currency in their daily lives.
+Developers are encouraged to create tools for Auroracoin to support the adoption of Auroracoin. 
+
+Such software, e.g. for payments, will help Icelanders start using the currency in their daily lives.
 
 Interested in helping out? Please email auroracoin@auroracoin.is, and let us know how you can help.
