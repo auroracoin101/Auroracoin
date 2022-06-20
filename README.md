@@ -17,12 +17,12 @@ Copyright (c) 2014-2022 Auroracoin Developers
 ## What is Auroracoin?
 
 Auroracoin is a cryptocurrency for Iceland started on 24th January 2014. 
-It was originally based on Litecoin and later (2016) incorporated the multi-algorithm PoW approach of DigiByte.
 
-There was a 50% premine for distribution to Icelandic residents using national identification. 
-The airdrop began in March 2014 and lasted until early 2015.
+It was originally based on Litecoin and later in 2016 incorporated the multi-algorithm PoW approach of DigiByte.
 
-However, 50% of the premined coins were never claimed and verifiably destroyed.
+There was a 50% premine for distribution to Icelandic residents in 2014-2015 using national identification.
+
+Roughly half of the airdrop coins were verifiably claimed with the other half verifiably destroyed. 
 
 
 ## Community
