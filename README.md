@@ -22,7 +22,7 @@ It was originally based on Litecoin and later in 2016 incorporated the multi-alg
 
 There was a 50% premine for distribution to Icelandic residents in 2014-2015 using national identification.
 
-Roughly half of the airdrop coins were verifiably claimed with the other half verifiably destroyed. 
+Roughly half of the airdrop coins were claimed with the other half verifiably destroyed. 
 
 
 ## Community
