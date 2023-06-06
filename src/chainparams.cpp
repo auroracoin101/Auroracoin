@@ -172,6 +172,7 @@ public:
         vSeeds.emplace_back("electrum2.auroracoin.is");
         vSeeds.emplace_back("electrum3.auroracoin.is");
         vSeeds.emplace_back("electrum4.auroracoin.is");
+        vSeeds.emplace_back("dnsseed.auroracoin.cc");
 
 
 
