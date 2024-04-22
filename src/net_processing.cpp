@@ -31,6 +31,7 @@
 #include <util/strencodings.h>
 #include <util/validation.h>
 
+#include <array>
 #include <memory>
 #include <typeinfo>
 
