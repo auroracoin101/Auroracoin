@@ -16,7 +16,7 @@ else
 endif
 
 define $(package)_set_vars
-  $(package)_config_opts=--disable-shared --disable-openssl --disable-libevent-regress --disable-samples
+  $(package)_config_opts=--disable-shared --disable-openssl --disable-libevent-regress --disable-samples --disable-dependency-tracking
   $(package)_config_opts_release=--disable-debug-mode
   $(package)_config_opts_linux=--with-pic
 endef
