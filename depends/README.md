@@ -25,9 +25,11 @@ Common `host-platform-triplets` for cross compilation are:
 - `i686-pc-linux-gnu` for Linux 32 bit
 - `x86_64-pc-linux-gnu` for x86 Linux
 - `x86_64-w64-mingw32` for Win64
-- `x86_64-apple-darwin14` for macOS
+- `x86_64-apple-darwin16` for macOS
 - `arm-linux-gnueabihf` for Linux ARM 32 bit
 - `aarch64-linux-gnu` for Linux ARM 64 bit
+- `powerpc64-linux-gnu` for Linux POWER 64-bit (big endian)
+- `powerpc64le-linux-gnu` for Linux POWER 64-bit (little endian)
 - `riscv32-linux-gnu` for Linux RISC-V 32 bit
 - `riscv64-linux-gnu` for Linux RISC-V 64 bit
 
@@ -58,6 +60,10 @@ For linux AARCH64 cross compilation:
 
     sudo apt-get install g++-aarch64-linux-gnu binutils-aarch64-linux-gnu
 
+For linux POWER 64-bit cross compilation (there are no packages for 32-bit):
+
+    sudo apt-get install g++-powerpc64-linux-gnu binutils-powerpc64-linux-gnu g++-powerpc64le-linux-gnu binutils-powerpc64le-linux-gnu
+
 For linux RISC-V 64-bit cross compilation (there are no packages for 32-bit):
 
     sudo apt-get install g++-riscv64-linux-gnu binutils-riscv64-linux-gnu
@@ -73,12 +79,12 @@ The following can be set when running make: make FOO=bar
     SDK_PATH: Path where sdk's can be found (used by macOS)
     FALLBACK_DOWNLOAD_PATH: If a source file can't be fetched, try here before giving up
     NO_QT: Don't download/build/cache qt and its dependencies
+    NO_QR: Don't download/build/cache packages needed for enabling qrencode
     NO_ZMQ: Don't download/build/cache packages needed for enabling zeromq
     NO_WALLET: Don't download/build/cache libs needed to enable the wallet
     NO_UPNP: Don't download/build/cache packages needed for enabling upnp
     DEBUG: disable some optimizations and enable more runtime checking
     RAPIDCHECK: build rapidcheck (experimental, requires cmake)
-    PROTOBUF: build protobuf (used for deprecated BIP70 support)
     HOST_ID_SALT: Optional salt to use when generating host package ids
     BUILD_ID_SALT: Optional salt to use when generating build package ids
 
