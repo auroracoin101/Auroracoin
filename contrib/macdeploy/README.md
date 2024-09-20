@@ -34,7 +34,7 @@ pushd pbzx
 clang -llzma -lxar pbzx.c -o pbzx -Wl,-rpath=/usr/local/lib
 popd
 
-xar -xf Xcode_10.2.1.xip -C .
+xar -xf Xcode_10.3.1.xip -C .
 
 ./pbzx/pbzx -n Content | cpio -i
 
@@ -44,7 +44,7 @@ find Xcode.app -type d -name MacOSX.sdk -execdir sh -c 'tar -c MacOSX.sdk/ | gzi
 on macOS the process is more straightforward:
 
 ```bash
-xip -x Xcode_10.2.1.xip
+xip -x Xcode_10.3.1.xip
 tar -C Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/ -czf MacOSX10.14.sdk.tar.gz MacOSX.sdk
 ```
 
@@ -87,7 +87,7 @@ and its `libLTO.so` rather than those from `llvmgcc`, as it was originally done 
 
 To complicate things further, all builds must target an Apple SDK. These SDKs are free to
 download, but not redistributable. To obtain it, register for an Apple Developer Account,
-then download [Xcode 10.2.1](https://download.developer.apple.com/Developer_Tools/Xcode_10.2.1/Xcode_10.2.1.xip).
+then download [Xcode_11.3.1](https://download.developer.apple.com/Developer_Tools/Xcode_11.3.1/Xcode_11.3.1.xip).
 
 This file is many gigabytes in size, but most (but not all) of what we need is
 contained only in a single directory:
