@@ -80,25 +80,12 @@ AC_DEFUN([AURORACOIN_QT_INIT],[
   AC_SUBST(QT_TRANSLATION_DIR,$qt_translation_path)
 ])
 
-dnl Find the appropriate version of Qt libraries and includes.
-dnl Inputs: $1: Whether or not pkg-config should be used. yes|no. Default: yes.
-dnl Inputs: $2: If $1 is "yes" and --with-gui=auto, which qt version should be
-dnl         tried first.
-dnl Outputs: See _AURORACOIN_QT_FIND_LIBS_*
+dnl Find Qt libraries and includes.
+dnl Outputs: See _AURORACOIN_QT_FIND_LIBS
 dnl Outputs: Sets variables for all qt-related tools.
 dnl Outputs: auroracoin_enable_qt, auroracoin_enable_qt_dbus, auroracoin_enable_qt_test
 AC_DEFUN([AURORACOIN_QT_CONFIGURE],[
-  use_pkgconfig=$1
-
-  if test "x$use_pkgconfig" = x; then
-    use_pkgconfig=yes
-  fi
-
-  if test "x$use_pkgconfig" = xyes; then
-    AURORACOIN_QT_CHECK([_AURORACOIN_QT_FIND_LIBS_WITH_PKGCONFIG])
-  else
-    AURORACOIN_QT_CHECK([_AURORACOIN_QT_FIND_LIBS_WITHOUT_PKGCONFIG])
-  fi
+  AURORACOIN_QT_CHECK([_AURORACOIN_QT_FIND_LIBS])
 
   dnl This is ugly and complicated. Yuck. Works as follows:
   dnl For Qt5, we can check a header to find out whether Qt is build
@@ -135,7 +122,7 @@ AC_DEFUN([AURORACOIN_QT_CONFIGURE],[
   CXXFLAGS=$TEMP_CXXFLAGS
   ])
 
-  if test "x$use_pkgconfig$qt_bin_path" = xyes; then
+  if test "x$qt_bin_path" = x; then
     qt_bin_path="`$PKG_CONFIG --variable=host_bins Qt5Core 2>/dev/null`"
   fi
 
@@ -251,47 +238,6 @@ dnl All macros below are internal and should _not_ be used from the main
 dnl configure.ac.
 dnl ----
 
-dnl Internal. Check included version of Qt against minimum specified in doc/dependencies.md
-dnl Requires: INCLUDES must be populated as necessary.
-dnl Output: auroracoin_cv_qt58=yes|no
-AC_DEFUN([_AURORACOIN_QT_CHECK_QT5],[
-  AC_CACHE_CHECK(for Qt 5, auroracoin_cv_qt5,[
-  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
-      #include <QtCore/qconfig.h>
-      #ifndef QT_VERSION
-      #  include <QtCore/qglobal.h>
-      #endif
-    ]],
-    [[
-      #if QT_VERSION < 0x050501
-      choke
-      #endif
-    ]])],
-    [auroracoin_cv_qt5=yes],
-    [auroracoin_cv_qt5=no])
-])])
-
-dnl Internal. Check if the included version of Qt is greater than Qt58.
-dnl Requires: INCLUDES must be populated as necessary.
-dnl Output: auroracoin_cv_qt5=yes|no
-AC_DEFUN([_AURORACOIN_QT_CHECK_QT58],[
-  AC_CACHE_CHECK(for > Qt 5.7, auroracoin_cv_qt58,[
-  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
-      #include <QtCore/qconfig.h>
-      #ifndef QT_VERSION
-      #  include <QtCore/qglobal.h>
-      #endif
-    ]],
-    [[
-      #if QT_VERSION_MINOR < 8
-      choke
-      #endif
-    ]])],
-    [auroracoin_cv_qt58=yes],
-    [auroracoin_cv_qt58=no])
-])])
-
-
 dnl Internal. Check if the linked version of Qt was built as static libs.
 dnl Requires: Qt5.
 dnl Requires: INCLUDES and LIBS must be populated as necessary.
@@ -346,8 +292,6 @@ AC_DEFUN([_AURORACOIN_QT_FIND_STATIC_PLUGINS],[
       if test -d "$qt_plugin_path/accessible"; then
         QT_LIBS="$QT_LIBS -L$qt_plugin_path/accessible"
       fi
-     if test "x$use_pkgconfig" = xyes; then
-     : dnl
      m4_ifdef([PKG_CHECK_MODULES],[
        if test x$auroracoin_cv_qt58 = xno; then
          PKG_CHECK_MODULES([QTPLATFORM], [Qt5PlatformSupport], [QT_LIBS="$QTPLATFORM_LIBS $QT_LIBS"])
@@ -367,49 +311,13 @@ AC_DEFUN([_AURORACOIN_QT_FIND_STATIC_PLUGINS],[
          PKG_CHECK_MODULES([QTCGL], [Qt5CglSupport], [QT_LIBS="-lQt5CglSupport $QT_LIBS"])
        fi
      ])
-     else
-       if test "x$TARGET_OS" = xwindows; then
-         AC_CACHE_CHECK(for Qt >= 5.6, auroracoin_cv_need_platformsupport,[
-           AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
-               #include <QtCore/qconfig.h>
-               #ifndef QT_VERSION
-               #  include <QtCore/qglobal.h>
-               #endif
-             ]],
-             [[
-               #if QT_VERSION < 0x050600 || QT_VERSION_MINOR < 6
-               choke
-               #endif
-             ]])],
-           [auroracoin_cv_need_platformsupport=yes],
-           [auroracoin_cv_need_platformsupport=no])
-         ])
-         if test "x$auroracoin_cv_need_platformsupport" = xyes; then
-           if test x$auroracoin_cv_qt58 = xno; then
-             AURORACOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}PlatformSupport],[main],,AURORACOIN_QT_FAIL(lib$QT_LIB_PREFIXPlatformSupport not found)))
-           else
-             AURORACOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}FontDatabaseSupport],[main],,AURORACOIN_QT_FAIL(lib$QT_LIB_PREFIXFontDatabaseSupport not found)))
-             AURORACOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}EventDispatcherSupport],[main],,AURORACOIN_QT_FAIL(lib$QT_LIB_PREFIXEventDispatcherSupport not found)))
-             AURORACOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}ThemeSupport],[main],,AURORACOIN_QT_FAIL(lib$QT_LIB_PREFIXThemeSupport not found)))
-             AURORACOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}FbSupport],[main],,AURORACOIN_QT_FAIL(lib$QT_LIB_PREFIXFbSupport not found)))
-             AURORACOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}DeviceDiscoverySupport],[main],,AURORACOIN_QT_FAIL(lib$QT_LIB_PREFIXDeviceDiscoverySupport not found)))
-             AURORACOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}AccessibilitySupport],[main],,AURORACOIN_QT_FAIL(lib$QT_LIB_PREFIXAccessibilitySupport not found)))
-             QT_LIBS="$QT_LIBS -lversion -ldwmapi -luxtheme"
-           fi
-         fi
-       fi
-     fi
    fi
 ])
 
 dnl Internal. Find Qt libraries using pkg-config.
-dnl Inputs: auroracoin_qt_want_version (from --with-gui=). The version to check
-dnl         first.
-dnl Inputs: $1: If auroracoin_qt_want_version is "auto", check for this version
-dnl         first.
 dnl Outputs: All necessary QT_* variables are set.
 dnl Outputs: have_qt_test and have_qt_dbus are set (if applicable) to yes|no.
-AC_DEFUN([_AURORACOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
+AC_DEFUN([_AURORACOIN_QT_FIND_LIBS],[
   m4_ifdef([PKG_CHECK_MODULES],[
     QT_LIB_PREFIX=Qt5
     qt5_modules="Qt5Core Qt5Gui Qt5Network Qt5Widgets"
@@ -429,84 +337,4 @@ AC_DEFUN([_AURORACOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
     ])
   ])
   true; dnl
-])
-
-dnl Internal. Find Qt libraries without using pkg-config. Version is deduced
-dnl from the discovered headers.
-dnl Inputs: auroracoin_qt_want_version (from --with-gui=). The version to use.
-dnl         If "auto", the version will be discovered by _AURORACOIN_QT_CHECK_QT5.
-dnl Outputs: All necessary QT_* variables are set.
-dnl Outputs: have_qt_test and have_qt_dbus are set (if applicable) to yes|no.
-AC_DEFUN([_AURORACOIN_QT_FIND_LIBS_WITHOUT_PKGCONFIG],[
-  TEMP_CPPFLAGS="$CPPFLAGS"
-  TEMP_CXXFLAGS="$CXXFLAGS"
-  CXXFLAGS="$PIC_FLAGS $CXXFLAGS"
-  TEMP_LIBS="$LIBS"
-  AURORACOIN_QT_CHECK([
-    if test "x$qt_include_path" != x; then
-      QT_INCLUDES="-I$qt_include_path -I$qt_include_path/QtCore -I$qt_include_path/QtGui -I$qt_include_path/QtWidgets -I$qt_include_path/QtNetwork -I$qt_include_path/QtTest -I$qt_include_path/QtDBus"
-      CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
-    fi
-  ])
-
-  AURORACOIN_QT_CHECK([AC_CHECK_HEADER([QtPlugin],,AURORACOIN_QT_FAIL(QtCore headers missing))])
-  AURORACOIN_QT_CHECK([AC_CHECK_HEADER([QApplication],, AURORACOIN_QT_FAIL(QtGui headers missing))])
-  AURORACOIN_QT_CHECK([AC_CHECK_HEADER([QLocalSocket],, AURORACOIN_QT_FAIL(QtNetwork headers missing))])
-
-  AURORACOIN_QT_CHECK([
-    if test "x$auroracoin_qt_want_version" = xauto; then
-      _AURORACOIN_QT_CHECK_QT5
-      _AURORACOIN_QT_CHECK_QT58
-    fi
-    QT_LIB_PREFIX=Qt5
-  ])
-
-  AURORACOIN_QT_CHECK([
-    LIBS=
-    if test "x$qt_lib_path" != x; then
-      LIBS="$LIBS -L$qt_lib_path"
-    fi
-
-    if test "x$TARGET_OS" = xwindows; then
-      AC_CHECK_LIB([imm32],      [main],, AURORACOIN_QT_FAIL(libimm32 not found))
-    fi
-  ])
-
-  AURORACOIN_QT_CHECK(AC_CHECK_LIB([z] ,[main],,AC_MSG_WARN([zlib not found. Assuming qt has it built-in])))
-  if test x$auroracoin_cv_qt58 = xno; then
-    AURORACOIN_QT_CHECK(AC_SEARCH_LIBS([png_error] ,[qtpng png],,AC_MSG_WARN([libpng not found. Assuming qt has it built-in])))
-    AURORACOIN_QT_CHECK(AC_SEARCH_LIBS([pcre16_exec], [qtpcre pcre16],,AC_MSG_WARN([libpcre16 not found. Assuming qt has it built-in])))
-  else
-    AURORACOIN_QT_CHECK(AC_SEARCH_LIBS([png_error] ,[qtlibpng png],,AC_MSG_WARN([libpng not found. Assuming qt has it built-in])))
-    AURORACOIN_QT_CHECK(AC_SEARCH_LIBS([pcre2_match_16], [qtpcre2 libqtpcre2],,AC_MSG_WARN([libqtpcre2 not found. Assuming qt has it built-in])))
-  fi
-  AURORACOIN_QT_CHECK(AC_SEARCH_LIBS([hb_ot_tags_from_script] ,[qtharfbuzzng qtharfbuzz harfbuzz],,AC_MSG_WARN([libharfbuzz not found. Assuming qt has it built-in or support is disabled])))
-  AURORACOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Core]   ,[main],,AURORACOIN_QT_FAIL(lib${QT_LIB_PREFIX}Core not found)))
-  AURORACOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Gui]    ,[main],,AURORACOIN_QT_FAIL(lib${QT_LIB_PREFIX}Gui not found)))
-  AURORACOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Network],[main],,AURORACOIN_QT_FAIL(lib${QT_LIB_PREFIX}Network not found)))
-  AURORACOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}Widgets],[main],,AURORACOIN_QT_FAIL(lib${QT_LIB_PREFIX}Widgets not found)))
-  QT_LIBS="$LIBS"
-  LIBS="$TEMP_LIBS"
-
-  AURORACOIN_QT_CHECK([
-    LIBS=
-    if test "x$qt_lib_path" != x; then
-      LIBS="-L$qt_lib_path"
-    fi
-    AC_CHECK_LIB([${QT_LIB_PREFIX}Test],      [main],, have_qt_test=no)
-    AC_CHECK_HEADER([QTest],, have_qt_test=no)
-    QT_TEST_LIBS="$LIBS"
-    if test "x$use_dbus" != xno; then
-      LIBS=
-      if test "x$qt_lib_path" != x; then
-        LIBS="-L$qt_lib_path"
-      fi
-      AC_CHECK_LIB([${QT_LIB_PREFIX}DBus],      [main],, have_qt_dbus=no)
-      AC_CHECK_HEADER([QtDBus],, have_qt_dbus=no)
-      QT_DBUS_LIBS="$LIBS"
-    fi
-  ])
-  CPPFLAGS="$TEMP_CPPFLAGS"
-  CXXFLAGS="$TEMP_CXXFLAGS"
-  LIBS="$TEMP_LIBS"
 ])

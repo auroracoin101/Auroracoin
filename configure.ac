@@ -1029,7 +1029,7 @@ else
   AURORACOIN_QT_INIT
 
   dnl sets $auroracoin_enable_qt, $auroracoin_enable_qt_test, $auroracoin_enable_qt_dbus
-  AURORACOIN_QT_CONFIGURE([$use_pkgconfig])
+  AURORACOIN_QT_CONFIGURE
 fi
 
 if test x$enable_wallet != xno; then
