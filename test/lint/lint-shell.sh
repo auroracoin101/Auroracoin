@@ -27,5 +27,8 @@ disabled=(
     SC2086 # Double quote to prevent globbing and word splitting.
     SC2162 # read without -r will mangle backslashes.
 )
-shellcheck -e "$(IFS=","; echo "${disabled[*]}")" \
-    $(git ls-files -- "*.sh" | grep -vE 'src/(secp256k1|univalue)/')
+
+SOURCED_FILES=$(git ls-files | xargs gawk '/^# shellcheck shell=/ {print FILENAME} {nextfile}')  # Check shellcheck directive used for sourced files
+if ! "${SHELLCHECK_CMD[@]}" "$EXCLUDE" $SOURCED_FILES $(git ls-files -- '*.sh' | grep -vE 'src/(leveldb|secp256k1|univalue)/'); then
+    EXIT_CODE=1
+fi
